@@ -1,7 +1,12 @@
+import PageHeader from '@/components/page-header';
+
 export default function SpeakingPage() {
   return (
     <div>
-      <h1>Speaking</h1>
+      <PageHeader
+        title="I hosted a couple of web development boot camps at my alma mater."
+        subtitle="I like teaching and sharing my knowledge with others, specially if it's for up and coming developers."
+      ></PageHeader>
     </div>
   );
 }
