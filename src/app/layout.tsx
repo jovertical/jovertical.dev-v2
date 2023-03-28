@@ -13,7 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="font-sans antialiased">{children}</body>
+      <body className="h-screen font-sans antialiased bg-gray-50">
+        <div className="h-full max-w-5xl px-8 py-12 mx-auto bg-white border-gray-200 shadow-sm border-x sm:px-10">
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
