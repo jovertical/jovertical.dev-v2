@@ -1,4 +1,5 @@
 import d from 'dayjs';
+import ReactMarkdown from 'react-markdown';
 
 import { send } from '@/utils/api';
 
@@ -46,12 +47,9 @@ export default async function ArticleDetailsPage({
           {article.title}
         </h1>
 
-        <div
-          className="mt-4 prose md:mt-8 dark:prose-dark lg:prose-lg"
-          dangerouslySetInnerHTML={{
-            __html: article.body,
-          }}
-        />
+        <ReactMarkdown className="mt-8 prose dark:prose-invert">
+          {article.body}
+        </ReactMarkdown>
       </div>
     </main>
   );
