@@ -3,6 +3,7 @@ import d from 'dayjs';
 
 import ChevronRightIcon from '@/components/icons/chevron-right-icon';
 import PageHeader from '@/components/page-header';
+import Section from '@/components/section';
 import { send } from '@/utils/api';
 
 async function getArticles() {
@@ -31,7 +32,7 @@ export default async function ArticlesPage() {
   let articles = await getArticles();
 
   return (
-    <div>
+    <>
       {/* prettier-ignore */}
       <PageHeader
         title="Writing on software design, dev ops, and more"
@@ -94,6 +95,6 @@ export default async function ArticlesPage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
