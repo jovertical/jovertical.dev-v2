@@ -1,3 +1,4 @@
+import d from 'dayjs';
 import Image from 'next/image';
 
 import '@/app/globals.css';
@@ -129,7 +130,7 @@ export default function RootLayout({
                           </div>
 
                           <p className="text-sm text-zinc-400 dark:text-zinc-500">
-                            © Jovert Palonpon. All rights reserved.
+                            © {d().year()} Jovert Palonpon. All rights reserved.
                           </p>
                         </div>
                       </div>
