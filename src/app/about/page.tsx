@@ -1,7 +1,7 @@
 export default function AboutPage() {
   return (
-    <main>
+    <div>
       <h1>About me</h1>
-    </main>
+    </div>
   );
 }

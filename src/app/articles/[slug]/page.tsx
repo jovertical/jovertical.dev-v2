@@ -1,5 +1,5 @@
-import d from 'dayjs';
 import ReactMarkdown from 'react-markdown';
+import d from 'dayjs';
 
 import { send } from '@/utils/api';
 
@@ -37,20 +37,16 @@ export default async function ArticleDetailsPage({
   console.log(article);
 
   return (
-    <main>
-      <div>
-        <h4 className="font-medium text-gray-500">
-          {d(article._publishedAt).format('MMMM D, YYYY')}
-        </h4>
+    <div>
+      <h4 className="font-medium text-gray-500">
+        {d(article._publishedAt).format('MMMM D, YYYY')}
+      </h4>
 
-        <h1 className="text-2xl font-semibold text-gray-900">
-          {article.title}
-        </h1>
+      <h1 className="text-2xl font-semibold text-gray-900">{article.title}</h1>
 
-        <ReactMarkdown className="mt-8 prose dark:prose-invert">
-          {article.body}
-        </ReactMarkdown>
-      </div>
-    </main>
+      <ReactMarkdown className="mt-8 prose dark:prose-invert">
+        {article.body}
+      </ReactMarkdown>
+    </div>
   );
 }

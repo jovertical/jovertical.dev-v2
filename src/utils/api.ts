@@ -6,7 +6,7 @@ interface SendOptions {
   preview?: boolean;
 }
 
-export let send = async ({
+export const send = async ({
   query,
   variables = {},
   preview = false,
