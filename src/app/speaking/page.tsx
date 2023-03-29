@@ -1,4 +1,4 @@
-import PageHeader from '@/components/page-header';
+import PageHeader from '@/app/page-header';
 
 export default function SpeakingPage() {
   return (

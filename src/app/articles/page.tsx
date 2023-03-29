@@ -1,9 +1,8 @@
 import Link from 'next/link';
 import d from 'dayjs';
 
+import PageHeader from '@/app/page-header';
 import ChevronRightIcon from '@/components/icons/chevron-right-icon';
-import PageHeader from '@/components/page-header';
-import Section from '@/components/section';
 import { send } from '@/utils/api';
 
 async function getArticles() {

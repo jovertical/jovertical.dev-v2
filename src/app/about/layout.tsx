@@ -1,11 +1,8 @@
-import Section from '@/components/section';
 import * as React from 'react';
 import type { PropsWithChildren } from 'react';
 
-interface Props extends PropsWithChildren {
-  //
-}
+import Section from '@/app/section';
 
-export default function Layout({ children }: Props) {
+export default function Layout({ children }: PropsWithChildren) {
   return <Section>{children}</Section>;
 }
