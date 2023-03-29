@@ -1,3 +1,4 @@
+import ExperienceTimeline from '@/app/experience-timeline';
 import FeaturedImages from '@/app/featured-images';
 import PageHeader from '@/app/page-header';
 import NewsLetterForm from '@/app/news-letter-form';
@@ -24,7 +25,8 @@ export default function Home() {
           <div className="flex flex-col gap-16"></div>
 
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <NewsLetterForm />
+            <NewsLetterForm></NewsLetterForm>
+            <ExperienceTimeline></ExperienceTimeline>
           </div>
         </div>
       </Section>

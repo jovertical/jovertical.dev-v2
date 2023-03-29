@@ -1,11 +1,6 @@
-import * as React from 'react';
 import type { SVGProps } from 'react';
 
-interface Props extends SVGProps<SVGSVGElement> {
-  //
-}
-
-export default function MoonIcon(props: Props) {
+export default function MoonIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
       <path

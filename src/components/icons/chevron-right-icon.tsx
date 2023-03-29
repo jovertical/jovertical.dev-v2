@@ -1,11 +1,6 @@
-import * as React from 'react';
 import type { SVGProps } from 'react';
 
-interface Props extends SVGProps<SVGSVGElement> {
-  //
-}
-
-export default function ChevronRightIcon(props: Props) {
+export default function ChevronRightIcon(props: SVGProps<SVGSVGElement>) {
   return (
     <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" {...props}>
       <path
