@@ -91,7 +91,7 @@ export default function ExperienceTimeline({
           <div className="relative flex items-center justify-center flex-none w-10 h-10 mt-1 rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
             <Image
               className="rounded-full h-7 w-7"
-              src="/images/companies/pushfit.png"
+              src="/images/companies/pushfit-tv.jpeg"
               alt="Pushfit.tv Logo"
               width={100}
               height={100}
