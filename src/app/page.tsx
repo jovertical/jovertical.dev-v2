@@ -16,10 +16,10 @@ export default function Home() {
           </h1>
 
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fuga dicta
-            porro molestiae consequuntur quaerat fugiat voluptate, deserunt, eum
-            obcaecati autem culpa rerum ipsum, maiores labore harum quidem
-            exercitationem error repudiandae.
+            Hi, I&apos;m Jovert, a software engineer based in Manila,
+            Philippines. I&apos;m passionate about building web applications and
+            learning new technologies. I love to travel as well, exploring the
+            beauty of nature and experiencing different cultures.
           </p>
 
           <div className="flex gap-6 mt-6">
@@ -63,43 +63,47 @@ export default function Home() {
           <div className="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl rotate-2">
             <Image
               className="absolute inset-0 object-cover w-full h-full"
-              src="https://picsum.photos/seed/1/640/480"
+              src="/images/featured/1.jpeg"
               alt=""
               width="480"
               height="640"
             />
           </div>
+
           <div className="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl -rotate-2">
             <Image
               className="absolute inset-0 object-cover w-full h-full"
-              src="https://picsum.photos/seed/2/640/480"
+              src="/images/featured/2.jpeg"
               alt=""
               width="480"
               height="640"
             />
           </div>
+
           <div className="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl rotate-2">
             <Image
               className="absolute inset-0 object-cover w-full h-full"
-              src="https://picsum.photos/seed/3/640/480"
+              src="/images/featured/3.jpeg"
               alt=""
               width="480"
               height="640"
             />
           </div>
+
           <div className="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl rotate-2">
             <Image
               className="absolute inset-0 object-cover w-full h-full"
-              src="https://picsum.photos/seed/4/640/480"
+              src="/images/featured/4.jpeg"
               alt=""
               width="480"
               height="640"
             />
           </div>
+
           <div className="relative aspect-[9/10] w-44 flex-none overflow-hidden rounded-xl bg-zinc-100 dark:bg-zinc-800 sm:w-72 sm:rounded-2xl -rotate-2">
             <Image
               className="absolute inset-0 object-cover w-full h-full"
-              src="https://picsum.photos/seed/5/640/480"
+              src="/images/featured/5.jpeg"
               alt=""
               width="480"
               height="640"

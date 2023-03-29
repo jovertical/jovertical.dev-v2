@@ -1,9 +1,15 @@
+'use client';
+
 export function useLocalStorage() {
   const get = <T extends any>(
     key: string,
     defaultValue: T | null = null
   ): T | string | null => {
     try {
+      if (typeof window === 'undefined') {
+        return defaultValue;
+      }
+
       const rawValue = localStorage.getItem(key);
 
       if (!rawValue) {
