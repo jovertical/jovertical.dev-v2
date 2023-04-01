@@ -4,8 +4,44 @@ import PageHeader from '@/app/page-header';
 import NewsLetterForm from '@/app/news-letter-form';
 import Section from '@/app/section';
 import SocialLinks from '@/app/social-links';
+import { send } from '@/utils/api';
 
-export default function Home() {
+async function getExperiences() {
+  const data = await send({
+    query: `
+      query experienceList {
+        allExperiences(
+          orderBy: [from_DESC, to_DESC]
+        ) {
+          id,
+          from,
+          to,
+          company,
+          companyLogo {
+            id
+            url
+            size
+            width
+            height
+          },
+          companyWebsite,
+          title,
+          description,
+        }
+
+        _allExperiencesMeta {
+          count
+        }
+      }
+    `,
+  });
+
+  return data.allExperiences;
+}
+
+export default async function Home() {
+  let experiences = await getExperiences();
+
   return (
     <div>
       <Section>
@@ -26,7 +62,7 @@ export default function Home() {
 
           <div className="space-y-10 lg:pl-16 xl:pl-24">
             <NewsLetterForm></NewsLetterForm>
-            <ExperienceTimeline></ExperienceTimeline>
+            <ExperienceTimeline data={experiences}></ExperienceTimeline>
           </div>
         </div>
       </Section>
