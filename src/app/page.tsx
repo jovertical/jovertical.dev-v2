@@ -4,42 +4,11 @@ import PageHeader from '@/app/page-header';
 import NewsLetterForm from '@/app/news-letter-form';
 import Section from '@/app/section';
 import SocialLinks from '@/app/social-links';
-import { send } from '@/utils/api';
-
-async function getExperiences() {
-  const data = await send({
-    query: `
-      query experienceList {
-        allExperiences(
-          orderBy: [from_DESC, to_DESC]
-        ) {
-          id,
-          from,
-          to,
-          company,
-          companyLogo {
-            id
-            url
-            size
-            width
-            height
-          },
-          companyWebsite,
-          title,
-          description,
-        }
-
-        _allExperiencesMeta {
-          count
-        }
-      }
-    `,
-  });
-
-  return data.allExperiences;
-}
+import { getBio } from '@/data/bio.data';
+import { getExperiences } from '@/data/experiences.data';
 
 export default async function Home() {
+  let bio = await getBio();
   let experiences = await getExperiences();
 
   return (
@@ -47,10 +16,10 @@ export default async function Home() {
       <Section>
         {/* prettier-ignore */}
         <PageHeader
-          title="Software engineer, web developer"
-          subtitle="Hi, I'm Jovert, a software engineer based in Manila, Philippines. I'm passionate about building web applications and learning new technologies. I love to travel as well, exploring the beauty of nature and experiencing different cultures."
+          title={bio.title}
+          subtitle={bio.body}
         >
-          <SocialLinks className="mt-6"></SocialLinks>
+          <SocialLinks className="mt-6" data={bio.socials}></SocialLinks>
         </PageHeader>
       </Section>
 

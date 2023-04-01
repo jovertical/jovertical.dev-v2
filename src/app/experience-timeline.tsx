@@ -6,23 +6,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 import ArrowDownIcon from '@/components/icons/arrow-down-icon';
 import BriefCaseIcon from '@/components/icons/briefcase-icon';
-
-type Experience = {
-  id: string;
-  from: number;
-  to: number | null;
-  title: string;
-  company: string;
-  companyLogo: {
-    id: string;
-    url: string;
-    size: number;
-    width: number;
-    height: number;
-  };
-  companyWebsite: string;
-  description: string;
-};
+import type { Experience } from '@/data/experiences.data';
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
   data?: Experience[];
