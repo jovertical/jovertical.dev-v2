@@ -11,7 +11,7 @@ export type Article = {
   _publishedAt: string;
 };
 
-export const findArticle = (slug: string) => {
+export const findArticle = (slug: string, preview = false) => {
   return rescue(async () => {
     await sleep(600);
 
@@ -28,6 +28,7 @@ export const findArticle = (slug: string) => {
           }
         }
       `,
+      preview,
       variables: {
         slug,
       },
