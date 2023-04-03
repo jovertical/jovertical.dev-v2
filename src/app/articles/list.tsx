@@ -1,9 +1,11 @@
-import Item from '@/app/articles/item';
 import cx from 'classnames';
 import type { ComponentPropsWithoutRef } from 'react';
 
+import Item from '@/app/articles/item';
+import type { Article } from '@/data/article.data';
+
 interface Props extends ComponentPropsWithoutRef<'div'> {
-  items: Record<string, any>[];
+  items: Article[];
 }
 
 export default function List({
@@ -20,7 +22,7 @@ export default function List({
       )}
     >
       <div className="flex flex-col max-w-3xl space-y-16">
-        {articles.map((article: Record<string, any>) => (
+        {articles.map((article) => (
           <Item key={article.id} data={article} />
         ))}
       </div>

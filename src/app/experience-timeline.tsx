@@ -6,7 +6,7 @@ import type { ComponentPropsWithoutRef } from 'react';
 
 import ArrowDownIcon from '@/components/icons/arrow-down-icon';
 import BriefCaseIcon from '@/components/icons/briefcase-icon';
-import type { Experience } from '@/data/experiences.data';
+import type { Experience } from '@/data/experience.data';
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
   data?: Experience[];

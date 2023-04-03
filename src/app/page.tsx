@@ -5,7 +5,7 @@ import NewsLetterForm from '@/app/news-letter-form';
 import Section from '@/app/section';
 import SocialLinks from '@/app/social-links';
 import { getBio } from '@/data/bio.data';
-import { getExperiences } from '@/data/experiences.data';
+import { getExperiences } from '@/data/experience.data';
 
 export default async function Home() {
   let bio = await getBio();

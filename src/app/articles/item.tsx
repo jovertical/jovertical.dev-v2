@@ -4,9 +4,10 @@ import Link from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import ChevronRightIcon from '@/components/icons/chevron-right-icon';
+import type { Article } from '@/data/article.data';
 
 interface Props extends ComponentPropsWithoutRef<'article'> {
-  data: Record<string, any>;
+  data: Article;
 }
 
 export default function Item({ className, data: article, ...props }: Props) {

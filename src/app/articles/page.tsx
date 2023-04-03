@@ -1,28 +1,6 @@
 import List from '@/app/articles/list';
 import PageHeader from '@/app/page-header';
-import { send } from '@/utils/api';
-
-async function getArticles() {
-  const data = await send({
-    query: `
-      query articleList {
-        allArticles(
-          orderBy: _publishedAt_DESC
-        ) {
-          id,
-          title,
-          excerpt,
-          body,
-          featured,
-          slug,
-          _publishedAt,
-        }
-      }
-    `,
-  });
-
-  return data.allArticles;
-}
+import { getArticles } from '@/data/article.data';
 
 export default async function ArticlesPage() {
   let articles = await getArticles();

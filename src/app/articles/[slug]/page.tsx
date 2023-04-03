@@ -3,29 +3,7 @@ import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 
 import ArrowLeftIcon from '@/components/icons/arrow-left-icon';
-import { send } from '@/utils/api';
-
-async function findArticle(slug: string) {
-  const data = await send({
-    query: `
-      query articleBy($slug: String!) {
-        article (filter: { slug: { eq: $slug } }) {
-          title,
-          excerpt,
-          body,
-          featured,
-          slug,
-          _publishedAt,
-        }
-      }
-    `,
-    variables: {
-      slug,
-    },
-  });
-
-  return data.article;
-}
+import { findArticle } from '@/data/article.data';
 
 export default async function ArticleDetailsPage({
   params,
@@ -35,6 +13,10 @@ export default async function ArticleDetailsPage({
   };
 }) {
   const article = await findArticle(params.slug);
+
+  if (!article) {
+    return null;
+  }
 
   return (
     <div className="xl:relative">
