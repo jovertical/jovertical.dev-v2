@@ -1,13 +1,8 @@
 import '@/app/globals.css';
 import LayoutHeader from '@/app/layout-header';
 import LayoutFooter from '@/app/layout-footer';
+import GoogleAnalyticsTracker from '@/components/google-analytics-tracker';
 import { ColorSchemeProvider } from '@/ctx/ColorSchemeContext';
-
-export const metadata = {
-  // prettier-ignore
-  title: 'Jovert Palonpon - Software Engineer, Web Developer and React Native Developer',
-  description: 'Everything about Jovert Palonpon',
-};
 
 export default function RootLayout({
   children,
@@ -17,6 +12,8 @@ export default function RootLayout({
   return (
     <ColorSchemeProvider>
       <html lang="en" className="h-full antialiased">
+        <GoogleAnalyticsTracker></GoogleAnalyticsTracker>
+
         <body className="flex flex-col h-full bg-zinc-50 dark:bg-black">
           <div className="fixed inset-0 flex justify-center sm:px-8">
             <div className="flex w-full max-w-7xl lg:px-8">
