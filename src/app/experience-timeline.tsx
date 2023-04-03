@@ -9,17 +9,19 @@ import BriefCaseIcon from '@/components/icons/briefcase-icon';
 import type { Experience } from '@/data/experience.data';
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
-  data?: Experience[];
+  data: Promise<Experience[]>;
 }
 
-export default function ExperienceTimeline({
-  data = [],
+export default async function ExperienceTimeline({
+  data,
   className = '',
   ...props
 }: Props) {
-  const isPresent = React.useCallback((experience: Experience) => {
+  const experiences = (await data) ?? [];
+
+  const isPresent = (experience: Experience) => {
     return experience.to === null;
-  }, []);
+  };
 
   return (
     <div
@@ -29,13 +31,13 @@ export default function ExperienceTimeline({
         className
       )}
     >
-      <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+      <h2 className="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefCaseIcon className="flex-none w-6 h-6" />
         <span className="ml-3">Work</span>
       </h2>
 
       <ol className="mt-6 space-y-4">
-        {data.map((experience) => (
+        {experiences.map((experience) => (
           <li key={experience.id} className="flex gap-4">
             <div className="relative flex items-center justify-center flex-none w-10 h-10 mt-1 rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
               {experience.companyLogo && experience.companyLogo.url && (

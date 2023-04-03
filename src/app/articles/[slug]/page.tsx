@@ -1,22 +1,19 @@
-import d from 'dayjs';
 import Link from 'next/link';
-import ReactMarkdown from 'react-markdown';
+import * as React from 'react';
 
+import Content from '@/app/articles/[slug]/content';
+import ContentSkeleton from '@/app/articles/[slug]/content-skeleton';
 import ArrowLeftIcon from '@/components/icons/arrow-left-icon';
 import { findArticle } from '@/data/article.data';
 
-export default async function ArticleDetailsPage({
+export default function ArticleDetailsPage({
   params,
 }: {
   params: {
     slug: string;
   };
 }) {
-  const article = await findArticle(params.slug);
-
-  if (!article) {
-    return null;
-  }
+  const article = findArticle(params.slug);
 
   return (
     <div className="xl:relative">
@@ -29,27 +26,10 @@ export default async function ArticleDetailsPage({
           <ArrowLeftIcon className="w-4 h-4 transition stroke-zinc-500 group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400"></ArrowLeftIcon>
         </Link>
 
-        <article>
-          <header className="flex flex-col">
-            <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
-              {article.title}
-            </h1>
-
-            <time
-              dateTime={d(article._publishedAt).format('YYYY-MM-DD')}
-              className="flex items-center order-first text-base text-zinc-400 dark:text-zinc-500"
-            >
-              <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span>
-              <span className="ml-3">
-                {d(article._publishedAt).format('MMMM D, YYYY')}
-              </span>
-            </time>
-          </header>
-
-          <ReactMarkdown className="mt-8 prose dark:prose-invert">
-            {article.body}
-          </ReactMarkdown>
-        </article>
+        <React.Suspense fallback={<ContentSkeleton></ContentSkeleton>}>
+          {/* @ts-expect-error Server Component */}
+          <Content data={article}></Content>
+        </React.Suspense>
       </div>
     </div>
   );

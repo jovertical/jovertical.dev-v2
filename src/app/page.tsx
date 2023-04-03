@@ -1,4 +1,7 @@
+import * as React from 'react';
+
 import ExperienceTimeline from '@/app/experience-timeline';
+import ExperienceTimelineSkeleton from '@/app/experience-timeline-skeleton';
 import FeaturedImages from '@/app/featured-images';
 import PageHeader from '@/app/page-header';
 import NewsLetterForm from '@/app/news-letter-form';
@@ -9,7 +12,7 @@ import { getExperiences } from '@/data/experience.data';
 
 export default async function Home() {
   let bio = await getBio();
-  let experiences = await getExperiences();
+  let experiences = getExperiences();
 
   return (
     <div>
@@ -31,7 +34,11 @@ export default async function Home() {
 
           <div className="space-y-10 lg:pl-16 xl:pl-24">
             <NewsLetterForm></NewsLetterForm>
-            <ExperienceTimeline data={experiences}></ExperienceTimeline>
+
+            <React.Suspense fallback={<ExperienceTimelineSkeleton />}>
+              {/* @ts-expect-error Server Component */}
+              <ExperienceTimeline data={experiences}></ExperienceTimeline>
+            </React.Suspense>
           </div>
         </div>
       </Section>

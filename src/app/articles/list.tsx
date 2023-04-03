@@ -5,14 +5,12 @@ import Item from '@/app/articles/item';
 import type { Article } from '@/data/article.data';
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
-  items: Article[];
+  items: Promise<Article[]>;
 }
 
-export default function List({
-  items: articles = [],
-  className = '',
-  ...props
-}: Props) {
+export default async function List({ items, className = '', ...props }: Props) {
+  const articles = await items;
+
   return (
     <div
       {...props}

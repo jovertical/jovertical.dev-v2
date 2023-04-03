@@ -1,4 +1,4 @@
-import { rescue } from '@/utils';
+import { rescue, sleep } from '@/utils';
 import { send } from '@/utils/api';
 
 export type Article = {
@@ -13,6 +13,8 @@ export type Article = {
 
 export const findArticle = (slug: string) => {
   return rescue(async () => {
+    await sleep(600);
+
     const data = await send({
       query: `
         query articleBy($slug: String!) {
@@ -37,6 +39,8 @@ export const findArticle = (slug: string) => {
 
 export let getArticles = () => {
   return rescue(async () => {
+    await sleep(600);
+
     const data = await send({
       query: `
         query articleList {

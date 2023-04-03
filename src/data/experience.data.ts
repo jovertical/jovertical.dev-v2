@@ -1,3 +1,4 @@
+import { rescue, sleep } from '@/utils';
 import { send } from '@/utils/api';
 
 export type Experience = {
@@ -17,35 +18,39 @@ export type Experience = {
   description: string;
 };
 
-export let getExperiences = async (): Promise<Experience[]> => {
-  const data = await send({
-    query: `
-      query experienceList {
-        allExperiences(
-          orderBy: [from_DESC, to_DESC]
-        ) {
-          id,
-          from,
-          to,
-          company,
-          companyLogo {
-            id
-            url
-            size
-            width
-            height
-          },
-          companyWebsite,
-          title,
-          description,
-        }
+export let getExperiences = () => {
+  return rescue(async () => {
+    await sleep(3000);
 
-        _allExperiencesMeta {
-          count
+    const data = await send({
+      query: `
+        query experienceList {
+          allExperiences(
+            orderBy: [from_DESC, to_DESC]
+          ) {
+            id,
+            from,
+            to,
+            company,
+            companyLogo {
+              id
+              url
+              size
+              width
+              height
+            },
+            companyWebsite,
+            title,
+            description,
+          }
+  
+          _allExperiencesMeta {
+            count
+          }
         }
-      }
-    `,
-  });
+      `,
+    });
 
-  return data.allExperiences;
+    return data.allExperiences as Experience[];
+  }, []);
 };
