@@ -19,7 +19,7 @@ export async function generateMetadata({
   const article = await findArticle(params.slug);
 
   return {
-    title: `${article?.title} - Jovert Palonpon`,
+    title: `${article?.title ?? 'Article'} - Jovert Palonpon`,
     description: article?.excerpt,
   };
 }

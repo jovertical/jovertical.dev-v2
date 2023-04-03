@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest } from 'next/server';
 import queryString from 'query-string';
 
 import { json } from '@/app/api/utils';

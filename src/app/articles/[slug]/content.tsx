@@ -1,4 +1,5 @@
 import d from 'dayjs';
+import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 
 import { Article } from '@/data/article.data';
@@ -9,6 +10,10 @@ interface Props {
 
 export default async function Content({ data }: Props) {
   const article = await data;
+
+  if (!article) {
+    notFound();
+  }
 
   return (
     <article>
