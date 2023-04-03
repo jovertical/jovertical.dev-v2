@@ -20,7 +20,7 @@ export type Experience = {
 
 export let getExperiences = () => {
   return rescue(async () => {
-    await sleep(3000);
+    await sleep(600);
 
     const data = await send({
       query: `

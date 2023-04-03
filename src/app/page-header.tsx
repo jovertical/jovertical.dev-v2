@@ -3,7 +3,7 @@ import type { PropsWithChildren } from 'react';
 
 interface Props extends PropsWithChildren {
   title: string;
-  subtitle: string;
+  subtitle?: string;
 }
 
 export default function PageHeader({ title, subtitle, children }: Props) {
@@ -13,9 +13,11 @@ export default function PageHeader({ title, subtitle, children }: Props) {
         {title}
       </h1>
 
-      <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-        {subtitle}
-      </p>
+      {subtitle && (
+        <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
+          {subtitle}
+        </p>
+      )}
 
       {children}
     </header>

@@ -2,7 +2,7 @@ import cx from 'classnames';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import Button from '@/components/button';
-import EnvelopeIcon from '@/components/icons/envelope-icon';
+import EnvelopeOutlineIcon from '@/components/icons/envelope-outline-icon';
 import TextInput from '@/components/text-input';
 
 export default function NewsLetterForm({
@@ -18,7 +18,7 @@ export default function NewsLetterForm({
       )}
     >
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <EnvelopeIcon className="flex-none w-6 h-6"></EnvelopeIcon>
+        <EnvelopeOutlineIcon className="flex-none w-6 h-6"></EnvelopeOutlineIcon>
 
         <span className="ml-3">Stay up to date</span>
       </h2>
