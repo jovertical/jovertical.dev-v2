@@ -1,6 +1,13 @@
+import type { Metadata } from 'next';
+
 import PageHeader from '@/app/page-header';
 
-export default function SpeakingPage() {
+export const metadata: Metadata = {
+  title: 'Speaking - Jovert Palonpon',
+  description: `I like teaching and sharing my knowledge with others, specially if it's for up and coming developers.`,
+};
+
+export default function Page() {
   return (
     <div>
       <PageHeader

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
@@ -9,7 +10,12 @@ import LinkedinIcon from '@/components/icons/linkedin-icon';
 import TwitterIcon from '@/components/icons/twitter-icon';
 import { getBio } from '@/data/bio.data';
 
-export default async function AboutPage() {
+export const metadata: Metadata = {
+  title: 'About - Jovert Palonpon',
+  description: `I'm Jovert Palonpon. I live in Manila, Philippines where I work remotely as a Software Engineer`,
+};
+
+export default async function Page() {
   const bio = await getBio();
 
   return (

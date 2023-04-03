@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import * as React from 'react';
 
 import List from '@/app/articles/list';
@@ -5,7 +6,12 @@ import ListSkeleton from '@/app/articles/list-skeleton';
 import PageHeader from '@/app/page-header';
 import { getArticles } from '@/data/article.data';
 
-export default function ArticlesPage() {
+export const metadata: Metadata = {
+  title: 'Articles - Jovert Palonpon',
+  description: `All of my thoughts on programming, web & mobile app development, dev ops, and more, displayed in chronological order.`,
+};
+
+export default function Page() {
   let articles = getArticles();
 
   return (

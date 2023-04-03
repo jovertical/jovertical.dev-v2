@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import * as React from 'react';
 
@@ -6,13 +7,24 @@ import ContentSkeleton from '@/app/articles/[slug]/content-skeleton';
 import ArrowLeftIcon from '@/components/icons/arrow-left-icon';
 import { findArticle } from '@/data/article.data';
 
-export default function ArticleDetailsPage({
+type Params = {
+  slug: string;
+};
+
+export async function generateMetadata({
   params,
 }: {
-  params: {
-    slug: string;
+  params: Params;
+}): Promise<Metadata> {
+  const article = await findArticle(params.slug);
+
+  return {
+    title: `${article?.title} - Jovert Palonpon`,
+    description: article?.excerpt,
   };
-}) {
+}
+
+export default function Page({ params }: { params: Params }) {
   const article = findArticle(params.slug);
 
   return (
