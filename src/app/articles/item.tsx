@@ -1,9 +1,9 @@
+import { ChevronRightIcon } from '@heroicons/react/20/solid';
 import cx from 'classnames';
 import d from 'dayjs';
 import Link from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
 
-import ChevronRightIcon from '@/components/icons/chevron-right-icon';
 import type { Article } from '@/data/article.data';
 
 interface Props extends ComponentPropsWithoutRef<'article'> {
@@ -49,7 +49,7 @@ export default function Item({ className, data: article, ...props }: Props) {
           className="relative z-10 flex items-center mt-4 text-sm font-medium text-teal-500"
         >
           Read article
-          <ChevronRightIcon className="w-5 h-5 ml-1 stroke-current" />
+          <ChevronRightIcon className="w-4 h-4 ml-1 stroke-current"></ChevronRightIcon>
         </div>
       </div>
 

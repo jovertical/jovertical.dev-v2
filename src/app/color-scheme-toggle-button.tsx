@@ -1,16 +1,11 @@
 'use client';
 
+import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
 import * as React from 'react';
 
-import MoonIcon from '@/components/icons/moon-icon';
-import SunIcon from '@/components/icons/sun-icon';
 import { ColorSchemeContext } from '@/ctx/ColorSchemeContext';
 
-interface Props {
-  //
-}
-
-export default function ColorSchemeToggleButton(props: Props) {
+export default function ColorSchemeToggleButton() {
   const colorScheme = React.useContext(ColorSchemeContext);
 
   return (

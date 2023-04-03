@@ -1,9 +1,9 @@
+import { EnvelopeIcon } from '@heroicons/react/24/solid';
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
 import PageHeader from '@/app/page-header';
-import EnvelopeIcon from '@/components/icons/envelope-icon';
 import GithubIcon from '@/components/icons/github-icon';
 import InstagramIcon from '@/components/icons/instagram-icon';
 import LinkedinIcon from '@/components/icons/linkedin-icon';
@@ -92,12 +92,12 @@ export default async function Page() {
             )}
 
             {bio.email && (
-              <li className="flex pt-8 mt-8 border-t border-zinc-100 dark:border-zinc-700/40">
+              <li className="flex items-center pt-8 mt-8 border-t border-zinc-100 dark:border-zinc-700/40">
                 <a
                   href={`mailto:${bio.email}`}
                   className="flex text-sm font-medium transition group text-zinc-800 hover:text-teal-500 dark:text-zinc-200 dark:hover:text-teal-500"
                 >
-                  <EnvelopeIcon className="flex-none w-6 h-6 transition fill-zinc-500 group-hover:fill-teal-500"></EnvelopeIcon>
+                  <EnvelopeIcon className="flex-none w-5 h-5 transition fill-zinc-500 group-hover:fill-teal-500"></EnvelopeIcon>
                   <span className="ml-4">{bio.email}</span>
                 </a>
               </li>

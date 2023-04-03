@@ -1,10 +1,10 @@
+import { ArrowDownIcon } from '@heroicons/react/20/solid';
 import cx from 'classnames';
 import d from 'dayjs';
 import Image from 'next/image';
 import * as React from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
 
-import ArrowDownIcon from '@/components/icons/arrow-down-icon';
 import BriefCaseIcon from '@/components/icons/briefcase-icon';
 import type { Experience } from '@/data/experience.data';
 
@@ -32,7 +32,7 @@ export default async function ExperienceTimeline({
       )}
     >
       <h2 className="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BriefCaseIcon className="flex-none w-6 h-6" />
+        <BriefCaseIcon className="flex-none w-6 h-6"></BriefCaseIcon>
         <span className="ml-3">Work</span>
       </h2>
 
@@ -85,7 +85,7 @@ export default async function ExperienceTimeline({
         href="/#"
       >
         Download CV
-        <ArrowDownIcon className="w-4 h-4 transition stroke-zinc-400 group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+        <ArrowDownIcon className="w-3.5 h-3.5 transition stroke-zinc-400 group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
       </a>
     </div>
   );
