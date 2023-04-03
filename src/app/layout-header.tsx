@@ -1,4 +1,3 @@
-import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import cx from 'classnames';
 import Image from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
@@ -6,6 +5,14 @@ import type { ComponentPropsWithoutRef } from 'react';
 import ColorSchemeToggleButton from '@/app/color-scheme-toggle-button';
 import NavLink from '@/app/nav-link';
 import Link from '@/components/link';
+import LayoutHeaderMobileMenu from '@/app/layout-header-mobile-menu';
+
+const LINKS = [
+  { href: '/about', label: 'About' },
+  { href: '/articles', label: 'Articles' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/speaking', label: 'Speaking' },
+];
 
 export default function Header({
   className = '',
@@ -44,41 +51,17 @@ export default function Header({
                   </div>
 
                   <div className="flex justify-end flex-1 md:justify-center">
-                    <div
-                      className="pointer-events-auto md:hidden"
-                      data-headlessui-state=""
-                    >
-                      <button
-                        className="flex items-center px-4 py-2 text-sm font-medium rounded-full shadow-lg group bg-white/90 text-zinc-800 shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10 dark:hover:ring-white/20"
-                        type="button"
-                        aria-expanded="false"
-                        id="headlessui-popover-button-:R2qb6:"
-                      >
-                        Menu
-                        <ChevronDownIcon
-                          viewBox="0 0 16 16"
-                          className="w-2.5 h-auto ml-3 stroke-zinc-500 group-hover:stroke-zinc-700 dark:group-hover:stroke-zinc-400"
-                        />
-                      </button>
-                    </div>
+                    <LayoutHeaderMobileMenu
+                      links={LINKS}
+                    ></LayoutHeaderMobileMenu>
 
                     <nav className="hidden pointer-events-auto md:block">
                       <ul className="flex px-3 text-sm font-medium rounded-full shadow-lg bg-white/90 text-zinc-800 shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-                        <li>
-                          <NavLink href="/about">About</NavLink>
-                        </li>
-
-                        <li>
-                          <NavLink href="/articles">Articles</NavLink>
-                        </li>
-
-                        <li>
-                          <NavLink href="/projects">Projects</NavLink>
-                        </li>
-
-                        <li>
-                          <NavLink href="/speaking">Speaking</NavLink>
-                        </li>
+                        {LINKS.map((link) => (
+                          <li key={`nav-link-to-${link.href}`}>
+                            <NavLink href={link.href}>{link.label}</NavLink>
+                          </li>
+                        ))}
                       </ul>
                     </nav>
                   </div>
