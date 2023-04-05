@@ -3,10 +3,12 @@ import * as React from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
 
 interface Props extends ComponentPropsWithoutRef<'button'> {
+  variant?: 'primary' | 'secondary';
   loading?: boolean;
 }
 
 export default function Button({
+  variant = 'primary',
   loading = false,
   className,
   children,
@@ -15,9 +17,17 @@ export default function Button({
   return (
     <button
       type="button"
+      disabled={loading}
       {...props}
+      // prettier-ignore
       className={cx(
-        'inline-flex items-center justify-center flex-none gap-2 px-3 py-2 text-sm font-semibold transition rounded-md outline-offset-2 active:transition-none bg-zinc-800 text-zinc-100 hover:bg-zinc-700 active:bg-zinc-800 active:text-zinc-100/70 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:active:bg-zinc-700 dark:active:text-zinc-100/70',
+        'inline-flex items-center justify-center flex-none gap-2 px-3 py-2 text-sm font-semibold transition rounded-md outline-offset-2 active:transition-none',
+        {
+          'bg-zinc-800 text-zinc-100 dark:bg-zinc-700': variant === 'primary',
+          'hover:bg-zinc-700 dark:hover:bg-zinc-600 active:bg-zinc-800 active:text-zinc-100/70 dark:active:bg-zinc-700 dark:active:text-zinc-100/70': variant === 'primary' && !loading,
+          'bg-zinc-50 text-zinc-900 dark:bg-zinc-800/50 dark:text-zinc-300': variant === 'secondary',
+          'active:bg-zinc-100 active:text-zinc-900/60 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70 hover:bg-zinc-100 dark:hover:bg-zinc-700/50 dark:hover:text-zinc-50': variant === 'secondary' && !loading,
+        },
         className
       )}
     >

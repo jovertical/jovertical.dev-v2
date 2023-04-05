@@ -14,6 +14,7 @@ interface Props extends ComponentPropsWithoutRef<'div'> {
 
 export default async function ExperienceTimeline({
   data,
+  children,
   className = '',
   ...props
 }: Props) {
@@ -80,13 +81,7 @@ export default async function ExperienceTimeline({
         ))}
       </ol>
 
-      <a
-        className="inline-flex items-center justify-center w-full gap-2 px-3 py-2 mt-6 text-sm font-medium transition rounded-md outline-offset-2 active:transition-none bg-zinc-50 text-zinc-900 hover:bg-zinc-100 active:bg-zinc-100 active:text-zinc-900/60 dark:bg-zinc-800/50 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-zinc-50 dark:active:bg-zinc-800/50 dark:active:text-zinc-50/70 group"
-        href="/#"
-      >
-        Download CV
-        <ArrowDownIcon className="w-3.5 h-3.5 transition stroke-zinc-400 group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
-      </a>
+      <div>{children}</div>
     </div>
   );
 }

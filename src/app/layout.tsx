@@ -1,3 +1,5 @@
+import type { ComponentPropsWithoutRef } from 'react';
+
 import '@/app/globals.css';
 import GoogleAnalyticsTracker from '@/components/google-analytics-tracker';
 import LayoutHeader from '@/components/layout-header';
@@ -5,11 +7,9 @@ import LayoutFooter from '@/components/layout-footer';
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
-}) {
+}: ComponentPropsWithoutRef<'html'>) {
   return (
-    <html lang="en" className="h-full antialiased dark">
+    <html lang="en" className="h-full antialiased">
       <GoogleAnalyticsTracker></GoogleAnalyticsTracker>
 
       <body className="flex flex-col h-full bg-zinc-50 dark:bg-black">

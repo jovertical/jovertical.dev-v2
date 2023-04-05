@@ -5,6 +5,7 @@ import ExperienceTimeline from '@/components/home/experience-timeline';
 import ExperienceTimelineSkeleton from '@/components/home/experience-timeline-skeleton';
 import FeaturedImages from '@/components/home/featured-images';
 import NewsLetterForm from '@/components/home/news-letter-form';
+import RequestCvModal from '@/components/home/request-cv-modal';
 import SocialLinks from '@/components/home/social-links';
 import PageHeader from '@/components/page-header';
 import Section from '@/components/section';
@@ -19,6 +20,8 @@ export const metadata: Metadata = {
 export default async function Page() {
   const bio = await getBio();
   const experiences = getExperiences();
+
+  const requestCvModalRef = React.createRef<HTMLDivElement>();
 
   return (
     <div>
@@ -45,7 +48,9 @@ export default async function Page() {
 
             <React.Suspense fallback={<ExperienceTimelineSkeleton />}>
               {/* @ts-expect-error Server Component */}
-              <ExperienceTimeline data={experiences}></ExperienceTimeline>
+              <ExperienceTimeline data={experiences}>
+                <RequestCvModal></RequestCvModal>
+              </ExperienceTimeline>
             </React.Suspense>
           </div>
         </div>

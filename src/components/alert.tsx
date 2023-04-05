@@ -4,10 +4,10 @@ import {
   InformationCircleIcon,
   XCircleIcon,
 } from '@heroicons/react/24/solid';
-
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import cx from 'classnames';
 import * as React from 'react';
+
 import { match } from '@/utils/object';
 
 interface Props extends React.ComponentPropsWithoutRef<'div'> {
@@ -19,7 +19,7 @@ interface Props extends React.ComponentPropsWithoutRef<'div'> {
 export default function Alert({
   level = 'info',
   message,
-  onClose = () => {},
+  onClose,
   className = '',
 }: Props) {
   const Icon = React.useMemo(() => {
@@ -69,27 +69,29 @@ export default function Alert({
           </p>
         </div>
 
-        <div className="pl-3 ml-auto">
-          <div className="-mx-1.5 -my-1.5">
-            <button
-              type="button"
-              onClick={onClose}
-              // prettier-ignore
-              className={cx(
-                'inline-flex rounded-md  p-1.5   focus:outline-none focus:ring-2 focus:ring-offset-2 ',
-                {
-                  'bg-blue-50 text-blue-500 hover:bg-blue-100 focus:ring-blue-600 focus:ring-offset-blue-50': level === 'info',
-                  'bg-green-50 text-green-500 hover:bg-green-100 focus:ring-green-600 focus:ring-offset-green-50': level === 'success',
-                  'bg-yellow-50 text-yellow-500 hover:bg-yellow-100 focus:ring-yellow-600 focus:ring-offset-yellow-50': level === 'warning',
-                  'bg-red-50 text-red-500 hover:bg-red-100 focus:ring-red-600 focus:ring-offset-red-50': level === 'error',
-                }
-              )}
-            >
-              <span className="sr-only">Dismiss</span>
-              <XMarkIcon className="w-5 h-5"></XMarkIcon>
-            </button>
+        {onClose && (
+          <div className="pl-3 ml-auto">
+            <div className="-mx-1.5 -my-1.5">
+              <button
+                type="button"
+                onClick={onClose}
+                // prettier-ignore
+                className={cx(
+                  'inline-flex rounded-md  p-1.5   focus:outline-none focus:ring-2 focus:ring-offset-2 ',
+                  {
+                    'bg-blue-50 text-blue-500 hover:bg-blue-100 focus:ring-blue-600 focus:ring-offset-blue-50': level === 'info',
+                    'bg-green-50 text-green-500 hover:bg-green-100 focus:ring-green-600 focus:ring-offset-green-50': level === 'success',
+                    'bg-yellow-50 text-yellow-500 hover:bg-yellow-100 focus:ring-yellow-600 focus:ring-offset-yellow-50': level === 'warning',
+                    'bg-red-50 text-red-500 hover:bg-red-100 focus:ring-red-600 focus:ring-offset-red-50': level === 'error',
+                  }
+                )}
+              >
+                <span className="sr-only">Dismiss</span>
+                <XMarkIcon className="w-5 h-5"></XMarkIcon>
+              </button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
