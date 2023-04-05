@@ -1,9 +1,26 @@
+import type { Metadata } from 'next';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import '@/app/globals.css';
 import GoogleAnalyticsTracker from '@/components/google-analytics-tracker';
 import LayoutHeader from '@/components/layout-header';
 import LayoutFooter from '@/components/layout-footer';
+
+export const metadata: Metadata = {
+  title: 'Jovert Palonpon - Software engineer, web developer',
+  description: `Hi, I'm Jovert, a software engineer based in Manila, Philippines. I'm passionate about building web applications and learning new technologies. I love to travel as well, exploring the beauty of nature and experiencing different cultures.`,
+  alternates: {
+    canonical: 'https://jovertical.dev/articles',
+    types: {
+      'application/rss+xml': [
+        {
+          url: 'https://rss.beehiiv.com/feeds/6LIt6WZQMo.xml',
+          title: 'jovertical.dev - all articles',
+        },
+      ],
+    },
+  },
+};
 
 export default function RootLayout({
   children,

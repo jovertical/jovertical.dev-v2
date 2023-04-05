@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import * as React from 'react';
 
 import ExperienceTimeline from '@/components/home/experience-timeline';
@@ -14,11 +13,6 @@ import Section from '@/components/section';
 import { getArticles } from '@/data/article.data';
 import { getBio } from '@/data/bio.data';
 import { getExperiences } from '@/data/experience.data';
-
-export const metadata: Metadata = {
-  title: 'Jovert Palonpon - Software engineer, web developer',
-  description: `Hi, I'm Jovert, a software engineer based in Manila, Philippines. I'm passionate about building web applications and learning new technologies. I love to travel as well, exploring the beauty of nature and experiencing different cultures.`,
-};
 
 export default async function Page() {
   const bio = await getBio();
