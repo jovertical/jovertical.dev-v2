@@ -2,7 +2,6 @@ import '@/app/globals.css';
 import GoogleAnalyticsTracker from '@/components/google-analytics-tracker';
 import LayoutHeader from '@/components/layout-header';
 import LayoutFooter from '@/components/layout-footer';
-import { ColorSchemeProvider } from '@/ctx/ColorSchemeContext';
 
 export default function RootLayout({
   children,
@@ -10,26 +9,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ColorSchemeProvider>
-      <html lang="en" className="h-full antialiased">
-        <GoogleAnalyticsTracker></GoogleAnalyticsTracker>
+    <html lang="en" className="h-full antialiased dark">
+      <GoogleAnalyticsTracker></GoogleAnalyticsTracker>
 
-        <body className="flex flex-col h-full bg-zinc-50 dark:bg-black">
-          <div className="fixed inset-0 flex justify-center sm:px-8">
-            <div className="flex w-full max-w-7xl lg:px-8">
-              <div className="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
-            </div>
+      <body className="flex flex-col h-full bg-zinc-50 dark:bg-black">
+        <div className="fixed inset-0 flex justify-center sm:px-8">
+          <div className="flex w-full max-w-7xl lg:px-8">
+            <div className="w-full bg-white ring-1 ring-zinc-100 dark:bg-zinc-900 dark:ring-zinc-300/20"></div>
           </div>
+        </div>
 
-          <div className="relative">
-            <LayoutHeader />
+        <div className="relative">
+          <LayoutHeader />
 
-            <main>{children}</main>
+          <main>{children}</main>
 
-            <LayoutFooter className="mt-32" />
-          </div>
-        </body>
-      </html>
-    </ColorSchemeProvider>
+          <LayoutFooter className="mt-32" />
+        </div>
+      </body>
+    </html>
   );
 }
