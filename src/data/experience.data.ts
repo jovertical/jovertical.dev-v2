@@ -13,7 +13,7 @@ export type Experience = {
     size: number;
     width: number;
     height: number;
-  };
+  } | null;
   companyWebsite: string;
   description: string;
 };
