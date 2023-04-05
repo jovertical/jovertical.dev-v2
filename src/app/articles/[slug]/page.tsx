@@ -8,16 +8,9 @@ import Content from '@/components/articles/[slug]/content';
 import ContentSkeleton from '@/components/articles/[slug]/content-skeleton';
 import { findArticle } from '@/data/article.data';
 
-type Params = {
-  slug: string;
-};
-
 interface Props {
   params: { slug: string };
-  searchParams: {
-    from: 'featured';
-    [key: string]: string;
-  };
+  searchParams: { from: 'featured' };
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -26,6 +19,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${article?.title ?? 'Article'} - Jovert Palonpon`,
     description: article?.excerpt,
+    keywords: article?.tags.map((tag) => tag.name).join(', '),
   };
 }
 

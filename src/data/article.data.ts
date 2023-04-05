@@ -1,3 +1,4 @@
+import type { Tag } from '@/data/tag.data';
 import { rescue, sleep } from '@/utils';
 import { send } from '@/utils/api';
 
@@ -8,6 +9,7 @@ export type Article = {
   body: string;
   featured: boolean;
   slug: string;
+  tags: Tag[];
   _publishedAt: string;
 };
 
@@ -24,6 +26,12 @@ export const findArticle = (slug: string, preview = false) => {
             body,
             featured,
             slug,
+            tags {
+              id,
+              name,
+              description,
+              createdAt
+            },
             _publishedAt,
           }
         }
@@ -55,6 +63,12 @@ export const getArticles = (limit?: number) => {
             body,
             featured,
             slug,
+            tags {
+              id,
+              name,
+              description,
+              createdAt
+            },
             _publishedAt,
           }
         }

@@ -9,6 +9,15 @@ import { getArticles } from '@/data/article.data';
 export const metadata: Metadata = {
   title: 'Articles - Jovert Palonpon',
   description: `All of my thoughts on programming, web & mobile app development, dev ops, and more, displayed in chronological order.`,
+  keywords: [
+    'articles',
+    'blog',
+    'programming',
+    'software engineering',
+    'web development',
+    'mobile development',
+    'dev ops',
+  ],
 };
 
 export default function Page() {
