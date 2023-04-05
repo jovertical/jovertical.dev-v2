@@ -4,11 +4,14 @@ import * as React from 'react';
 import ExperienceTimeline from '@/components/home/experience-timeline';
 import ExperienceTimelineSkeleton from '@/components/home/experience-timeline-skeleton';
 import FeaturedImages from '@/components/home/featured-images';
+import FeaturedArticleList from '@/components/home/featured-article-list';
+import FeaturedArticleListSkeleton from '@/components/home/featured-article-list-skeleton';
 import NewsLetterForm from '@/components/home/news-letter-form';
 import RequestCvModal from '@/components/home/request-cv-modal';
 import SocialLinks from '@/components/home/social-links';
 import PageHeader from '@/components/page-header';
 import Section from '@/components/section';
+import { getArticles } from '@/data/article.data';
 import { getBio } from '@/data/bio.data';
 import { getExperiences } from '@/data/experience.data';
 
@@ -20,8 +23,7 @@ export const metadata: Metadata = {
 export default async function Page() {
   const bio = await getBio();
   const experiences = getExperiences();
-
-  const requestCvModalRef = React.createRef<HTMLDivElement>();
+  const articles = getArticles(3);
 
   return (
     <div>
@@ -41,7 +43,10 @@ export default async function Page() {
 
       <Section>
         <div className="grid max-w-xl grid-cols-1 mx-auto gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16"></div>
+          <React.Suspense fallback={<FeaturedArticleListSkeleton />}>
+            {/* @ts-expect-error Server Component */}
+            <FeaturedArticleList items={articles}></FeaturedArticleList>
+          </React.Suspense>
 
           <div className="space-y-10 lg:pl-16 xl:pl-24">
             <NewsLetterForm></NewsLetterForm>

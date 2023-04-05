@@ -38,7 +38,7 @@ export const findArticle = (slug: string, preview = false) => {
   }, null);
 };
 
-export let getArticles = () => {
+export const getArticles = (limit?: number) => {
   return rescue(async () => {
     await sleep(600);
 
@@ -46,6 +46,7 @@ export let getArticles = () => {
       query: `
         query articleList {
           allArticles(
+            ${limit ? `first: ${limit},` : ''}
             orderBy: _publishedAt_DESC
           ) {
             id,
