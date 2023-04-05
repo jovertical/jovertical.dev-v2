@@ -31,7 +31,7 @@ export default function RequestCvModal() {
 
       setSubmitting(true);
 
-      const response = await fetch('/api/download-cv', {
+      const response = await fetch('/api/request-cv', {
         method: 'POST',
         body: JSON.stringify({ email }),
       });
