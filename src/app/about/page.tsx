@@ -3,11 +3,11 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
 
-import PageHeader from '@/app/page-header';
 import GithubIcon from '@/components/icons/github-icon';
 import InstagramIcon from '@/components/icons/instagram-icon';
 import LinkedinIcon from '@/components/icons/linkedin-icon';
 import TwitterIcon from '@/components/icons/twitter-icon';
+import PageHeader from '@/components/page-header';
 import { getBio } from '@/data/bio.data';
 
 export const metadata: Metadata = {

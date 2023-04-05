@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 
-import PageHeader from '@/app/page-header';
+import PageHeader from '@/components/page-header';
 
 export const metadata: Metadata = {
   title: 'Speaking - Jovert Palonpon',

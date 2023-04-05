@@ -2,10 +2,10 @@ import cx from 'classnames';
 import Image from 'next/image';
 import type { ComponentPropsWithoutRef } from 'react';
 
-import ColorSchemeToggleButton from '@/app/color-scheme-toggle-button';
-import NavLink from '@/app/nav-link';
+import ColorSchemeToggleButton from '@/components/color-scheme-toggle-button';
+import LayoutHeaderMobileMenu from '@/components/layout-header-mobile-menu';
 import Link from '@/components/link';
-import LayoutHeaderMobileMenu from '@/app/layout-header-mobile-menu';
+import NavLink from '@/components/nav-link';
 
 const LINKS = [
   { href: '/about', label: 'About' },

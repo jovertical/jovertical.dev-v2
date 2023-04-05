@@ -1,7 +1,7 @@
 import '@/app/globals.css';
-import LayoutHeader from '@/app/layout-header';
-import LayoutFooter from '@/app/layout-footer';
 import GoogleAnalyticsTracker from '@/components/google-analytics-tracker';
+import LayoutHeader from '@/components/layout-header';
+import LayoutFooter from '@/components/layout-footer';
 import { ColorSchemeProvider } from '@/ctx/ColorSchemeContext';
 
 export default function RootLayout({

@@ -1,5 +1,4 @@
 import cx from 'classnames';
-import * as React from 'react';
 import type { PropsWithChildren } from 'react';
 
 interface Props extends PropsWithChildren {

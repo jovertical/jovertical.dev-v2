@@ -1,11 +1,11 @@
 'use client';
 
 import cx from 'classnames';
+import { usePathname } from 'next/navigation';
 import * as React from 'react';
 
 import Link from '@/components/link';
 import type { LinkProps } from '@/components/link';
-import { usePathname } from 'next/navigation';
 
 interface Props extends LinkProps {
   //

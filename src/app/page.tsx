@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import * as React from 'react';
 
-import ExperienceTimeline from '@/app/experience-timeline';
-import ExperienceTimelineSkeleton from '@/app/experience-timeline-skeleton';
-import FeaturedImages from '@/app/featured-images';
-import PageHeader from '@/app/page-header';
-import NewsLetterForm from '@/app/news-letter-form';
-import Section from '@/app/section';
-import SocialLinks from '@/app/social-links';
+import ExperienceTimeline from '@/components/home/experience-timeline';
+import ExperienceTimelineSkeleton from '@/components/home/experience-timeline-skeleton';
+import FeaturedImages from '@/components/home/featured-images';
+import NewsLetterForm from '@/components/home/news-letter-form';
+import SocialLinks from '@/components/home/social-links';
+import PageHeader from '@/components/page-header';
+import Section from '@/components/section';
 import { getBio } from '@/data/bio.data';
 import { getExperiences } from '@/data/experience.data';
 

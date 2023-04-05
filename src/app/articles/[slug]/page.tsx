@@ -4,8 +4,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import * as React from 'react';
 
-import Content from '@/app/articles/[slug]/content';
-import ContentSkeleton from '@/app/articles/[slug]/content-skeleton';
+import Content from '@/components/articles/[slug]/content';
+import ContentSkeleton from '@/components/articles/[slug]/content-skeleton';
 import { findArticle } from '@/data/article.data';
 
 type Params = {

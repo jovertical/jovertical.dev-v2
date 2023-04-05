@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import * as React from 'react';
 
-import List from '@/app/articles/list';
-import ListSkeleton from '@/app/articles/list-skeleton';
-import PageHeader from '@/app/page-header';
+import List from '@/components/articles/list';
+import ListSkeleton from '@/components/articles/list-skeleton';
+import PageHeader from '@/components/page-header';
 import { getArticles } from '@/data/article.data';
 
 export const metadata: Metadata = {

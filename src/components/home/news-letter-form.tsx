@@ -5,10 +5,10 @@ import { useRouter } from 'next/navigation';
 import * as React from 'react';
 import type { ComponentPropsWithoutRef, FormEvent } from 'react';
 
+import Alert from '@/components/alert';
 import Button from '@/components/button';
 import EnvelopeOutlineIcon from '@/components/icons/envelope-outline-icon';
 import TextInput from '@/components/text-input';
-import Alert from '@/components/alert';
 
 export default function NewsLetterForm({
   className = '',

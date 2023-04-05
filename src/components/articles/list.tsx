@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import type { ComponentPropsWithoutRef } from 'react';
 
-import Item from '@/app/articles/item';
+import Item from '@/components/articles/item';
 import type { Article } from '@/data/article.data';
 
 interface Props extends ComponentPropsWithoutRef<'div'> {

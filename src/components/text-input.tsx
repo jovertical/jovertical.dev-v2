@@ -1,5 +1,4 @@
 import cx from 'classnames';
-import * as React from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
 
 interface Props extends ComponentPropsWithoutRef<'input'> {
