@@ -1,5 +1,5 @@
+import MailerLite from '@mailerlite/mailerlite-nodejs';
 import { NextRequest } from 'next/server';
-import http from 'tiny-json-http';
 
 import { json } from '@/app/api/utils';
 import { rescue } from '@/utils';
@@ -7,22 +7,27 @@ import { rescue } from '@/utils';
 export async function POST(request: NextRequest) {
   const { email } = await request.json();
 
+  const mailerLite = new MailerLite({
+    api_key: process.env.MAILER_LITE_API_KEY ?? '',
+  });
+
   const subscription = await rescue(async () => {
-    const { body } = await http.post({
-      url: `https://api.beehiiv.com/v2/publications/pub_f0a517bf-02ba-47a7-8d38-af4608f98452/subscriptions`,
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.BEEHIIV_API_KEY}`,
-      },
-      data: {
-        email,
-        reactivate_existing: true,
-        send_welcome_email: true,
-        referring_site: request.nextUrl.origin,
-      },
+    const response = await mailerLite.subscribers.createOrUpdate({
+      email,
     });
 
-    return body.data;
+    const newSubscription = response.data?.data;
+
+    if (!newSubscription) {
+      throw new Error('Subscription failed.');
+    }
+
+    await mailerLite.groups.assignSubscriber(
+      newSubscription.id,
+      '84700780829869128' // 'Default' group
+    );
+
+    return newSubscription;
   }, null);
 
   if (!subscription || subscription.status !== 'active') {
