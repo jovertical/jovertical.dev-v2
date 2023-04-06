@@ -14,7 +14,7 @@ export const send = async ({
   const { body } = await tiny.post({
     url: `https://graphql.datocms.com${preview ? '/preview' : ''}`,
     headers: {
-      authorization: `Bearer ${process.env.NEXT_DATOCMS_API_TOKEN}`,
+      authorization: `Bearer ${process.env.DATO_CMS_API_TOKEN}`,
     },
     data: {
       query,

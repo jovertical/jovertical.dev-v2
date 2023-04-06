@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
       url: `https://api.beehiiv.com/v2/publications/pub_f0a517bf-02ba-47a7-8d38-af4608f98452/subscriptions`,
       headers: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${process.env.NEXT_BEEHIIV_API_KEY}`,
+        Authorization: `Bearer ${process.env.BEEHIIV_API_KEY}`,
       },
       data: {
         email,

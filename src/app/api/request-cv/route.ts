@@ -16,8 +16,8 @@ export async function POST(request: NextRequest) {
       subject: 'Here is a copy of my CV - Jovert Palonpon',
       html: render(
         CvCopyMail({
-          url: process.env.NEXT_MY_CV_DOWNLOAD_URL ?? '',
-          fallbackUrl: process.env.NEXT_MY_CV_PREVIEW_URL ?? '',
+          url: process.env.CV_DOWNLOAD_URL ?? '',
+          fallbackUrl: process.env.CV_PREVIEW_URL ?? '',
         })
       ),
     });
