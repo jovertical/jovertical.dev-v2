@@ -1,5 +1,6 @@
 import type { ComponentPropsWithoutRef } from 'react';
 
+import '@/app/code.css';
 import '@/app/globals.css';
 import GoogleAnalyticsTracker from '@/components/google-analytics-tracker';
 import LayoutHeader from '@/components/layout-header';

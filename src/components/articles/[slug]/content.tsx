@@ -1,8 +1,10 @@
 import d from 'dayjs';
 import { notFound } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
+import rehypeHighlight from 'rehype-highlight';
 
 import { Article } from '@/data/article.data';
+import toMarkdownString from '@/utils/markdown';
 
 interface Props {
   data: Promise<Article>;
@@ -10,6 +12,8 @@ interface Props {
 
 export default async function Content({ data }: Props) {
   const article = await data;
+
+  const body = await toMarkdownString(article.body);
 
   if (!article) {
     notFound();
@@ -34,9 +38,12 @@ export default async function Content({ data }: Props) {
         </time>
       </header>
 
-      <ReactMarkdown className="mt-8 prose dark:prose-invert">
-        {article.body}
-      </ReactMarkdown>
+      <div
+        className="mt-8 prose dark:prose-invert"
+        dangerouslySetInnerHTML={{
+          __html: body,
+        }}
+      ></div>
     </article>
   );
 }
