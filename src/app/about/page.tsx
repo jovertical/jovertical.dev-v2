@@ -1,7 +1,6 @@
 import { EnvelopeIcon } from '@heroicons/react/24/solid';
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import ReactMarkdown from 'react-markdown';
 
 import GithubIcon from '@/components/icons/github-icon';
 import InstagramIcon from '@/components/icons/instagram-icon';
@@ -9,6 +8,7 @@ import LinkedinIcon from '@/components/icons/linkedin-icon';
 import TwitterIcon from '@/components/icons/twitter-icon';
 import PageHeader from '@/components/page-header';
 import { getBio } from '@/data/bio.data';
+import toMarkdownString from '@/utils/markdown';
 import { createMetadata } from '@/utils/metadata';
 
 export const metadata: Metadata = createMetadata({
@@ -18,6 +18,8 @@ export const metadata: Metadata = createMetadata({
 
 export default async function Page() {
   const bio = await getBio();
+
+  const content = await toMarkdownString(bio?.about ?? '');
 
   return (
     <div className="grid grid-cols-1 gap-y-16 lg:grid-cols-2 lg:grid-rows-[auto_1fr] lg:gap-y-12">
@@ -36,9 +38,12 @@ export default async function Page() {
       <div className="lg:order-first lg:row-span-2">
         <PageHeader title="I'm Jovert Palonpon. I live in Manila, Philippines where I work remotely as a Software Engineer"></PageHeader>
 
-        <ReactMarkdown className="mt-6 prose dark:prose-invert">
-          {bio?.about ?? ''}
-        </ReactMarkdown>
+        <div
+          className="mt-6 prose dark:prose-invert"
+          dangerouslySetInnerHTML={{
+            __html: content,
+          }}
+        ></div>
       </div>
 
       {bio?.socials && (

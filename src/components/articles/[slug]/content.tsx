@@ -1,7 +1,5 @@
 import d from 'dayjs';
 import { notFound } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import rehypeHighlight from 'rehype-highlight';
 
 import { Article } from '@/data/article.data';
 import toMarkdownString from '@/utils/markdown';

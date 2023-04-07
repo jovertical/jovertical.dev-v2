@@ -9,6 +9,13 @@ module.exports = {
         DEFAULT: {
           css: {
             color: theme('colors.zinc.600'),
+            a: {
+              color: theme('colors.zinc.800'),
+              fontWeight: 500,
+              '&:hover': {
+                color: theme('colors.teal.500'),
+              },
+            },
             code: {
               color: theme('colors.zinc.400'),
               fontWeight: 500,
@@ -41,9 +48,10 @@ module.exports = {
           css: {
             color: theme('colors.zinc.400'),
             a: {
-              color: theme('colors.zinc.100'),
+              color: theme('colors.zinc.300'),
+              fontWeight: 500,
               '&:hover': {
-                color: theme('colors.teal.500'),
+                color: theme('colors.teal.400'),
               },
             },
             h1: {
