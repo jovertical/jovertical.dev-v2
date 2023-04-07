@@ -5,8 +5,9 @@ import List from '@/components/articles/list';
 import ListSkeleton from '@/components/articles/list-skeleton';
 import PageHeader from '@/components/page-header';
 import { getArticles } from '@/data/article.data';
+import { createMetadata } from '@/utils/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: 'Articles - Jovert Palonpon',
   description: `All of my thoughts on programming, web & mobile app development, dev ops, and more, displayed in chronological order.`,
   keywords: [
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     'mobile development',
     'dev ops',
   ],
-};
+});
 
 export default function Page() {
   let articles = getArticles();

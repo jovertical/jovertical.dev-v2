@@ -1,3 +1,4 @@
+import type { Media } from '@/data/media.data';
 import { rescue, sleep } from '@/utils';
 import { send } from '@/utils/api';
 
@@ -7,13 +8,7 @@ export type Experience = {
   to: number | null;
   title: string;
   company: string;
-  companyLogo: {
-    id: string;
-    url: string;
-    size: number;
-    width: number;
-    height: number;
-  } | null;
+  companyLogo: Media | null;
   companyWebsite: string;
   description: string;
 };

@@ -9,11 +9,12 @@ import LinkedinIcon from '@/components/icons/linkedin-icon';
 import TwitterIcon from '@/components/icons/twitter-icon';
 import PageHeader from '@/components/page-header';
 import { getBio } from '@/data/bio.data';
+import { createMetadata } from '@/utils/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createMetadata({
   title: 'About - Jovert Palonpon',
   description: `I'm Jovert Palonpon. I live in Manila, Philippines where I work remotely as a Software Engineer`,
-};
+});
 
 export default async function Page() {
   const bio = await getBio();

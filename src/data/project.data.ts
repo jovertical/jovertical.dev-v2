@@ -1,3 +1,4 @@
+import type { Media } from '@/data/media.data';
 import { rescue, sleep } from '@/utils';
 import { send } from '@/utils/api';
 
@@ -6,13 +7,7 @@ export type Project = {
   name: string;
   description: string;
   slug: string;
-  logo: {
-    id: string;
-    url: string;
-    size: number;
-    width: number;
-    height: number;
-  } | null;
+  logo: Media | null;
   websiteLink: string;
   position: number;
   createdAt: string;

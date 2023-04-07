@@ -1,3 +1,4 @@
+import type { Media } from '@/data/media.data';
 import type { Tag } from '@/data/tag.data';
 import { rescue, sleep } from '@/utils';
 import { send } from '@/utils/api';
@@ -9,6 +10,7 @@ export type Article = {
   body: string;
   featured: boolean;
   slug: string;
+  thumbnail: Media | null;
   tags: Tag[];
   _publishedAt: string;
 };
@@ -26,6 +28,13 @@ export const findArticle = (slug: string, preview = false) => {
             body,
             featured,
             slug,
+            thumbnail {
+              id,
+              url,
+              size,
+              width,
+              height
+            },
             tags {
               id,
               name,

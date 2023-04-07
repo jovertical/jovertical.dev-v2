@@ -7,6 +7,7 @@ import * as React from 'react';
 import Content from '@/components/articles/[slug]/content';
 import ContentSkeleton from '@/components/articles/[slug]/content-skeleton';
 import { findArticle } from '@/data/article.data';
+import { createMetadata } from '@/utils/metadata';
 
 interface Props {
   params: { slug: string };
@@ -16,11 +17,35 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = await findArticle(params.slug);
 
-  return {
+  return createMetadata({
     title: `${article?.title ?? 'Article'} - Jovert Palonpon`,
     description: article?.excerpt,
     keywords: article?.tags.map((tag) => tag.name).join(', '),
-  };
+
+    openGraph: {
+      url: `https://jovert.dev/articles/${article?.slug ?? ''}`,
+      type: 'article',
+      authors: ['Jovert Palonpon'],
+      ...(article?.thumbnail && {
+        images: [
+          {
+            url: article.thumbnail.url,
+            width: article.thumbnail.width,
+            height: article.thumbnail.height,
+          },
+        ],
+      }),
+    },
+
+    twitter: {
+      card: 'summary_large_image',
+      site: '@Jovertical',
+      creator: '@Jovertical',
+      ...(article?.thumbnail && {
+        images: [article.thumbnail.url],
+      }),
+    },
+  });
 }
 
 export default function Page({ params, searchParams }: Props) {
