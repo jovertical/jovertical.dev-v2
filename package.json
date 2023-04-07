@@ -28,12 +28,14 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-markdown": "^8.0.6",
+    "rss": "^1.2.2",
     "tiny-json-http": "^7.5.0",
     "typescript": "5.0.2"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
     "@types/nodemailer": "^6.4.7",
+    "@types/rss": "^0.0.30",
     "@types/tiny-json-http": "^7.3.1",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
