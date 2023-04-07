@@ -66,11 +66,11 @@ export default function RequestCvModal() {
         open={isOpen}
         onClose={() => setIsOpen(false)}
       >
-        <Dialog.Overlay className="fixed inset-0 z-50 transition-opacity bg-gray-500 bg-opacity-75"></Dialog.Overlay>
+        <Dialog.Overlay className="fixed inset-0 z-50 transition-opacity bg-zinc-500/75 dark:bg-zinc-500/40"></Dialog.Overlay>
 
         <div className="fixed inset-0 z-50 overflow-y-auto">
           <div className="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
-            <Dialog.Panel className="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-md sm:p-8">
+            <Dialog.Panel className="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform rounded-lg shadow-xl bg-zinc-50 dark:bg-zinc-800 sm:my-8 sm:w-full sm:max-w-md sm:p-8">
               <form onSubmit={submit}>
                 <div className="flex items-center justify-center p-1 mx-auto rounded-full shadow-lg h-14 w-14 bg-white/90 shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10">
                   <Image
@@ -83,12 +83,12 @@ export default function RequestCvModal() {
                 </div>
 
                 <div className="mt-3 text-center sm:mt-5">
-                  <Dialog.Title className="text-base font-semibold leading-6 text-gray-900">
+                  <Dialog.Title className="text-base font-semibold leading-6 text-zinc-800 dark:text-zinc-100">
                     Download CV
                   </Dialog.Title>
 
                   <div className="mt-2">
-                    <Dialog.Description className="text-sm text-gray-500">
+                    <Dialog.Description className="text-sm text-zinc-500 dark:text-zinc-300">
                       Hello! thanks for having an interest in my profile. Please
                       enter your email and a copy of my CV will be sent to you
                     </Dialog.Description>

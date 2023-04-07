@@ -10,7 +10,7 @@ export default function RootLayout({
   children,
 }: ComponentPropsWithoutRef<'html'>) {
   return (
-    <html lang="en" className="h-full antialiased dark">
+    <html lang="en" className="h-full antialiased">
       <GoogleAnalyticsTracker></GoogleAnalyticsTracker>
 
       <body className="flex flex-col h-full bg-zinc-50 dark:bg-black">
