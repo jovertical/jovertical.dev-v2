@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import * as React from 'react';
 
 import ExperienceTimeline from '@/components/home/experience-timeline';

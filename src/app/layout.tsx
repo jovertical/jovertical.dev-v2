@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import '@/app/code.css';
@@ -5,12 +6,20 @@ import '@/app/globals.css';
 import GoogleAnalyticsTracker from '@/components/google-analytics-tracker';
 import LayoutHeader from '@/components/layout-header';
 import LayoutFooter from '@/components/layout-footer';
+import { currentScheme } from '@/utils/colorScheme';
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: ComponentPropsWithoutRef<'html'>) {
+  const scheme = await currentScheme();
+
   return (
-    <html lang="en" className="h-full antialiased">
+    <html
+      lang="en"
+      className={cx('h-full antialiased', {
+        dark: scheme === 'dark',
+      })}
+    >
       <GoogleAnalyticsTracker></GoogleAnalyticsTracker>
 
       <body className="flex flex-col h-full bg-zinc-50 dark:bg-black">
