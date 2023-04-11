@@ -10,10 +10,13 @@ module.exports = {
           css: {
             color: theme('colors.zinc.600'),
             a: {
-              color: theme('colors.zinc.800'),
-              fontWeight: 500,
+              color: theme('colors.teal.500'),
+              'text-decoration-color': theme('colors.teal.100'),
+              'text-decoration-thickness': '2px',
+              fontWeight: 600,
               '&:hover': {
-                color: theme('colors.teal.500'),
+                color: theme('colors.teal.600'),
+                'text-decoration-color': theme('colors.teal.500'),
               },
             },
             code: {
@@ -48,10 +51,12 @@ module.exports = {
           css: {
             color: theme('colors.zinc.400'),
             a: {
-              color: theme('colors.zinc.300'),
-              fontWeight: 500,
+              color: theme('colors.teal.500'),
+              'text-decoration-color': theme('colors.teal.800'),
+              'text-decoration-thickness': '2px',
+              fontWeight: 600,
               '&:hover': {
-                color: theme('colors.teal.400'),
+                'text-decoration-color': theme('colors.teal.500'),
               },
             },
             h1: {
