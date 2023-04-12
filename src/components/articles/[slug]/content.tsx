@@ -2,7 +2,7 @@ import d from 'dayjs';
 import { notFound } from 'next/navigation';
 
 import { Article } from '@/data/article.data';
-import toMarkdownString from '@/utils/markdown';
+import { toMarkdownString } from '@/utils/markdown';
 
 interface Props {
   data: Promise<Article>;

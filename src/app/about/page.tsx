@@ -8,7 +8,7 @@ import LinkedinIcon from '@/components/icons/linkedin-icon';
 import TwitterIcon from '@/components/icons/twitter-icon';
 import PageHeader from '@/components/page-header';
 import { getBio } from '@/data/bio.data';
-import toMarkdownString from '@/utils/markdown';
+import { toMarkdownString } from '@/utils/markdown';
 import { createMetadata } from '@/utils/metadata';
 
 export const metadata: Metadata = createMetadata({
