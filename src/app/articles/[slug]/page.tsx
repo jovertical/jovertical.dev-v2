@@ -14,8 +14,10 @@ interface Props {
   searchParams: { from: 'featured' };
 }
 
+const isPreviewMode = process.env.APP_ENV === 'local';
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = await findArticle(params.slug);
+  const article = await findArticle(params.slug, { preview: isPreviewMode });
 
   return createMetadata({
     title: `${article?.title ?? 'Article'} - Jovert Palonpon`,
@@ -49,7 +51,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function Page({ params, searchParams }: Props) {
-  const article = findArticle(params.slug);
+  const article = findArticle(params.slug, { preview: isPreviewMode });
 
   return (
     <div className="xl:relative">

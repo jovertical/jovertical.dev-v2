@@ -34,11 +34,8 @@ module.exports = {
               borderLeftColor: theme('colors.teal.400'),
             },
             code: {
-              color: theme('colors.red.600'),
+              color: theme('colors.zinc.700'),
               fontWeight: 500,
-            },
-            'code::before, code::after': {
-              content: '',
             },
             pre: {
               color: 'var(--code-text-color)',
@@ -71,6 +68,7 @@ module.exports = {
             },
             code: {
               color: theme('colors.zinc.300'),
+              fontWeight: 500,
             },
           },
         },

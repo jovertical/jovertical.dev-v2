@@ -12,10 +12,15 @@ export type Article = {
   slug: string;
   thumbnail: Media | null;
   tags: Tag[];
+  createdAt: string;
   _publishedAt: string;
 };
 
-export const findArticle = (slug: string, preview = false) => {
+export interface FindArticleOptions {
+  preview?: boolean;
+}
+
+export const findArticle = (slug: string, options?: FindArticleOptions) => {
   return rescue(async () => {
     await sleep(600);
 
@@ -41,11 +46,12 @@ export const findArticle = (slug: string, preview = false) => {
               description,
               createdAt
             },
+            createdAt,
             _publishedAt,
           }
         }
       `,
-      preview,
+      preview: options?.preview,
       variables: {
         slug,
       },

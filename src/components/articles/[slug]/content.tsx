@@ -11,11 +11,11 @@ interface Props {
 export default async function Content({ data }: Props) {
   const article = await data;
 
-  const body = await toMarkdownString(article.body);
-
   if (!article) {
     notFound();
   }
+
+  const body = await toMarkdownString(article.body);
 
   return (
     <article>
@@ -24,14 +24,15 @@ export default async function Content({ data }: Props) {
           {article.title}
         </h1>
 
+        {/* prettier-ignore */}
         <time
-          dateTime={d(article._publishedAt).format('YYYY-MM-DD')}
+          dateTime={d(article._publishedAt ?? article.createdAt).format('YYYY-MM-DD')}
           className="flex items-center order-first text-base text-zinc-400 dark:text-zinc-500"
         >
           <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span>
 
           <span className="ml-3">
-            {d(article._publishedAt).format('MMMM D, YYYY')}
+            {d(article._publishedAt ?? article.createdAt).format('MMMM D, YYYY')}
           </span>
         </time>
       </header>
