@@ -1,6 +1,7 @@
 import { ArrowLeftIcon } from '@heroicons/react/20/solid';
 
 import type { Metadata } from 'next';
+import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import * as React from 'react';
 
@@ -14,10 +15,10 @@ interface Props {
   searchParams: { from: 'featured' };
 }
 
-const isPreviewMode = process.env.APP_ENV === 'local';
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const article = await findArticle(params.slug, { preview: isPreviewMode });
+  const draft = draftMode();
+
+  const article = await findArticle(params.slug, { preview: draft.isEnabled });
 
   return createMetadata({
     title: `${article?.title ?? 'Article'} - Jovert Palonpon`,
@@ -51,7 +52,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default function Page({ params, searchParams }: Props) {
-  const article = findArticle(params.slug, { preview: isPreviewMode });
+  const draft = draftMode();
+
+  const article = findArticle(params.slug, { preview: draft.isEnabled });
 
   return (
     <div className="xl:relative">
