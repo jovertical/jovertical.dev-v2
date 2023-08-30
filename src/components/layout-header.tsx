@@ -1,5 +1,6 @@
 import cx from 'classnames';
 import Image from 'next/image';
+import type { LinkProps } from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import ColorSchemeToggleButton from '@/components/color-scheme-toggle-button';
@@ -7,7 +8,7 @@ import LayoutHeaderMobileMenu from '@/components/layout-header-mobile-menu';
 import Link from '@/components/link';
 import NavLink from '@/components/nav-link';
 
-const LINKS = [
+const LINKS: { href: LinkProps<'a'>['href']; label: string }[] = [
   { href: '/about', label: 'About' },
   { href: '/articles', label: 'Articles' },
   { href: '/projects', label: 'Projects' },

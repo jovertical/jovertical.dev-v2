@@ -6,10 +6,11 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import cx from 'classnames';
 import Link from 'next/link';
+import type { LinkProps } from 'next/link';
 
 interface Props extends Omit<PopoverProps<'div'>, 'className'> {
   className?: string;
-  links?: { href: string; label: string }[];
+  links?: { href: LinkProps<'a'>['href']; label: string }[];
 }
 
 export default function LayoutHeaderMobileMenu({

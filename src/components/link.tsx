@@ -3,10 +3,10 @@ import NextLink from 'next/link';
 import type { LinkProps as NextLinkProps } from 'next/link';
 import cx from 'classnames';
 
-interface Props extends NextLinkProps {
+type Props = {
   className?: string;
   children: React.ReactNode;
-}
+} & NextLinkProps<'a'>;
 
 export type LinkProps = Props;
 
