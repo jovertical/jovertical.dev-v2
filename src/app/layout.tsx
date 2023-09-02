@@ -1,4 +1,5 @@
 import cx from 'classnames';
+import { cookies } from 'next/headers';
 import type { ComponentPropsWithoutRef } from 'react';
 
 import '@/app/code.css';
@@ -6,19 +7,16 @@ import '@/app/globals.css';
 import GoogleAnalyticsTracker from '@/components/google-analytics-tracker';
 import LayoutHeader from '@/components/layout-header';
 import LayoutFooter from '@/components/layout-footer';
-import { currentScheme } from '@/utils/colorScheme';
 
 export default async function RootLayout({
   children,
 }: ComponentPropsWithoutRef<'html'>) {
-  const scheme = await currentScheme();
+  const scheme = cookies().get('scheme')?.value ?? 'light';
 
   return (
     <html
       lang="en"
-      className={cx('h-full antialiased', {
-        dark: scheme === 'dark',
-      })}
+      className={cx('h-full antialiased', { dark: scheme === 'dark' })}
     >
       <GoogleAnalyticsTracker></GoogleAnalyticsTracker>
 

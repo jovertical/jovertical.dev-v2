@@ -3,7 +3,7 @@ import Image from 'next/image';
 import type { LinkProps } from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
 
-import ColorSchemeToggleButton from '@/components/color-scheme-toggle-button';
+import ColorSchemeToggleForm from '@/components/color-scheme-toggle-form';
 import LayoutHeaderMobileMenu from '@/components/layout-header-mobile-menu';
 import Link from '@/components/link';
 import NavLink from '@/components/nav-link';
@@ -69,7 +69,7 @@ export default function Header({
 
                   <div className="flex justify-end md:flex-1">
                     <div className="pointer-events-auto">
-                      <ColorSchemeToggleButton />
+                      <ColorSchemeToggleForm />
                     </div>
                   </div>
                 </div>
