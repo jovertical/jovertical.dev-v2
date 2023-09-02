@@ -1,7 +1,6 @@
 import MailerLite from '@mailerlite/mailerlite-nodejs';
 import { NextRequest } from 'next/server';
 
-import { json } from '@/app/api/utils';
 import { rescue } from '@/utils';
 
 export async function POST(request: NextRequest) {
@@ -31,8 +30,21 @@ export async function POST(request: NextRequest) {
   }, null);
 
   if (!subscription || subscription.status !== 'active') {
-    return json('Error subscribing.', 422);
+    return new Response(JSON.stringify({ error: 'Error subscribing' }), {
+      status: 409,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
   }
 
-  return json({ data: subscription }, 201);
+  return new Response(
+    JSON.stringify({ data: subscription, message: 'Subscription successful' }),
+    {
+      status: 201,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }
+  );
 }

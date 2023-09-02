@@ -39,8 +39,8 @@ export default function NewsLetterForm({
 
       setSubmitting(false);
 
-      if (response.status === 422) {
-        setError(body.message);
+      if (!response.ok) {
+        setError(body.error);
 
         return;
       }
