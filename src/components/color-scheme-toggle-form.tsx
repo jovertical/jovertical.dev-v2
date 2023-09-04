@@ -5,7 +5,7 @@ import toggleScheme from '@/app/actions/toggleScheme';
 
 export default function ColorSchemeToggleForm() {
   return (
-    <form action={toggleScheme as unknown as string}>
+    <form action={toggleScheme}>
       <button
         type="submit"
         aria-label="Toggle dark mode"
