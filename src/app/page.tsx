@@ -1,15 +1,14 @@
 import type { Metadata } from 'next';
-import { cookies } from 'next/headers';
 import * as React from 'react';
 
+import DownloadCvFormModal from '@/components/home/download-cv-form-modal';
 import ExperienceTimeline from '@/components/home/experience-timeline';
 import ExperienceTimelineSkeleton from '@/components/home/experience-timeline-skeleton';
 import FeaturedImages from '@/components/home/featured-images';
 import FeaturedArticleList from '@/components/home/featured-article-list';
 import FeaturedArticleListSkeleton from '@/components/home/featured-article-list-skeleton';
-import NewsLetterForm from '@/components/home/news-letter-form';
-import RequestCvModal from '@/components/home/request-cv-modal';
 import SocialLinks from '@/components/home/social-links';
+import SubscriptionForm from '@/components/home/subscription-form';
 import PageHeader from '@/components/page-header';
 import Section from '@/components/section';
 import { getArticles } from '@/data/article.data';
@@ -46,17 +45,15 @@ export default async function Page() {
       <Section>
         <div className="grid max-w-xl grid-cols-1 mx-auto gap-y-20 lg:max-w-none lg:grid-cols-2">
           <React.Suspense fallback={<FeaturedArticleListSkeleton />}>
-            {/* @ts-expect-error Server Component */}
             <FeaturedArticleList items={articles}></FeaturedArticleList>
           </React.Suspense>
 
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <NewsLetterForm></NewsLetterForm>
+            <SubscriptionForm></SubscriptionForm>
 
             <React.Suspense fallback={<ExperienceTimelineSkeleton />}>
-              {/* @ts-expect-error Server Component */}
               <ExperienceTimeline data={experiences}>
-                <RequestCvModal></RequestCvModal>
+                <DownloadCvFormModal></DownloadCvFormModal>
               </ExperienceTimeline>
             </React.Suspense>
           </div>

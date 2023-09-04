@@ -2,58 +2,39 @@
 
 import cx from 'classnames';
 import { useRouter } from 'next/navigation';
-import * as React from 'react';
-import type { ComponentPropsWithoutRef, FormEvent } from 'react';
+import { useState } from 'react';
+import type { ComponentPropsWithoutRef } from 'react';
 
+import subscribe from '@/app/actions/subscribe';
 import Alert from '@/components/alert';
-import Button from '@/components/button';
 import EnvelopeOutlineIcon from '@/components/icons/envelope-outline-icon';
+import SubmitButton from '@/components/submit-button';
 import TextInput from '@/components/text-input';
 
-export default function NewsLetterForm({
+export default function SubscriptionForm({
   className = '',
   ...props
 }: ComponentPropsWithoutRef<'form'>) {
   const router = useRouter();
 
-  const [email, setEmail] = React.useState('');
-  const [isSubmitting, setSubmitting] = React.useState(false);
-  const [error, setError] = React.useState('');
+  const [error, setError] = useState('');
 
-  const subscribe = React.useCallback(
-    async (event: FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
+  const onSubmit = async (data: FormData) => {
+    const { success, message } = await subscribe(data);
 
-      if (isSubmitting) {
-        return;
-      }
+    if (!success) {
+      setError(message);
 
-      setSubmitting(true);
+      return;
+    }
 
-      const response = await fetch('/api/subscribe', {
-        method: 'POST',
-        body: JSON.stringify({ email }) as string,
-      });
-
-      const body = await response.json();
-
-      setSubmitting(false);
-
-      if (!response.ok) {
-        setError(body.error);
-
-        return;
-      }
-
-      router.push('/thank-you');
-    },
-    [email, isSubmitting, router]
-  );
+    router.push('/thank-you');
+  };
 
   return (
     <form
       {...props}
-      onSubmit={subscribe}
+      action={onSubmit}
       className={cx(
         'p-6 border rounded-2xl border-zinc-100 dark:border-zinc-700/40',
         className
@@ -71,16 +52,13 @@ export default function NewsLetterForm({
       <div className="flex mt-6">
         <TextInput
           type="email"
+          name="email"
+          required
           placeholder="Email address"
           aria-label="Email address"
-          required
-          value={email}
-          onChange={(event) => setEmail(event.currentTarget.value)}
         />
 
-        <Button className="ml-4" type="submit" loading={isSubmitting}>
-          Join
-        </Button>
+        <SubmitButton className="ml-4">Join</SubmitButton>
       </div>
 
       {error && (

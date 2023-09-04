@@ -2,10 +2,12 @@ import cx from 'classnames';
 import * as React from 'react';
 import type { ComponentPropsWithoutRef } from 'react';
 
-interface Props extends ComponentPropsWithoutRef<'button'> {
+type Props = {
   variant?: 'primary' | 'secondary';
   loading?: boolean;
-}
+} & ComponentPropsWithoutRef<'button'>;
+
+export type ButtonProps = Props;
 
 export default function Button({
   variant = 'primary',

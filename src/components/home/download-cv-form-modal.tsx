@@ -3,61 +3,39 @@
 import { Dialog } from '@headlessui/react';
 import { ArrowDownIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
-import * as React from 'react';
+import { useState } from 'react';
 
+import downloadCv from '@/app/actions/downloadCv';
 import Alert from '@/components/alert';
 import Button from '@/components/button';
+import SubmitButton from '@/components/submit-button';
 import TextInput from '@/components/text-input';
 import { sleep } from '@/utils';
 
-export default function RequestCvModal() {
-  let [isOpen, setIsOpen] = React.useState(false);
+export default function DownloadCvFormModal() {
+  let [isOpen, setIsOpen] = useState(false);
 
-  let [email, setEmail] = React.useState('');
+  let [message, setMessage] = useState('');
 
-  let [isSubmitting, setSubmitting] = React.useState(false);
+  let [error, setError] = useState('');
 
-  let [message, setMessage] = React.useState('');
+  const onSubmit = async (data: FormData) => {
+    const { success, message } = await downloadCv(data);
 
-  let [error, setError] = React.useState('');
+    if (!success) {
+      setError(message);
 
-  const submit = React.useCallback(
-    async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
+      return;
+    }
 
-      if (isSubmitting) {
-        return;
-      }
+    setMessage(message);
 
-      setSubmitting(true);
+    await sleep(3000);
 
-      const response = await fetch('/api/request-cv', {
-        method: 'POST',
-        body: JSON.stringify({ email }),
-      });
+    setMessage('');
 
-      setSubmitting(false);
-
-      setEmail('');
-
-      const body = await response.json();
-
-      if (!response.ok) {
-        setError(body.error);
-
-        return;
-      }
-
-      setMessage(body.message);
-
-      await sleep(3000);
-
-      setMessage('');
-
-      setIsOpen(false);
-    },
-    [email, isSubmitting]
-  );
+    setIsOpen(false);
+  };
 
   return (
     <>
@@ -71,7 +49,7 @@ export default function RequestCvModal() {
         <div className="fixed inset-0 z-50 overflow-y-auto">
           <div className="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
             <Dialog.Panel className="relative px-4 pt-5 pb-4 overflow-hidden text-left transition-all transform rounded-lg shadow-xl bg-zinc-50 dark:bg-zinc-800 sm:my-8 sm:w-full sm:max-w-md sm:p-8">
-              <form onSubmit={submit}>
+              <form action={onSubmit}>
                 <div className="flex items-center justify-center p-1 mx-auto rounded-full shadow-lg h-14 w-14 bg-white/90 shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10">
                   <Image
                     src="/logo.png"
@@ -98,29 +76,23 @@ export default function RequestCvModal() {
                 {!message ? (
                   <>
                     <div className="mt-3.5 sm:mt-4 px-4">
-                      {/* prettier-ignore */}
                       <TextInput
                         className="w-full"
                         type="email"
+                        name="email"
+                        required
                         placeholder="Email address"
                         aria-label="Email address"
-                        required
-                        value={email}
-                        onChange={(event) => setEmail(event.currentTarget.value)}
                       />
                     </div>
 
                     <div className="flex justify-center mt-4 sm:mt-5">
-                      <Button
-                        className="w-full sm:w-1/2 group"
-                        type="submit"
-                        loading={isSubmitting}
-                      >
+                      <SubmitButton className="w-full sm:w-1/2 group">
                         <span className="inline-flex items-center justify-center gap-2">
                           Download
                           <ArrowDownIcon className="w-3.5 h-3.5 transition stroke-zinc-400 group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
                         </span>
-                      </Button>
+                      </SubmitButton>
                     </div>
                   </>
                 ) : (
