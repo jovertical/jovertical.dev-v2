@@ -69,7 +69,6 @@ export default function Page({ params, searchParams }: Props) {
         </Link>
 
         <React.Suspense fallback={<ContentSkeleton></ContentSkeleton>}>
-          {/* @ts-expect-error Server Component */}
           <Content data={article}></Content>
         </React.Suspense>
       </div>

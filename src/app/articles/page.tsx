@@ -34,7 +34,6 @@ export default function Page() {
 
       <div className="mt-16 sm:mt-20">
         <React.Suspense fallback={<ListSkeleton />}>
-          {/* @ts-expect-error Server Component */}
           <List items={articles} />
         </React.Suspense>
       </div>

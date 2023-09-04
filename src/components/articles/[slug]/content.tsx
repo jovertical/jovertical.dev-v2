@@ -5,7 +5,7 @@ import { Article } from '@/data/article.data';
 import { toMarkdownString } from '@/utils/markdown';
 
 interface Props {
-  data: Promise<Article>;
+  data: Promise<Article | null>;
 }
 
 export default async function Content({ data }: Props) {
