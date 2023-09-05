@@ -2,7 +2,7 @@ export default function ListSkeleton() {
   return (
     <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
       <div className="flex flex-col max-w-3xl space-y-16">
-        {[...Array(2)].map((_, itemIdx) => (
+        {[...Array(5)].map((_, itemIdx) => (
           <div
             key={itemIdx}
             className="md:grid md:grid-cols-4 md:items-baseline"
