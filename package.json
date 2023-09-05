@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "test:types": "tsc -p ./tsconfig.spec.json --noEmit",
+    "test:lint": "next lint",
+    "test": "npm run test:types && npm run test:lint"
   },
   "dependencies": {
     "@headlessui/react": "^1.7.14",
