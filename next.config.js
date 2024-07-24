@@ -1,13 +1,9 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+module.exports = {
   images: {
-    domains: ['picsum.photos', 'www.datocms-assets.com'],
-  },
-
-  experimental: {
-    serverActions: true,
-    typedRoutes: true,
+    remotePatterns: [
+      { hostname: 'picsum.photos' },
+      { hostname: 'www.datocms-assets.com' },
+    ],
   },
 }
-
-module.exports = nextConfig

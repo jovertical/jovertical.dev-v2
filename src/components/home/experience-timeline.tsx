@@ -1,4 +1,3 @@
-import { ArrowDownIcon } from '@heroicons/react/20/solid'
 import cx from 'classnames'
 import d from 'dayjs'
 import Image from 'next/image'

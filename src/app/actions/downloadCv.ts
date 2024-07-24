@@ -51,7 +51,7 @@ export default async function downloadCv(data: FormData) {
 
     return {
       success: false,
-      message: error instanceof Error ? error.message : 'Subscription failed.',
+      message: error instanceof Error ? error.message : 'Sending email failed.',
     }
   }
 }
