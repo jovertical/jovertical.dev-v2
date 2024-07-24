@@ -1,35 +1,35 @@
-'use client';
+'use client'
 
-import cx from 'classnames';
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-import type { ComponentPropsWithoutRef } from 'react';
+import cx from 'classnames'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
-import subscribe from '@/app/actions/subscribe';
-import Alert from '@/components/alert';
-import EnvelopeOutlineIcon from '@/components/icons/envelope-outline-icon';
-import SubmitButton from '@/components/submit-button';
-import TextInput from '@/components/text-input';
+import subscribe from '@/app/actions/subscribe'
+import Alert from '@/components/alert'
+import EnvelopeOutlineIcon from '@/components/icons/envelope-outline-icon'
+import SubmitButton from '@/components/submit-button'
+import TextInput from '@/components/text-input'
 
 export default function SubscriptionForm({
   className = '',
   ...props
 }: ComponentPropsWithoutRef<'form'>) {
-  const router = useRouter();
+  const router = useRouter()
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState('')
 
   const onSubmit = async (data: FormData) => {
-    const { success, message } = await subscribe(data);
+    const { success, message } = await subscribe(data)
 
     if (!success) {
-      setError(message);
+      setError(message)
 
-      return;
+      return
     }
 
-    router.push('/thank-you');
-  };
+    router.push('/thank-you')
+  }
 
   return (
     <form
@@ -71,5 +71,5 @@ export default function SubscriptionForm({
         </div>
       )}
     </form>
-  );
+  )
 }

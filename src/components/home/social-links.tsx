@@ -1,14 +1,14 @@
-import cx from 'classnames';
-import type { ComponentPropsWithoutRef } from 'react';
+import cx from 'classnames'
+import type { ComponentPropsWithoutRef } from 'react'
 
-import GithubIcon from '@/components/icons/github-icon';
-import InstagramIcon from '@/components/icons/instagram-icon';
-import LinkedinIcon from '@/components/icons/linkedin-icon';
-import TwitterIcon from '@/components/icons/twitter-icon';
-import type { Bio } from '@/data/bio.data';
+import GithubIcon from '@/components/icons/github-icon'
+import InstagramIcon from '@/components/icons/instagram-icon'
+import LinkedinIcon from '@/components/icons/linkedin-icon'
+import TwitterIcon from '@/components/icons/twitter-icon'
+import type { Bio } from '@/data/bio.data'
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
-  data: Bio['socials'];
+  data: Bio['socials']
 }
 
 export default function SocialLinks({ data, className = '', ...props }: Props) {
@@ -54,5 +54,5 @@ export default function SocialLinks({ data, className = '', ...props }: Props) {
         </a>
       )}
     </div>
-  );
+  )
 }

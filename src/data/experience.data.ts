@@ -1,21 +1,21 @@
-import type { Media } from '@/data/media.data';
-import { rescue, sleep } from '@/utils';
-import { send } from '@/utils/api';
+import type { Media } from '@/data/media.data'
+import { rescue, sleep } from '@/utils'
+import { send } from '@/utils/api'
 
 export type Experience = {
-  id: string;
-  from: number;
-  to: number | null;
-  title: string;
-  company: string;
-  companyLogo: Media | null;
-  companyWebsite: string;
-  description: string;
-};
+  id: string
+  from: number
+  to: number | null
+  title: string
+  company: string
+  companyLogo: Media | null
+  companyWebsite: string
+  description: string
+}
 
 export let getExperiences = () => {
   return rescue(async () => {
-    await sleep(600);
+    await sleep(600)
 
     const data = await send({
       query: `
@@ -44,8 +44,8 @@ export let getExperiences = () => {
           }
         }
       `,
-    });
+    })
 
-    return data.allExperiences as Experience[];
-  }, []);
-};
+    return data.allExperiences as Experience[]
+  }, [])
+}

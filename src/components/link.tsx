@@ -1,14 +1,14 @@
-import cx from 'classnames';
-import * as React from 'react';
-import NextLink from 'next/link';
-import type { LinkProps as NextLinkProps } from 'next/link';
+import cx from 'classnames'
+import * as React from 'react'
+import NextLink from 'next/link'
+import type { LinkProps as NextLinkProps } from 'next/link'
 
 type Props = {
-  className?: string;
-  children: React.ReactNode;
-} & NextLinkProps<'a'>;
+  className?: string
+  children: React.ReactNode
+} & NextLinkProps<'a'>
 
-export type LinkProps = Props;
+export type LinkProps = Props
 
 export default function Link({ className = '', ...props }: Props) {
   return (
@@ -19,5 +19,5 @@ export default function Link({ className = '', ...props }: Props) {
       )}
       {...props}
     />
-  );
+  )
 }

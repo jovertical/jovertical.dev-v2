@@ -1,10 +1,10 @@
-import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer'
 
 type EmailPayload = {
-  to: string;
-  subject: string;
-  html: string;
-};
+  to: string
+  subject: string
+  html: string
+}
 
 export const sendEmail = async (data: EmailPayload) => {
   const transporter = nodemailer.createTransport({
@@ -16,12 +16,12 @@ export const sendEmail = async (data: EmailPayload) => {
       user: process.env.MAIL_USERNAME,
       pass: process.env.MAIL_PASSWORD,
     },
-  });
+  })
 
   const info = await transporter.sendMail({
     from: process.env.MAIL_FROM_ADDRESS,
     ...data,
-  });
+  })
 
-  return info;
-};
+  return info
+}

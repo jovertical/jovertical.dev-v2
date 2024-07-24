@@ -1,8 +1,8 @@
-import d from 'dayjs';
-import type { ComponentPropsWithoutRef } from 'react';
+import d from 'dayjs'
+import type { ComponentPropsWithoutRef } from 'react'
 
-import Link from '@/components/link';
-import ExternalLink from '@/components/external-link';
+import Link from '@/components/link'
+import ExternalLink from '@/components/external-link'
 
 export default function Footer(props: ComponentPropsWithoutRef<'footer'>) {
   return (
@@ -51,5 +51,5 @@ export default function Footer(props: ComponentPropsWithoutRef<'footer'>) {
         </div>
       </div>
     </footer>
-  );
+  )
 }

@@ -1,6 +1,6 @@
 export type Tag = {
-  id: string;
-  name: string;
-  description: string;
-  createdAt: string;
-};
+  id: string
+  name: string
+  description: string
+  createdAt: string
+}

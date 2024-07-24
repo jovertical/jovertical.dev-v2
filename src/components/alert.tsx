@@ -3,17 +3,17 @@ import {
   ExclamationTriangleIcon,
   InformationCircleIcon,
   XCircleIcon,
-} from '@heroicons/react/24/solid';
-import { XMarkIcon } from '@heroicons/react/20/solid';
-import cx from 'classnames';
-import * as React from 'react';
+} from '@heroicons/react/24/solid'
+import { XMarkIcon } from '@heroicons/react/20/solid'
+import cx from 'classnames'
+import * as React from 'react'
 
-import { match } from '@/utils/object';
+import { match } from '@/utils/object'
 
 interface Props extends React.ComponentPropsWithoutRef<'div'> {
-  level?: 'info' | 'success' | 'warning' | 'error';
-  message: string;
-  onClose?: () => void;
+  level?: 'info' | 'success' | 'warning' | 'error'
+  message: string
+  onClose?: () => void
 }
 
 export default function Alert({
@@ -28,8 +28,8 @@ export default function Alert({
       success: CheckCircleIcon,
       warning: ExclamationTriangleIcon,
       error: XCircleIcon,
-    });
-  }, [level]);
+    })
+  }, [level])
 
   return (
     <div
@@ -94,5 +94,5 @@ export default function Alert({
         )}
       </div>
     </div>
-  );
+  )
 }

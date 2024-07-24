@@ -1,17 +1,17 @@
-import cx from 'classnames';
-import { cookies } from 'next/headers';
-import type { ComponentPropsWithoutRef } from 'react';
+import cx from 'classnames'
+import { cookies } from 'next/headers'
+import type { ComponentPropsWithoutRef } from 'react'
 
-import '@/app/code.css';
-import '@/app/globals.css';
-import GoogleAnalyticsTracker from '@/components/google-analytics-tracker';
-import LayoutHeader from '@/components/layout-header';
-import LayoutFooter from '@/components/layout-footer';
+import '@/app/code.css'
+import '@/app/globals.css'
+import GoogleAnalyticsTracker from '@/components/google-analytics-tracker'
+import LayoutHeader from '@/components/layout-header'
+import LayoutFooter from '@/components/layout-footer'
 
 export default async function RootLayout({
   children,
 }: ComponentPropsWithoutRef<'html'>) {
-  const scheme = cookies().get('scheme')?.value ?? 'light';
+  const scheme = cookies().get('scheme')?.value ?? 'light'
 
   return (
     <html
@@ -36,5 +36,5 @@ export default async function RootLayout({
         </div>
       </body>
     </html>
-  );
+  )
 }

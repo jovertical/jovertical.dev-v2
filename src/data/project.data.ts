@@ -1,22 +1,22 @@
-import type { Media } from '@/data/media.data';
-import { rescue, sleep } from '@/utils';
-import { send } from '@/utils/api';
+import type { Media } from '@/data/media.data'
+import { rescue, sleep } from '@/utils'
+import { send } from '@/utils/api'
 
 export type Project = {
-  id: string;
-  name: string;
-  description: string;
-  slug: string;
-  logo: Media | null;
-  websiteLink: string;
-  position: number;
-  createdAt: string;
-  _publishedAt: string;
-};
+  id: string
+  name: string
+  description: string
+  slug: string
+  logo: Media | null
+  websiteLink: string
+  position: number
+  createdAt: string
+  _publishedAt: string
+}
 
 export const getProjects = (limit?: number) => {
   return rescue(async () => {
-    await sleep(600);
+    await sleep(600)
 
     const data = await send({
       query: `
@@ -43,8 +43,8 @@ export const getProjects = (limit?: number) => {
           }
         }
       `,
-    });
+    })
 
-    return data.allProjects as Project[];
-  }, []);
-};
+    return data.allProjects as Project[]
+  }, [])
+}

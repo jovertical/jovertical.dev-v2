@@ -1,8 +1,8 @@
-import { ArrowLeftIcon } from '@heroicons/react/20/solid';
+import { ArrowLeftIcon } from '@heroicons/react/20/solid'
 
-import Link from '@/components/link';
-import PageHeader from '@/components/page-header';
-import Section from '@/components/section';
+import Link from '@/components/link'
+import PageHeader from '@/components/page-header'
+import Section from '@/components/section'
 
 export default function NotFound() {
   return (
@@ -25,5 +25,5 @@ export default function NotFound() {
         </PageHeader>
       </div>
     </Section>
-  );
+  )
 }

@@ -1,15 +1,15 @@
-import { ArrowDownIcon } from '@heroicons/react/20/solid';
-import cx from 'classnames';
-import d from 'dayjs';
-import Image from 'next/image';
-import * as React from 'react';
-import type { ComponentPropsWithoutRef } from 'react';
+import { ArrowDownIcon } from '@heroicons/react/20/solid'
+import cx from 'classnames'
+import d from 'dayjs'
+import Image from 'next/image'
+import * as React from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
-import BriefCaseIcon from '@/components/icons/briefcase-icon';
-import type { Experience } from '@/data/experience.data';
+import BriefCaseIcon from '@/components/icons/briefcase-icon'
+import type { Experience } from '@/data/experience.data'
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
-  data: Promise<Experience[]>;
+  data: Promise<Experience[]>
 }
 
 export default async function ExperienceTimeline({
@@ -18,11 +18,11 @@ export default async function ExperienceTimeline({
   className = '',
   ...props
 }: Props) {
-  const experiences = (await data) ?? [];
+  const experiences = (await data) ?? []
 
   const isPresent = (experience: Experience) => {
-    return experience.to === null;
-  };
+    return experience.to === null
+  }
 
   return (
     <div
@@ -83,5 +83,5 @@ export default async function ExperienceTimeline({
 
       <div>{children}</div>
     </div>
-  );
+  )
 }

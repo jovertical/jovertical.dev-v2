@@ -3,14 +3,14 @@ export const rescue = async <T extends any>(
   defaultValue?: T
 ) => {
   try {
-    return await callback();
+    return await callback()
   } catch (error: any) {
-    console.error(error);
+    console.error(error)
 
-    return defaultValue as T;
+    return defaultValue as T
   }
-};
+}
 
 export const sleep = (ms = 1000): Promise<unknown> => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-};
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}

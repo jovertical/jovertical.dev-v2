@@ -1,30 +1,30 @@
-import type { Metadata } from 'next';
-import * as React from 'react';
+import type { Metadata } from 'next'
+import * as React from 'react'
 
-import DownloadCvFormModal from '@/components/home/download-cv-form-modal';
-import ExperienceTimeline from '@/components/home/experience-timeline';
-import ExperienceTimelineSkeleton from '@/components/home/experience-timeline-skeleton';
-import FeaturedImages from '@/components/home/featured-images';
-import FeaturedArticleList from '@/components/home/featured-article-list';
-import FeaturedArticleListSkeleton from '@/components/home/featured-article-list-skeleton';
-import SocialLinks from '@/components/home/social-links';
-import SubscriptionForm from '@/components/home/subscription-form';
-import PageHeader from '@/components/page-header';
-import Section from '@/components/section';
-import { getArticles } from '@/data/article.data';
-import { getBio } from '@/data/bio.data';
-import { getExperiences } from '@/data/experience.data';
-import { createMetadata } from '@/utils/metadata';
+import DownloadCvFormModal from '@/components/home/download-cv-form-modal'
+import ExperienceTimeline from '@/components/home/experience-timeline'
+import ExperienceTimelineSkeleton from '@/components/home/experience-timeline-skeleton'
+import FeaturedImages from '@/components/home/featured-images'
+import FeaturedArticleList from '@/components/home/featured-article-list'
+import FeaturedArticleListSkeleton from '@/components/home/featured-article-list-skeleton'
+import SocialLinks from '@/components/home/social-links'
+import SubscriptionForm from '@/components/home/subscription-form'
+import PageHeader from '@/components/page-header'
+import Section from '@/components/section'
+import { getArticles } from '@/data/article.data'
+import { getBio } from '@/data/bio.data'
+import { getExperiences } from '@/data/experience.data'
+import { createMetadata } from '@/utils/metadata'
 
 export const metadata: Metadata = createMetadata({
   title: 'Jovert Palonpon - Software engineer, web developer',
   description: `Hi, I'm Jovert, a software engineer based in Manila, Philippines. I'm passionate about building web applications and learning new technologies. I love to travel as well, exploring the beauty of nature and experiencing different cultures.`,
-});
+})
 
 export default async function Page() {
-  const bio = await getBio();
-  const experiences = getExperiences();
-  const articles = getArticles(3);
+  const bio = await getBio()
+  const experiences = getExperiences()
+  const articles = getArticles(3)
 
   return (
     <div>
@@ -60,5 +60,5 @@ export default async function Page() {
         </div>
       </Section>
     </div>
-  );
+  )
 }

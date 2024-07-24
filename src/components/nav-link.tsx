@@ -1,11 +1,11 @@
-'use client';
+'use client'
 
-import cx from 'classnames';
-import { usePathname } from 'next/navigation';
-import * as React from 'react';
+import cx from 'classnames'
+import { usePathname } from 'next/navigation'
+import * as React from 'react'
 
-import Link from '@/components/link';
-import type { LinkProps } from '@/components/link';
+import Link from '@/components/link'
+import type { LinkProps } from '@/components/link'
 
 interface Props extends LinkProps {
   //
@@ -17,11 +17,11 @@ export default function NavLink({
   href,
   ...props
 }: Props) {
-  const pathname = usePathname();
+  const pathname = usePathname()
 
   const isActive = React.useMemo(() => {
-    return pathname === href;
-  }, [pathname, href]);
+    return pathname === href
+  }, [pathname, href])
 
   return (
     <Link
@@ -41,5 +41,5 @@ export default function NavLink({
         <span className="absolute h-px inset-x-1 -bottom-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0"></span>
       )}
     </Link>
-  );
+  )
 }

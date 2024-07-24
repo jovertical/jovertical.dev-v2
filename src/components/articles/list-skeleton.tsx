@@ -32,5 +32,5 @@ export default function ListSkeleton() {
         ))}
       </div>
     </div>
-  );
+  )
 }

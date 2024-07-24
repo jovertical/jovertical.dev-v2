@@ -1,21 +1,21 @@
-import d from 'dayjs';
-import { notFound } from 'next/navigation';
+import d from 'dayjs'
+import { notFound } from 'next/navigation'
 
-import { Article } from '@/data/article.data';
-import { toMarkdownString } from '@/utils/markdown';
+import { Article } from '@/data/article.data'
+import { toMarkdownString } from '@/utils/markdown'
 
 interface Props {
-  data: Promise<Article | null>;
+  data: Promise<Article | null>
 }
 
 export default async function Content({ data }: Props) {
-  const article = await data;
+  const article = await data
 
   if (!article) {
-    notFound();
+    notFound()
   }
 
-  const body = await toMarkdownString(article.body);
+  const body = await toMarkdownString(article.body)
 
   return (
     <article>
@@ -44,5 +44,5 @@ export default async function Content({ data }: Props) {
         }}
       ></div>
     </article>
-  );
+  )
 }

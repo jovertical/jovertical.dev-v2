@@ -11,5 +11,5 @@ export default function ListSkeleton() {
         </li>
       ))}
     </ul>
-  );
+  )
 }

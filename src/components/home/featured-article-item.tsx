@@ -1,13 +1,13 @@
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import cx from 'classnames';
-import d from 'dayjs';
-import Link from 'next/link';
-import type { ComponentPropsWithoutRef } from 'react';
+import { ChevronRightIcon } from '@heroicons/react/20/solid'
+import cx from 'classnames'
+import d from 'dayjs'
+import Link from 'next/link'
+import type { ComponentPropsWithoutRef } from 'react'
 
-import type { Article } from '@/data/article.data';
+import type { Article } from '@/data/article.data'
 
 interface Props extends ComponentPropsWithoutRef<'article'> {
-  data: Article;
+  data: Article
 }
 
 export default function FeaturedArticleItem({
@@ -52,5 +52,5 @@ export default function FeaturedArticleItem({
         <ChevronRightIcon className="w-4 h-4 ml-1 stroke-current"></ChevronRightIcon>
       </div>
     </article>
-  );
+  )
 }

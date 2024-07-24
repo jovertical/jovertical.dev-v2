@@ -1,9 +1,9 @@
-import cx from 'classnames';
-import type { ComponentPropsWithoutRef } from 'react';
+import cx from 'classnames'
+import type { ComponentPropsWithoutRef } from 'react'
 
-type Props = ComponentPropsWithoutRef<'a'>;
+type Props = ComponentPropsWithoutRef<'a'>
 
-export type ExternalLinkProps = Props;
+export type ExternalLinkProps = Props
 
 export default function ExternalLink({ className, ...props }: Props) {
   return (
@@ -16,5 +16,5 @@ export default function ExternalLink({ className, ...props }: Props) {
         className
       )}
     />
-  );
+  )
 }

@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import Script from 'next/script';
+import Script from 'next/script'
 
 export default function GoogleAnalyticsTracker() {
   return (
@@ -21,5 +21,5 @@ export default function GoogleAnalyticsTracker() {
       `}
       </Script>
     </>
-  );
+  )
 }

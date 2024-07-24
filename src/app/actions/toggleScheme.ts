@@ -1,16 +1,16 @@
-'use server';
+'use server'
 
-import { revalidatePath } from 'next/cache';
-import { cookies } from 'next/headers';
+import { revalidatePath } from 'next/cache'
+import { cookies } from 'next/headers'
 
 export default async function toggleScheme() {
-  const store = cookies();
+  const store = cookies()
 
-  const scheme = store.get('scheme')?.value || 'light';
+  const scheme = store.get('scheme')?.value || 'light'
 
-  const newScheme = scheme === 'dark' ? 'light' : 'dark';
+  const newScheme = scheme === 'dark' ? 'light' : 'dark'
 
-  store.set('scheme', newScheme, { path: '/' });
+  store.set('scheme', newScheme, { path: '/' })
 
-  revalidatePath('/');
+  revalidatePath('/')
 }

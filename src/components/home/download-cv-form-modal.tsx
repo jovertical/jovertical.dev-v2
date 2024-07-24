@@ -1,41 +1,41 @@
-'use client';
+'use client'
 
-import { Dialog } from '@headlessui/react';
-import { ArrowDownIcon } from '@heroicons/react/20/solid';
-import Image from 'next/image';
-import { useState } from 'react';
+import { Dialog } from '@headlessui/react'
+import { ArrowDownIcon } from '@heroicons/react/20/solid'
+import Image from 'next/image'
+import { useState } from 'react'
 
-import downloadCv from '@/app/actions/downloadCv';
-import Alert from '@/components/alert';
-import Button from '@/components/button';
-import SubmitButton from '@/components/submit-button';
-import TextInput from '@/components/text-input';
-import { sleep } from '@/utils';
+import downloadCv from '@/app/actions/downloadCv'
+import Alert from '@/components/alert'
+import Button from '@/components/button'
+import SubmitButton from '@/components/submit-button'
+import TextInput from '@/components/text-input'
+import { sleep } from '@/utils'
 
 export default function DownloadCvFormModal() {
-  let [isOpen, setIsOpen] = useState(false);
+  let [isOpen, setIsOpen] = useState(false)
 
-  let [message, setMessage] = useState('');
+  let [message, setMessage] = useState('')
 
-  let [error, setError] = useState('');
+  let [error, setError] = useState('')
 
   const onSubmit = async (data: FormData) => {
-    const { success, message } = await downloadCv(data);
+    const { success, message } = await downloadCv(data)
 
     if (!success) {
-      setError(message);
+      setError(message)
 
-      return;
+      return
     }
 
-    setMessage(message);
+    setMessage(message)
 
-    await sleep(3000);
+    await sleep(3000)
 
-    setMessage('');
+    setMessage('')
 
-    setIsOpen(false);
-  };
+    setIsOpen(false)
+  }
 
   return (
     <>
@@ -127,5 +127,5 @@ export default function DownloadCvFormModal() {
         </span>
       </Button>
     </>
-  );
+  )
 }

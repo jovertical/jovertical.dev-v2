@@ -1,11 +1,11 @@
-import type { Metadata } from 'next';
-import * as React from 'react';
+import type { Metadata } from 'next'
+import * as React from 'react'
 
-import List from '@/components/articles/list';
-import ListSkeleton from '@/components/articles/list-skeleton';
-import PageHeader from '@/components/page-header';
-import { getArticles } from '@/data/article.data';
-import { createMetadata } from '@/utils/metadata';
+import List from '@/components/articles/list'
+import ListSkeleton from '@/components/articles/list-skeleton'
+import PageHeader from '@/components/page-header'
+import { getArticles } from '@/data/article.data'
+import { createMetadata } from '@/utils/metadata'
 
 export const metadata: Metadata = createMetadata({
   title: 'Articles - Jovert Palonpon',
@@ -19,10 +19,10 @@ export const metadata: Metadata = createMetadata({
     'mobile development',
     'dev ops',
   ],
-});
+})
 
 export default function Page() {
-  let articles = getArticles();
+  let articles = getArticles()
 
   return (
     <div>
@@ -38,5 +38,5 @@ export default function Page() {
         </React.Suspense>
       </div>
     </div>
-  );
+  )
 }

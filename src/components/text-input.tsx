@@ -1,5 +1,5 @@
-import cx from 'classnames';
-import type { ComponentPropsWithoutRef } from 'react';
+import cx from 'classnames'
+import type { ComponentPropsWithoutRef } from 'react'
 
 interface Props extends ComponentPropsWithoutRef<'input'> {
   //
@@ -15,5 +15,5 @@ export default function TextInput({ className = '', ...props }: Props) {
         className
       )}
     />
-  );
+  )
 }

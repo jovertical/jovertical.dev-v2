@@ -1,28 +1,28 @@
-import type { Media } from '@/data/media.data';
-import type { Tag } from '@/data/tag.data';
-import { rescue, sleep } from '@/utils';
-import { send } from '@/utils/api';
+import type { Media } from '@/data/media.data'
+import type { Tag } from '@/data/tag.data'
+import { rescue, sleep } from '@/utils'
+import { send } from '@/utils/api'
 
 export type Article = {
-  id: string;
-  title: string;
-  excerpt: string;
-  body: string;
-  featured: boolean;
-  slug: string;
-  thumbnail: Media | null;
-  tags: Tag[];
-  createdAt: string;
-  _publishedAt: string;
-};
+  id: string
+  title: string
+  excerpt: string
+  body: string
+  featured: boolean
+  slug: string
+  thumbnail: Media | null
+  tags: Tag[]
+  createdAt: string
+  _publishedAt: string
+}
 
 export interface FindArticleOptions {
-  preview?: boolean;
+  preview?: boolean
 }
 
 export const findArticle = (slug: string, options?: FindArticleOptions) => {
   return rescue(async () => {
-    await sleep(600);
+    await sleep(600)
 
     const data = await send({
       query: `
@@ -55,15 +55,15 @@ export const findArticle = (slug: string, options?: FindArticleOptions) => {
       variables: {
         slug,
       },
-    });
+    })
 
-    return data.article as Article;
-  }, null);
-};
+    return data.article as Article
+  }, null)
+}
 
 export const getArticles = (limit?: number) => {
   return rescue(async () => {
-    await sleep(600);
+    await sleep(600)
 
     const data = await send({
       query: `
@@ -88,8 +88,8 @@ export const getArticles = (limit?: number) => {
           }
         }
       `,
-    });
+    })
 
-    return data.allArticles as Article[];
-  }, []);
-};
+    return data.allArticles as Article[]
+  }, [])
+}

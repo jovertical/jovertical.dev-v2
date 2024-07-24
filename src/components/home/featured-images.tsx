@@ -1,7 +1,7 @@
-import cx from 'classnames';
-import Image from 'next/image';
-import * as React from 'react';
-import type { ComponentPropsWithoutRef } from 'react';
+import cx from 'classnames'
+import Image from 'next/image'
+import * as React from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
 export default function FeaturedImages({
   className = '',
@@ -61,5 +61,5 @@ export default function FeaturedImages({
         </div>
       </div>
     </div>
-  );
+  )
 }

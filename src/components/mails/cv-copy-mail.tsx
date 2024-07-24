@@ -9,11 +9,11 @@ import {
   Img,
   Button,
   Link,
-} from '@react-email/components';
+} from '@react-email/components'
 
 interface Props {
-  url: string;
-  fallbackUrl?: string;
+  url: string
+  fallbackUrl?: string
 }
 
 export default function CvCopyMail({ url, fallbackUrl }: Props) {
@@ -75,5 +75,5 @@ export default function CvCopyMail({ url, fallbackUrl }: Props) {
         </Body>
       </Html>
     </Tailwind>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata } from 'next'
 
 export const createMetadata = (data: Metadata) => {
   return {
@@ -22,5 +22,5 @@ export const createMetadata = (data: Metadata) => {
         ],
       },
     },
-  } as Metadata;
-};
+  } as Metadata
+}

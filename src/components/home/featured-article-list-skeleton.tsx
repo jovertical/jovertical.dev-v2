@@ -27,5 +27,5 @@ export default function FeaturedArticleListSkeleton() {
         </div>
       ))}
     </div>
-  );
+  )
 }

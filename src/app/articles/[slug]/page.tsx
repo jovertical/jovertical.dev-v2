@@ -1,24 +1,24 @@
-import { ArrowLeftIcon } from '@heroicons/react/20/solid';
+import { ArrowLeftIcon } from '@heroicons/react/20/solid'
 
-import type { Metadata } from 'next';
-import { draftMode } from 'next/headers';
-import Link from 'next/link';
-import * as React from 'react';
+import type { Metadata } from 'next'
+import { draftMode } from 'next/headers'
+import Link from 'next/link'
+import * as React from 'react'
 
-import Content from '@/components/articles/[slug]/content';
-import ContentSkeleton from '@/components/articles/[slug]/content-skeleton';
-import { findArticle } from '@/data/article.data';
-import { createMetadata } from '@/utils/metadata';
+import Content from '@/components/articles/[slug]/content'
+import ContentSkeleton from '@/components/articles/[slug]/content-skeleton'
+import { findArticle } from '@/data/article.data'
+import { createMetadata } from '@/utils/metadata'
 
 interface Props {
-  params: { slug: string };
-  searchParams: { from: 'featured' };
+  params: { slug: string }
+  searchParams: { from: 'featured' }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const draft = draftMode();
+  const draft = draftMode()
 
-  const article = await findArticle(params.slug, { preview: draft.isEnabled });
+  const article = await findArticle(params.slug, { preview: draft.isEnabled })
 
   return createMetadata({
     title: `${article?.title ?? 'Article'} - Jovert Palonpon`,
@@ -48,13 +48,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         images: [article.thumbnail.url],
       }),
     },
-  });
+  })
 }
 
 export default function Page({ params, searchParams }: Props) {
-  const draft = draftMode();
+  const draft = draftMode()
 
-  const article = findArticle(params.slug, { preview: draft.isEnabled });
+  const article = findArticle(params.slug, { preview: draft.isEnabled })
 
   return (
     <div className="xl:relative">
@@ -73,5 +73,5 @@ export default function Page({ params, searchParams }: Props) {
         </React.Suspense>
       </div>
     </div>
-  );
+  )
 }

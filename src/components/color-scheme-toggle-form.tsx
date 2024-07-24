@@ -1,7 +1,7 @@
-import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
-import * as React from 'react';
+import { SunIcon, MoonIcon } from '@heroicons/react/24/outline'
+import * as React from 'react'
 
-import toggleScheme from '@/app/actions/toggleScheme';
+import toggleScheme from '@/app/actions/toggleScheme'
 
 export default function ColorSchemeToggleForm() {
   return (
@@ -15,5 +15,5 @@ export default function ColorSchemeToggleForm() {
         <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
       </button>
     </form>
-  );
+  )
 }

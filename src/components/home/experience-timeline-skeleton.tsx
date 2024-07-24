@@ -25,5 +25,5 @@ export default function ExperienceTimelineSkeleton() {
 
       <div className="inline-flex w-full mt-6 rounded-sm h-9 bg-zinc-200 dark:bg-zinc-700 animate-pulse"></div>
     </div>
-  );
+  )
 }

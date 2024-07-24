@@ -1,19 +1,19 @@
-import type { Metadata } from 'next';
-import * as React from 'react';
+import type { Metadata } from 'next'
+import * as React from 'react'
 
-import PageHeader from '@/components/page-header';
-import List from '@/components/projects/list';
-import ListSkeleton from '@/components/projects/list-skeleton';
-import { getProjects } from '@/data/project.data';
-import { createMetadata } from '@/utils/metadata';
+import PageHeader from '@/components/page-header'
+import List from '@/components/projects/list'
+import ListSkeleton from '@/components/projects/list-skeleton'
+import { getProjects } from '@/data/project.data'
+import { createMetadata } from '@/utils/metadata'
 
 export const metadata: Metadata = createMetadata({
   title: 'Projects - Jovert Palonpon',
   description: `I work full time as a software engineer for companies, making me fully occupied, but when I have some free time, I work on my own projects. Some of them are freelance work, some of them are just for fun, and some of them are just for me to learn new things.`,
-});
+})
 
 export default async function Page() {
-  let projects = getProjects();
+  let projects = getProjects()
 
   return (
     <div>
@@ -28,5 +28,5 @@ export default async function Page() {
         </React.Suspense>
       </div>
     </div>
-  );
+  )
 }

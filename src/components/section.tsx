@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react'
 
 export default function Section({ children }: PropsWithChildren) {
   return (
@@ -9,5 +9,5 @@ export default function Section({ children }: PropsWithChildren) {
         </div>
       </div>
     </div>
-  );
+  )
 }

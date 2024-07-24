@@ -1,9 +1,9 @@
-import tiny from 'tiny-json-http';
+import tiny from 'tiny-json-http'
 
 interface SendOptions {
-  query: string;
-  variables?: Record<string, any>;
-  preview?: boolean;
+  query: string
+  variables?: Record<string, any>
+  preview?: boolean
 }
 
 export const send = async ({
@@ -20,13 +20,13 @@ export const send = async ({
       query,
       variables,
     },
-  });
+  })
 
   if (body.errors) {
-    console.error('Ouch! The query has some errors!');
+    console.error('Ouch! The query has some errors!')
 
-    throw body.errors;
+    throw body.errors
   }
 
-  return body.data;
-};
+  return body.data
+}

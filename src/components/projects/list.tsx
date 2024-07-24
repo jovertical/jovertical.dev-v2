@@ -1,15 +1,15 @@
-import cx from 'classnames';
-import type { ComponentPropsWithoutRef } from 'react';
+import cx from 'classnames'
+import type { ComponentPropsWithoutRef } from 'react'
 
-import Item from '@/components/projects/item';
-import type { Project } from '@/data/project.data';
+import Item from '@/components/projects/item'
+import type { Project } from '@/data/project.data'
 
 interface Props extends ComponentPropsWithoutRef<'ul'> {
-  items: Promise<Project[]>;
+  items: Promise<Project[]>
 }
 
 export default async function List({ items, className = '', ...props }: Props) {
-  const projects = await items;
+  const projects = await items
 
   return (
     <ul
@@ -24,5 +24,5 @@ export default async function List({ items, className = '', ...props }: Props) {
         <Item key={project.id} data={project} />
       ))}
     </ul>
-  );
+  )
 }

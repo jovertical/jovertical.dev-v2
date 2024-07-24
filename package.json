@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "format": "prettier --write .",
     "test:types": "tsc -p ./tsconfig.spec.json --noEmit",
     "test:lint": "next lint",
     "test": "npm run test:types && npm run test:lint"
@@ -48,6 +49,7 @@
     "@types/tiny-json-http": "^7.3.1",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.21",
+    "prettier": "^3.3.3",
     "tailwindcss": "^3.2.7"
   }
 }

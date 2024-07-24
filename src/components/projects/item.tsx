@@ -1,13 +1,13 @@
-import { LinkIcon } from '@heroicons/react/24/solid';
-import cx from 'classnames';
-import Image from 'next/image';
-import type { ComponentPropsWithoutRef } from 'react';
+import { LinkIcon } from '@heroicons/react/24/solid'
+import cx from 'classnames'
+import Image from 'next/image'
+import type { ComponentPropsWithoutRef } from 'react'
 
-import type { Project } from '@/data/project.data';
-import GithubIcon from '@/components/icons/github-icon';
+import type { Project } from '@/data/project.data'
+import GithubIcon from '@/components/icons/github-icon'
 
 interface Props extends ComponentPropsWithoutRef<'article'> {
-  data: Project;
+  data: Project
 }
 
 export default function Item({ className, data: project, ...props }: Props) {
@@ -50,5 +50,5 @@ export default function Item({ className, data: project, ...props }: Props) {
         </p>
       )}
     </li>
-  );
+  )
 }

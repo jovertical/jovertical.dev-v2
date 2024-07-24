@@ -8,6 +8,6 @@ const nextConfig = {
     serverActions: true,
     typedRoutes: true,
   },
-};
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig

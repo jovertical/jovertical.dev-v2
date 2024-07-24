@@ -1,17 +1,17 @@
-import { rescue } from '@/utils';
-import { send } from '@/utils/api';
+import { rescue } from '@/utils'
+import { send } from '@/utils/api'
 
 export type Bio = {
-  title: string;
-  about: string;
-  email: string;
+  title: string
+  about: string
+  email: string
   socials: {
-    twitter?: string;
-    instagram?: string;
-    github?: string;
-    linkedin?: string;
-  };
-};
+    twitter?: string
+    instagram?: string
+    github?: string
+    linkedin?: string
+  }
+}
 
 export let getBio = () => {
   return rescue(async () => {
@@ -29,7 +29,7 @@ export let getBio = () => {
             }
           }
         `,
-    });
+    })
 
     return {
       title: data.bio.title,
@@ -41,6 +41,6 @@ export let getBio = () => {
         github: data.bio.githubUrl,
         linkedin: data.bio.linkedinUrl,
       },
-    } as Bio;
-  }, null);
-};
+    } as Bio
+  }, null)
+}

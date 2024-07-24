@@ -1,19 +1,19 @@
-import cx from 'classnames';
-import Image from 'next/image';
-import type { LinkProps } from 'next/link';
-import type { ComponentPropsWithoutRef } from 'react';
+import cx from 'classnames'
+import Image from 'next/image'
+import type { LinkProps } from 'next/link'
+import type { ComponentPropsWithoutRef } from 'react'
 
-import ColorSchemeToggleForm from '@/components/color-scheme-toggle-form';
-import LayoutHeaderMobileMenu from '@/components/layout-header-mobile-menu';
-import Link from '@/components/link';
-import NavLink from '@/components/nav-link';
+import ColorSchemeToggleForm from '@/components/color-scheme-toggle-form'
+import LayoutHeaderMobileMenu from '@/components/layout-header-mobile-menu'
+import Link from '@/components/link'
+import NavLink from '@/components/nav-link'
 
 const LINKS: { href: LinkProps<'a'>['href']; label: string }[] = [
   { href: '/about', label: 'About' },
   { href: '/articles', label: 'Articles' },
   { href: '/projects', label: 'Projects' },
   { href: '/speaking', label: 'Speaking' },
-];
+]
 
 export default function Header({
   className = '',
@@ -79,5 +79,5 @@ export default function Header({
         </div>
       </div>
     </header>
-  );
+  )
 }

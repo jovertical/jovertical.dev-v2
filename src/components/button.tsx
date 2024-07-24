@@ -1,13 +1,13 @@
-import cx from 'classnames';
-import * as React from 'react';
-import type { ComponentPropsWithoutRef } from 'react';
+import cx from 'classnames'
+import * as React from 'react'
+import type { ComponentPropsWithoutRef } from 'react'
 
 type Props = {
-  variant?: 'primary' | 'secondary';
-  loading?: boolean;
-} & ComponentPropsWithoutRef<'button'>;
+  variant?: 'primary' | 'secondary'
+  loading?: boolean
+} & ComponentPropsWithoutRef<'button'>
 
-export type ButtonProps = Props;
+export type ButtonProps = Props
 
 export default function Button({
   variant = 'primary',
@@ -58,5 +58,5 @@ export default function Button({
 
       <span>{children}</span>
     </button>
-  );
+  )
 }

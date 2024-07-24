@@ -1,4 +1,4 @@
-import type { SVGProps } from 'react';
+import type { SVGProps } from 'react'
 
 export default function EnvelopeOutlineIcon(props: SVGProps<SVGSVGElement>) {
   return (
@@ -20,5 +20,5 @@ export default function EnvelopeOutlineIcon(props: SVGProps<SVGSVGElement>) {
         className="stroke-zinc-400 dark:stroke-zinc-500"
       ></path>
     </svg>
-  );
+  )
 }

@@ -1,13 +1,13 @@
-import { ChevronRightIcon } from '@heroicons/react/20/solid';
-import cx from 'classnames';
-import d from 'dayjs';
-import Link from 'next/link';
-import type { ComponentPropsWithoutRef } from 'react';
+import { ChevronRightIcon } from '@heroicons/react/20/solid'
+import cx from 'classnames'
+import d from 'dayjs'
+import Link from 'next/link'
+import type { ComponentPropsWithoutRef } from 'react'
 
-import type { Article } from '@/data/article.data';
+import type { Article } from '@/data/article.data'
 
 interface Props extends ComponentPropsWithoutRef<'article'> {
-  data: Article;
+  data: Article
 }
 
 export default function Item({ className, data: article, ...props }: Props) {
@@ -60,5 +60,5 @@ export default function Item({ className, data: article, ...props }: Props) {
         {d(article._publishedAt).format('MMMM D, YYYY')}
       </time>
     </article>
-  );
+  )
 }
