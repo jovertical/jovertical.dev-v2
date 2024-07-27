@@ -10,7 +10,6 @@ export const send = async ({
   query,
   variables = {},
   preview = false,
-  cache = 'force-cache',
   next,
 }: SendOptions) => {
   const response = await fetch(
@@ -22,7 +21,6 @@ export const send = async ({
         Authorization: `Bearer ${process.env.DATO_CMS_API_TOKEN}`,
       },
       body: JSON.stringify({ query, variables }),
-      cache,
       next,
     }
   )
