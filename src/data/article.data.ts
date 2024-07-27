@@ -1,6 +1,6 @@
 import type { Media } from '@/data/media.data'
 import type { Tag } from '@/data/tag.data'
-import { rescue, sleep } from '@/utils'
+import { rescue } from '@/utils'
 import { send } from '@/utils/api'
 
 export type Article = {
@@ -22,8 +22,6 @@ export interface FindArticleOptions {
 
 export const findArticle = (slug: string, options?: FindArticleOptions) => {
   return rescue(async () => {
-    await sleep(600)
-
     const data = await send({
       query: `
         query articleBy($slug: String!) {
@@ -52,8 +50,10 @@ export const findArticle = (slug: string, options?: FindArticleOptions) => {
         }
       `,
       preview: options?.preview,
-      variables: {
-        slug,
+      variables: { slug },
+      next: {
+        revalidate: 3600, // 1 hour
+        tags: ['articles', 'article:' + slug],
       },
     })
 
@@ -63,8 +63,6 @@ export const findArticle = (slug: string, options?: FindArticleOptions) => {
 
 export const getArticles = (limit?: number) => {
   return rescue(async () => {
-    await sleep(600)
-
     const data = await send({
       query: `
         query articleList {
@@ -88,6 +86,10 @@ export const getArticles = (limit?: number) => {
           }
         }
       `,
+      next: {
+        revalidate: 3600, // 1 hour
+        tags: ['articles', 'articles:all'],
+      },
     })
 
     return data.allArticles as Article[]

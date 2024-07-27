@@ -1,5 +1,5 @@
 import type { Media } from '@/data/media.data'
-import { rescue, sleep } from '@/utils'
+import { rescue } from '@/utils'
 import { send } from '@/utils/api'
 
 export type Project = {
@@ -16,8 +16,6 @@ export type Project = {
 
 export const getProjects = (limit?: number) => {
   return rescue(async () => {
-    await sleep(600)
-
     const data = await send({
       query: `
         query projectsList {
@@ -27,7 +25,7 @@ export const getProjects = (limit?: number) => {
           ) {
             id,
             name,
-            description,    
+            description,
             slug,
             logo {
               id,
@@ -43,6 +41,10 @@ export const getProjects = (limit?: number) => {
           }
         }
       `,
+      next: {
+        revalidate: 3600 * 24 * 7, // 1 week
+        tags: ['projects', 'projects:all'],
+      },
     })
 
     return data.allProjects as Project[]

@@ -1,32 +1,36 @@
-import tiny from 'tiny-json-http'
-
 interface SendOptions {
   query: string
   variables?: Record<string, any>
   preview?: boolean
+  next?: NextFetchRequestConfig
 }
 
 export const send = async ({
   query,
   variables = {},
   preview = false,
+  next,
 }: SendOptions) => {
-  const { body } = await tiny.post({
-    url: `https://graphql.datocms.com${preview ? '/preview' : ''}`,
-    headers: {
-      authorization: `Bearer ${process.env.DATO_CMS_API_TOKEN}`,
-    },
-    data: {
-      query,
-      variables,
-    },
-  })
+  const response = await fetch(
+    `https://graphql.datocms.com${preview ? '/preview' : ''}`,
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.DATO_CMS_API_TOKEN}`,
+      },
+      body: JSON.stringify({ query, variables }),
+      next,
+    }
+  )
 
-  if (body.errors) {
+  if (!response.ok) {
     console.error('Ouch! The query has some errors!')
 
-    throw body.errors
+    throw await response.text()
   }
+
+  const body = await response.json()
 
   return body.data
 }

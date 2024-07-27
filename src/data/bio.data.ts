@@ -17,18 +17,22 @@ export let getBio = () => {
   return rescue(async () => {
     const data = await send({
       query: `
-          query bio {
-            bio {
-              title,
-              about,
-              email,
-              twitterUrl,
-              instagramUrl,
-              githubUrl,
-              linkedinUrl
-            }
+        query bio {
+          bio {
+            title,
+            about,
+            email,
+            twitterUrl,
+            instagramUrl,
+            githubUrl,
+            linkedinUrl
           }
-        `,
+        }
+      `,
+      next: {
+        revalidate: 3600 * 24 * 7, // 1 week
+        tags: ['bio'],
+      },
     })
 
     return {

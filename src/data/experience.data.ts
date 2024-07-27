@@ -1,5 +1,5 @@
 import type { Media } from '@/data/media.data'
-import { rescue, sleep } from '@/utils'
+import { rescue } from '@/utils'
 import { send } from '@/utils/api'
 
 export type Experience = {
@@ -15,8 +15,6 @@ export type Experience = {
 
 export let getExperiences = () => {
   return rescue(async () => {
-    await sleep(600)
-
     const data = await send({
       query: `
         query experienceList {
@@ -38,12 +36,16 @@ export let getExperiences = () => {
             title,
             description,
           }
-  
+
           _allExperiencesMeta {
             count
           }
         }
       `,
+      next: {
+        revalidate: 3600 * 24 * 7, // 1 week
+        tags: ['experiences', 'experiences:all'],
+      },
     })
 
     return data.allExperiences as Experience[]
