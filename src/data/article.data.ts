@@ -52,7 +52,7 @@ export const findArticle = (slug: string, options?: FindArticleOptions) => {
       preview: options?.preview,
       variables: { slug },
       next: {
-        revalidate: 3600, // 1 hour
+        revalidate: 60, // 1 minute
         tags: ['articles', 'article:' + slug],
       },
     })
