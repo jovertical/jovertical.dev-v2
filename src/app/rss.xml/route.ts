@@ -1,11 +1,23 @@
-import Rss from 'rss'
-
-import { getArticles } from '@/data/article.data'
 import { rescue } from '@/utils'
+import { gql } from '@/lib/datocms/graphql'
+import Rss from 'rss'
+import { executeQuery } from '@/lib/datocms/executeQuery'
+
+const query = gql(/* GraphQL */ `
+  query GetArticles($limit: IntType) {
+    allArticles(first: $limit, orderBy: _publishedAt_DESC) {
+      id
+      title
+      excerpt
+      slug
+      _publishedAt
+    }
+  }
+`)
 
 export async function GET() {
   const feedXml = await rescue(async () => {
-    const articles = await getArticles()
+    const { allArticles: articles } = await executeQuery(query)
 
     // prettier-ignore
     const feed = new Rss({
@@ -22,7 +34,7 @@ export async function GET() {
         description: article.excerpt,
         url: `https://www.jovertical.dev/articles/${article.slug}`,
         guid: `https://www.jovertical.dev/articles/${article.id}`,
-        date: article._publishedAt,
+        date: article._publishedAt ?? '',
       })
     })
 
