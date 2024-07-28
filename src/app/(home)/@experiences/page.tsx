@@ -1,7 +1,6 @@
 import BriefCaseIcon from '@/components/icons/briefcase-icon'
 import { executeQuery } from '@/lib/datocms/executeQuery'
 import { gql } from '@/lib/datocms/graphql'
-import { sleep } from '@/utils'
 import d from 'dayjs'
 import Image from 'next/image'
 import * as React from 'react'

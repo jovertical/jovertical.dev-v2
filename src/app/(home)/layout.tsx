@@ -1,5 +1,6 @@
 import FeaturedImages from '@/app/(home)/_components/featured-images'
 import Section from '@/components/section'
+import SubscriptionForm from './_components/subscription-form'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -23,7 +24,7 @@ export default function Layout({
           {articles}
 
           <div className="space-y-10 lg:pl-16 xl:pl-24">
-            {/* <SubscriptionForm></SubscriptionForm> */}
+            <SubscriptionForm></SubscriptionForm>
 
             {experiences}
           </div>

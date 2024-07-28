@@ -57,7 +57,9 @@ export default function SubscriptionForm({
           aria-label="Email address"
         />
 
-        <SubmitButton className="ml-4">Join</SubmitButton>
+        <SubmitButton className="ml-4" disabled>
+          Join
+        </SubmitButton>
       </div>
 
       {error && (
