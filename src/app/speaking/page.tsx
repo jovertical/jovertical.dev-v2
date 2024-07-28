@@ -1,20 +1,19 @@
-import type { Metadata } from 'next'
-
-import PageHeader from '@/components/page-header'
+import { header } from '@/app/speaking/header'
+import withPageHeader from '@/components/with-page-header'
 import { createMetadata } from '@/utils/metadata'
+import type { Metadata } from 'next'
 
 export const metadata: Metadata = createMetadata({
   title: 'Speaking - Jovert Palonpon',
   description: `I like teaching and sharing my knowledge with others, specially if it's for up and coming developers.`,
 })
 
-export default function Page() {
+function Page() {
   return (
-    <div>
-      <PageHeader
-        title="I hosted a couple of web development boot camps at my alma mater."
-        subtitle="I like teaching and sharing my knowledge with others, specially if it's for up and coming developers."
-      ></PageHeader>
+    <div className="tracking-tight text-zinc-800 dark:text-zinc-100">
+      Coming soon 🚧
     </div>
   )
 }
+
+export default withPageHeader(Page, header)

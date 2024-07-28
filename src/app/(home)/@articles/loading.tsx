@@ -1,4 +1,4 @@
-export default function FeaturedArticleListSkeleton() {
+export default function Loading() {
   return (
     <div className="flex flex-col gap-16">
       {[...Array(2)].map((_, itemIdx) => (

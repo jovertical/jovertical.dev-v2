@@ -1,54 +1,61 @@
-import cx from 'classnames'
-import type { ComponentPropsWithoutRef } from 'react'
-
 import GithubIcon from '@/components/icons/github-icon'
 import InstagramIcon from '@/components/icons/instagram-icon'
 import LinkedinIcon from '@/components/icons/linkedin-icon'
 import TwitterIcon from '@/components/icons/twitter-icon'
-import type { Bio } from '@/data/bio.data'
+import cx from 'classnames'
+import type { ComponentPropsWithoutRef } from 'react'
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
-  data: Bio['socials']
+  twitterUrl?: string | null
+  instagramUrl?: string | null
+  githubUrl?: string | null
+  linkedinUrl?: string | null
 }
 
-export default function SocialLinks({ data, className = '', ...props }: Props) {
+export default function SocialLinks({
+  twitterUrl,
+  instagramUrl,
+  githubUrl,
+  linkedinUrl,
+  className = '',
+}: Props) {
   return (
-    <div {...props} className={cx('flex gap-6', className)}>
-      {data.twitter && (
+    <div className={cx('flex gap-6', className)}>
+      {twitterUrl && (
         <a
           className="p-1 -m-1 group"
           aria-label="Follow on Twitter"
-          href={data.twitter}
+          href={twitterUrl}
         >
           <TwitterIcon className="w-6 h-6 transition fill-zinc-500 group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
         </a>
       )}
 
-      {data.instagram && (
+      {instagramUrl && (
         <a
           className="p-1 -m-1 group"
           aria-label="Follow on Instagram"
-          href={data.instagram}
+          href={instagramUrl}
         >
           <InstagramIcon className="w-6 h-6 transition fill-zinc-500 group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
         </a>
       )}
 
-      {data.github && (
+      {githubUrl && (
         <a
           className="p-1 -m-1 group"
           aria-label="Follow on GitHub"
-          href={data.github}
+          href={githubUrl}
         >
           <GithubIcon className="w-6 h-6 transition fill-zinc-500 group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
         </a>
       )}
 
-      {data.linkedin && (
+      {linkedinUrl && (
         <a
           className="p-1 -m-1 group"
           aria-label="Follow on LinkedIn"
-          href={data.linkedin}
+          href={linkedinUrl}
         >
           <LinkedinIcon className="w-6 h-6 transition fill-zinc-500 group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
         </a>

@@ -1,0 +1,32 @@
+{
+  "name": "Jovert Palonpon - Portfolio",
+  "description": "A portfolio website for Jovert Palonpon",
+  "previewImage": "https://www.datocms-assets.com/205/1721810576-tech-starter-kit.png?w=600&auto=format",
+  "datocmsProjectId": "38847",
+  "deploymentType": "static",
+  "buildCommand": "npm run build",
+  "environmentVariables": {
+    "DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN": {
+      "type": "datocmsAccessToken",
+      "tokenName": "CDA Only (Published)"
+    },
+    "DATOCMS_DRAFT_CONTENT_CDA_TOKEN": {
+      "type": "datocmsAccessToken",
+      "tokenName": "CDA Only (Draft)"
+    },
+    "DATOCMS_CMA_TOKEN": {
+      "type": "datocmsAccessToken",
+      "tokenName": "CMA Only (Admin)"
+    },
+    "SECRET_API_TOKEN": {
+      "type": "string",
+      "value": "secretTokenProtectingWebhookEndpointsFromBeingCalledByAnyone"
+    }
+  },
+  "livePreviewUrl": "https://jovert-palonpon.vercel.app/",
+  "postDeploy": {
+    "type": "apiCall",
+    "url": "/api/post-deploy",
+    "description": "Setting up the DatoCMS project..."
+  }
+}

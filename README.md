@@ -5,7 +5,7 @@
 npm install
 
 # Then, copy & configure the environment file
-cp .env.example .env.local
+cp .env.local.example .env.local
 
 # Finally, run the development server
 npm run dev

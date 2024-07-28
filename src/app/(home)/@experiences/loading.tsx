@@ -1,4 +1,4 @@
-export default function ExperienceTimelineSkeleton() {
+export default function Loading() {
   return (
     <div className="p-6 border rounded-2xl border-zinc-100 dark:border-zinc-700/40">
       <div className="flex items-center">

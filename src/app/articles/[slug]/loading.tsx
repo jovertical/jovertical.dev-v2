@@ -1,4 +1,4 @@
-export default function ContentSkeleton() {
+export default function Loading() {
   return (
     <div>
       <div className="flex flex-col">

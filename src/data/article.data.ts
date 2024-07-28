@@ -1,6 +1,6 @@
 import type { Media } from '@/data/media.data'
 import type { Tag } from '@/data/tag.data'
-import { rescue } from '@/utils'
+import { rescue, sleep } from '@/utils'
 import { send } from '@/utils/api'
 
 export type Article = {
@@ -63,6 +63,8 @@ export const findArticle = (slug: string, options?: FindArticleOptions) => {
 
 export const getArticles = (limit?: number) => {
   return rescue(async () => {
+    await sleep(3000)
+
     const data = await send({
       query: `
         query articleList {

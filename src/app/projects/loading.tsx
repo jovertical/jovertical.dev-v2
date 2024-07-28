@@ -1,4 +1,7 @@
-export default function ListSkeleton() {
+import { header } from '@/app/projects/header'
+import withPageHeader from '@/components/with-page-header'
+
+function Loading() {
   return (
     <ul className="grid grid-cols-1 gap-x-12 gap-y-16 sm:grid-cols-2 lg:grid-cols-3">
       {[...Array(5)].map((_, itemIdx) => (
@@ -13,3 +16,5 @@ export default function ListSkeleton() {
     </ul>
   )
 }
+
+export default withPageHeader(Loading, header)

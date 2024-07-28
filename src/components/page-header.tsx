@@ -7,6 +7,8 @@ interface Props extends PropsWithChildren {
   centered?: boolean
 }
 
+export type { Props as PageHeaderProps }
+
 export default function PageHeader({
   title,
   subtitle,

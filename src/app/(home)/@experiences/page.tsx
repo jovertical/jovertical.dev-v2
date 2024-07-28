@@ -1,36 +1,38 @@
-import cx from 'classnames'
+import BriefCaseIcon from '@/components/icons/briefcase-icon'
+import { executeQuery } from '@/lib/datocms/executeQuery'
+import { gql } from '@/lib/datocms/graphql'
+import { sleep } from '@/utils'
 import d from 'dayjs'
 import Image from 'next/image'
 import * as React from 'react'
-import type { ComponentPropsWithoutRef } from 'react'
 
-import BriefCaseIcon from '@/components/icons/briefcase-icon'
-import type { Experience } from '@/data/experience.data'
+const query = gql(/* GraphQL */ `
+  query GetExperiences {
+    allExperiences(orderBy: [from_DESC, to_DESC]) {
+      id
+      from
+      to
+      company
+      companyLogo {
+        id
+        url
+        width
+        height
+      }
+      title
+    }
+  }
+`)
 
-interface Props extends ComponentPropsWithoutRef<'div'> {
-  data: Promise<Experience[]>
-}
+export default async function Page() {
+  const { allExperiences: experiences } = await executeQuery(query)
 
-export default async function ExperienceTimeline({
-  data,
-  children,
-  className = '',
-  ...props
-}: Props) {
-  const experiences = (await data) ?? []
-
-  const isPresent = (experience: Experience) => {
+  const isPresent = (experience: (typeof experiences)[0]) => {
     return experience.to === null
   }
 
   return (
-    <div
-      {...props}
-      className={cx(
-        'p-6 border rounded-2xl border-zinc-100 dark:border-zinc-700/40',
-        className
-      )}
-    >
+    <div className="p-6 border rounded-2xl border-zinc-100 dark:border-zinc-700/40">
       <h2 className="flex items-center text-sm font-semibold text-zinc-900 dark:text-zinc-100">
         <BriefCaseIcon className="flex-none w-6 h-6"></BriefCaseIcon>
         <span className="ml-3">Work</span>
@@ -45,8 +47,8 @@ export default async function ExperienceTimeline({
                   className="rounded-full h-7 w-7"
                   src={experience.companyLogo.url}
                   alt={`${experience.company} Logo`}
-                  width={experience.companyLogo.width}
-                  height={experience.companyLogo.height}
+                  width={experience.companyLogo.width ?? 32}
+                  height={experience.companyLogo.height ?? 32}
                 />
               )}
             </div>
@@ -80,7 +82,7 @@ export default async function ExperienceTimeline({
         ))}
       </ol>
 
-      <div>{children}</div>
+      {/* <div>{children}</div> */}
     </div>
   )
 }

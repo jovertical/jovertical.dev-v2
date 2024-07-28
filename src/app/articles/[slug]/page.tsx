@@ -1,77 +1,81 @@
-import { ArrowLeftIcon } from '@heroicons/react/20/solid'
-
-import type { Metadata } from 'next'
+import { TagFragment } from '@/lib/datocms/commonFragments'
+import { executeQuery } from '@/lib/datocms/executeQuery'
+import { generateMetadataFn } from '@/lib/datocms/generateMetadataFn'
+import { gql } from '@/lib/datocms/graphql'
+import { toMarkdownString } from '@/utils/markdown'
+import d from 'dayjs'
 import { draftMode } from 'next/headers'
-import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import * as React from 'react'
 
-import Content from '@/components/articles/[slug]/content'
-import ContentSkeleton from '@/components/articles/[slug]/content-skeleton'
-import { findArticle } from '@/data/article.data'
-import { createMetadata } from '@/utils/metadata'
+type Params = { slug: string }
 
 interface Props {
-  params: { slug: string }
+  params: Params
   searchParams: { from: 'featured' }
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const draft = draftMode()
+const query = gql(
+  /* GraphQL */ `
+    query GetArticleBySlug($slug: String!) {
+      article(filter: { slug: { eq: $slug } }) {
+        _seoMetaTags {
+          ...TagFragment
+        }
+        title
+        body
+        createdAt
+        _publishedAt
+      }
+    }
+  `,
+  [TagFragment]
+)
 
-  const article = await findArticle(params.slug, { preview: draft.isEnabled })
+export const generateMetadata = generateMetadataFn({
+  query,
+  buildQueryVariables: ({ params: { slug } }: { params: Params }) => ({ slug }),
+  pickSeoMetaTags: ({ article }) => article?._seoMetaTags,
+})
 
-  return createMetadata({
-    title: `${article?.title ?? 'Article'} - Jovert Palonpon`,
-    description: article?.excerpt,
-    keywords: article?.tags.map((tag) => tag.name).join(', '),
+export default async function Page({ params: { slug }, searchParams }: Props) {
+  const { isEnabled: isDraftModeEnabled } = draftMode()
 
-    openGraph: {
-      url: `https://jovert.dev/articles/${article?.slug ?? ''}`,
-      type: 'article',
-      authors: ['Jovert Palonpon'],
-      ...(article?.thumbnail && {
-        images: [
-          {
-            url: article.thumbnail.url,
-            width: article.thumbnail.width,
-            height: article.thumbnail.height,
-          },
-        ],
-      }),
-    },
-
-    twitter: {
-      card: 'summary_large_image',
-      site: '@Jovertical',
-      creator: '@Jovertical',
-      ...(article?.thumbnail && {
-        images: [article.thumbnail.url],
-      }),
-    },
+  const { article } = await executeQuery(query, {
+    includeDrafts: isDraftModeEnabled,
+    variables: { slug },
   })
-}
 
-export default function Page({ params, searchParams }: Props) {
-  const draft = draftMode()
+  if (!article) return notFound()
 
-  const article = findArticle(params.slug, { preview: draft.isEnabled })
+  const body = await toMarkdownString(article.body)
 
   return (
-    <div className="xl:relative">
-      <div className="max-w-2xl mx-auto">
-        {/* prettier-ignore */}
-        <Link
-          className="group mb-8 flex h-10 w-10 items-center justify-center rounded-full bg-white shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 transition dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0 dark:ring-white/10 dark:hover:border-zinc-700 dark:hover:ring-white/20 lg:absolute lg:-left-5 lg:mb-0 lg:-mt-2 xl:-top-1.5 xl:left-0 xl:mt-0"
-          href={searchParams.from === 'featured' ? '/' : '/articles'}
-          aria-label={searchParams.from === 'featured' ? 'Go home' : 'Go back to articles'}
-        >
-          <ArrowLeftIcon className="w-4 h-4 transition stroke-zinc-500 group-hover:stroke-zinc-700 dark:stroke-zinc-500 dark:group-hover:stroke-zinc-400"></ArrowLeftIcon>
-        </Link>
+    <article>
+      <header className="flex flex-col">
+        <h1 className="mt-6 text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
+          {article.title}
+        </h1>
 
-        <React.Suspense fallback={<ContentSkeleton></ContentSkeleton>}>
-          <Content data={article}></Content>
-        </React.Suspense>
-      </div>
-    </div>
+        {/* prettier-ignore */}
+        <time
+          dateTime={d(article._publishedAt ?? article.createdAt).format('YYYY-MM-DD')}
+          className="flex items-center order-first text-base text-zinc-400 dark:text-zinc-500"
+        >
+          <span className="h-4 w-0.5 rounded-full bg-zinc-200 dark:bg-zinc-500"></span>
+
+          <span className="ml-3">
+            {d(article._publishedAt ?? article.createdAt).format('MMMM D, YYYY')}
+          </span>
+        </time>
+      </header>
+
+      <div
+        className="mt-8 prose dark:prose-invert"
+        dangerouslySetInnerHTML={{
+          __html: body,
+        }}
+      ></div>
+    </article>
   )
 }

@@ -1,4 +1,7 @@
-export default function ListSkeleton() {
+import { header } from '@/app/articles/header'
+import withPageHeader from '@/components/with-page-header'
+
+function Loading() {
   return (
     <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
       <div className="flex flex-col max-w-3xl space-y-16">
@@ -34,3 +37,5 @@ export default function ListSkeleton() {
     </div>
   )
 }
+
+export default withPageHeader(Loading, header)
