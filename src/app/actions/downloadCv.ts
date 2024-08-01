@@ -2,7 +2,7 @@
 
 import CvCopyMail from '@/components/mails/cv-copy-mail'
 import { sendEmail } from '@/lib/nodemailer'
-import { rescue } from '@/lib/utils'
+import { rescue } from '@/utils'
 import { render } from '@react-email/render'
 import { z } from 'zod'
 

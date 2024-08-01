@@ -1,6 +1,6 @@
 'use server'
 
-import { rescue } from '@/lib/utils'
+import { rescue } from '@/utils'
 import MailerLite from '@mailerlite/mailerlite-nodejs'
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'

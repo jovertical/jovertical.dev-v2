@@ -1,7 +1,7 @@
 import { gql } from '@/lib/datocms/graphql'
-import { rescue } from '@/lib/utils'
-import Rss from 'rss'
 import { executeQuery } from '@/lib/datocms/executeQuery'
+import { rescue } from '@/utils'
+import Rss from 'rss'
 
 const query = gql(/* GraphQL */ `
   query GetArticles($limit: IntType) {

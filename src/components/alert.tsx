@@ -1,4 +1,4 @@
-import { match } from '@/lib/utils'
+import { match } from '@/utils'
 import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
