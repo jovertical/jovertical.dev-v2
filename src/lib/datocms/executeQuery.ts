@@ -4,8 +4,6 @@ import {
 } from '@datocms/cda-client'
 import type { TadaDocumentNode } from 'gql.tada'
 
-import { sleep } from '@/utils'
-
 export const cacheTag = 'datocms'
 
 /**
@@ -17,8 +15,6 @@ export async function executeQuery<Result, Variables>(
   options?: ExecuteQueryOptions<Variables>
 ) {
   buildRequestInit
-  await sleep(1000)
-
   const result = await libExecuteQuery(query, {
     variables: options?.variables,
     excludeInvalid: true,
