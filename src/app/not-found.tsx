@@ -1,7 +1,8 @@
+import { ArrowLeftIcon } from '@heroicons/react/20/solid'
+
 import Link from '@/components/link'
 import PageHeader from '@/components/page-header'
 import Section from '@/components/section'
-import { ArrowLeftIcon } from '@heroicons/react/20/solid'
 
 export default function NotFound() {
   return (

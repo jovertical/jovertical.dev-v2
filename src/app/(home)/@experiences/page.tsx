@@ -1,9 +1,10 @@
+import * as React from 'react'
+import Image from 'next/image'
+import d from 'dayjs'
+
 import BriefCaseIcon from '@/components/icons/briefcase-icon'
 import { executeQuery } from '@/lib/datocms/executeQuery'
 import { gql } from '@/lib/datocms/graphql'
-import d from 'dayjs'
-import Image from 'next/image'
-import * as React from 'react'
 
 const query = gql(/* GraphQL */ `
   query GetExperiences {

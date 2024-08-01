@@ -1,14 +1,14 @@
 import {
-  Html,
-  Head,
   Body,
-  Tailwind,
-  Container,
-  Section,
-  Text,
-  Img,
   Button,
+  Container,
+  Head,
+  Html,
+  Img,
   Link,
+  Section,
+  Tailwind,
+  Text,
 } from '@react-email/components'
 
 interface Props {

@@ -1,21 +1,22 @@
 'use client'
 
-import downloadCv from '@/app/actions/downloadCv'
-import Alert from '@/components/alert'
-import Button from '@/components/button'
-import SubmitButton from '@/components/submit-button'
-import TextInput from '@/components/text-input'
-import { sleep } from '@/utils'
 import {
-  Dialog,
-  DialogPanel,
-  DialogBackdrop,
-  DialogTitle,
   Description,
+  Dialog,
+  DialogBackdrop,
+  DialogPanel,
+  DialogTitle,
 } from '@headlessui/react'
 import { ArrowDownIcon } from '@heroicons/react/20/solid'
 import Image from 'next/image'
 import { useState } from 'react'
+
+import Alert from '@/components/alert'
+import Button from '@/components/button'
+import SubmitButton from '@/components/submit-button'
+import TextInput from '@/components/text-input'
+import downloadCv from '@/app/actions/downloadCv'
+import { sleep } from '@/utils'
 
 export default function DownloadCvFormModal() {
   let [isOpen, setIsOpen] = useState(false)

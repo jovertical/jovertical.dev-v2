@@ -1,9 +1,10 @@
-import { sleep } from '@/utils'
 import {
   buildRequestInit,
   executeQuery as libExecuteQuery,
 } from '@datocms/cda-client'
 import type { TadaDocumentNode } from 'gql.tada'
+
+import { sleep } from '@/utils'
 
 export const cacheTag = 'datocms'
 

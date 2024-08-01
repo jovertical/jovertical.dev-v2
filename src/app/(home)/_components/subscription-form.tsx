@@ -1,14 +1,15 @@
 'use client'
 
-import subscribe from '@/app/actions/subscribe'
 import Alert from '@/components/alert'
 import EnvelopeOutlineIcon from '@/components/icons/envelope-outline-icon'
 import SubmitButton from '@/components/submit-button'
 import TextInput from '@/components/text-input'
+import subscribe from '@/app/actions/subscribe'
+
+import type { ComponentPropsWithoutRef } from 'react'
 import cx from 'classnames'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
-import type { ComponentPropsWithoutRef } from 'react'
 
 export default function SubscriptionForm({
   className = '',

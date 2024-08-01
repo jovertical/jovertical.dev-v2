@@ -1,7 +1,7 @@
-import cx from 'classnames'
-import Image from 'next/image'
 import * as React from 'react'
 import type { ComponentPropsWithoutRef } from 'react'
+import Image from 'next/image'
+import cx from 'classnames'
 
 export default function FeaturedImages({
   className = '',

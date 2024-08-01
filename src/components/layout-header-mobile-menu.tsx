@@ -1,12 +1,12 @@
 'use client'
 
-import { Popover } from '@headlessui/react'
-import type { PopoverProps } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
-import { XMarkIcon } from '@heroicons/react/24/solid'
-import cx from 'classnames'
 import Link from 'next/link'
 import type { LinkProps } from 'next/link'
+import { Popover } from '@headlessui/react'
+import type { PopoverProps } from '@headlessui/react'
+import { XMarkIcon } from '@heroicons/react/24/solid'
+import cx from 'classnames'
 
 interface Props extends Omit<PopoverProps<'div'>, 'className'> {
   className?: string

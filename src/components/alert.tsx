@@ -1,4 +1,4 @@
-import { match } from '@/utils'
+import * as React from 'react'
 import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
@@ -7,7 +7,8 @@ import {
 } from '@heroicons/react/24/solid'
 import { XMarkIcon } from '@heroicons/react/20/solid'
 import cx from 'classnames'
-import * as React from 'react'
+
+import { match } from '@/utils'
 
 interface Props extends React.ComponentPropsWithoutRef<'div'> {
   level?: 'info' | 'success' | 'warning' | 'error'

@@ -1,5 +1,5 @@
-import { SunIcon, MoonIcon } from '@heroicons/react/24/outline'
 import * as React from 'react'
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline'
 
 import toggleScheme from '@/app/actions/toggleScheme'
 

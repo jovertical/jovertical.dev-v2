@@ -1,8 +1,8 @@
 'use client'
 
+import * as React from 'react'
 import cx from 'classnames'
 import { usePathname } from 'next/navigation'
-import * as React from 'react'
 
 import Link from '@/components/link'
 import type { LinkProps } from '@/components/link'

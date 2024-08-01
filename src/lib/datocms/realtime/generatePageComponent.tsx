@@ -1,9 +1,10 @@
+import type { ComponentType } from 'react'
 import type { TadaDocumentNode } from 'gql.tada'
 import { draftMode } from 'next/headers'
-import type { ComponentType } from 'react'
-import { executeQuery } from '@/lib/datocms/executeQuery'
+
 import type { BuildQueryVariablesFn } from '@/lib/datocms/generateMetadataFn'
 import type { RealtimeComponentType } from '@/lib/datocms/realtime/generateRealtimeComponent'
+import { executeQuery } from '@/lib/datocms/executeQuery'
 
 /**
  * Generates a Next.js page component that executes a DatoCMS query, and then

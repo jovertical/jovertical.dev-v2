@@ -1,10 +1,10 @@
-import { unified } from 'unified'
-import markdown from 'remark-parse'
-import remark2rehype from 'remark-rehype'
 import headings from 'rehype-autolink-headings'
-import prism from 'rehype-prism-plus'
-import slug from 'rehype-slug'
 import html from 'rehype-stringify'
+import markdown from 'remark-parse'
+import prism from 'rehype-prism-plus'
+import remark2rehype from 'remark-rehype'
+import slug from 'rehype-slug'
+import { unified } from 'unified'
 
 export const toMarkdownString = async (content: string) => {
   const result = await unified()

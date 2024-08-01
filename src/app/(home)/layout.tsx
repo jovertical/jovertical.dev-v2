@@ -1,6 +1,6 @@
 import FeaturedImages from '@/app/(home)/_components/featured-images'
 import Section from '@/components/section'
-import SubscriptionForm from './_components/subscription-form'
+import SubscriptionForm from '@/app/(home)/_components/subscription-form'
 
 interface LayoutProps {
   children: React.ReactNode

@@ -1,9 +1,10 @@
+import type { ComponentPropsWithoutRef } from 'react'
+import cx from 'classnames'
+
 import GithubIcon from '@/components/icons/github-icon'
 import InstagramIcon from '@/components/icons/instagram-icon'
 import LinkedinIcon from '@/components/icons/linkedin-icon'
 import TwitterIcon from '@/components/icons/twitter-icon'
-import cx from 'classnames'
-import type { ComponentPropsWithoutRef } from 'react'
 
 interface Props extends ComponentPropsWithoutRef<'div'> {
   twitterUrl?: string | null

@@ -1,6 +1,6 @@
-import cx from 'classnames'
 import * as React from 'react'
 import type { ComponentPropsWithoutRef } from 'react'
+import cx from 'classnames'
 
 type Props = {
   variant?: 'primary' | 'secondary'

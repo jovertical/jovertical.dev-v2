@@ -1,7 +1,7 @@
-import cx from 'classnames'
+import type { ComponentPropsWithoutRef } from 'react'
 import Image from 'next/image'
 import type { LinkProps } from 'next/link'
-import type { ComponentPropsWithoutRef } from 'react'
+import cx from 'classnames'
 
 import ColorSchemeToggleForm from '@/components/color-scheme-toggle-form'
 import LayoutHeaderMobileMenu from '@/components/layout-header-mobile-menu'

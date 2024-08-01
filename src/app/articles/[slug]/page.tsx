@@ -1,12 +1,13 @@
+import * as React from 'react'
+import d from 'dayjs'
+import { draftMode } from 'next/headers'
+import { notFound } from 'next/navigation'
+
 import { TagFragment } from '@/lib/datocms/commonFragments'
 import { executeQuery } from '@/lib/datocms/executeQuery'
 import { generateMetadataFn } from '@/lib/datocms/generateMetadataFn'
 import { gql } from '@/lib/datocms/graphql'
 import { toMarkdownString } from '@/lib/unified'
-import d from 'dayjs'
-import { draftMode } from 'next/headers'
-import { notFound } from 'next/navigation'
-import * as React from 'react'
 
 type Params = { slug: string }
 

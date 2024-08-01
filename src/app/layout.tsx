@@ -1,12 +1,12 @@
-import cx from 'classnames'
-import { cookies } from 'next/headers'
 import type { ComponentPropsWithoutRef } from 'react'
+import { cookies } from 'next/headers'
+import cx from 'classnames'
 
 import '@/app/code.css'
 import '@/app/globals.css'
 import GoogleAnalyticsTracker from '@/components/google-analytics-tracker'
-import LayoutHeader from '@/components/layout-header'
 import LayoutFooter from '@/components/layout-footer'
+import LayoutHeader from '@/components/layout-header'
 
 export default async function RootLayout({
   children,

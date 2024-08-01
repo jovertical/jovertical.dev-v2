@@ -1,16 +1,17 @@
+import { EnvelopeIcon } from '@heroicons/react/24/solid'
+import Image from 'next/image'
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+
 import GithubIcon from '@/components/icons/github-icon'
 import InstagramIcon from '@/components/icons/instagram-icon'
 import LinkedinIcon from '@/components/icons/linkedin-icon'
-import TwitterIcon from '@/components/icons/twitter-icon'
 import PageHeader from '@/components/page-header'
+import TwitterIcon from '@/components/icons/twitter-icon'
+import { createMetadata } from '@/lib/seo'
 import { executeQuery } from '@/lib/datocms/executeQuery'
 import { gql } from '@/lib/datocms/graphql'
-import { createMetadata } from '@/lib/seo'
 import { toMarkdownString } from '@/lib/unified'
-import { EnvelopeIcon } from '@heroicons/react/24/solid'
-import type { Metadata } from 'next'
-import Image from 'next/image'
-import { notFound } from 'next/navigation'
 
 const query = gql(/* GraphQL */ `
   query Bio {

@@ -1,8 +1,9 @@
+import { ChevronRightIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link'
+import d from 'dayjs'
+
 import { executeQuery } from '@/lib/datocms/executeQuery'
 import { gql } from '@/lib/datocms/graphql'
-import { ChevronRightIcon } from '@heroicons/react/20/solid'
-import d from 'dayjs'
-import Link from 'next/link'
 
 const query = gql(/* GraphQL */ `
   query GetArticles($limit: IntType) {

@@ -1,12 +1,13 @@
-import { header } from '@/app/articles/header'
-import withPageHeader from '@/components/with-page-header'
+import { ChevronRightIcon } from '@heroicons/react/20/solid'
+import Link from 'next/link'
+import type { Metadata } from 'next'
+import d from 'dayjs'
+
+import { createMetadata } from '@/lib/seo'
 import { executeQuery } from '@/lib/datocms/executeQuery'
 import { gql } from '@/lib/datocms/graphql'
-import { createMetadata } from '@/lib/seo'
-import { ChevronRightIcon } from '@heroicons/react/20/solid'
-import d from 'dayjs'
-import type { Metadata } from 'next'
-import Link from 'next/link'
+import { header } from '@/app/articles/header'
+import withPageHeader from '@/components/with-page-header'
 
 const query = gql(/* GraphQL */ `
   query GetArticles($limit: IntType) {

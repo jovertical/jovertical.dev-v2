@@ -1,10 +1,11 @@
+import type { Metadata } from 'next'
+
 import SocialLinks from '@/app/(home)/_components/social-links'
-import { header } from '@/app/(home)/header'
-import withPageHeader from '@/components/with-page-header'
+import { createMetadata } from '@/lib/seo'
 import { executeQuery } from '@/lib/datocms/executeQuery'
 import { gql } from '@/lib/datocms/graphql'
-import { createMetadata } from '@/lib/seo'
-import type { Metadata } from 'next'
+import { header } from '@/app/(home)/header'
+import withPageHeader from '@/components/with-page-header'
 
 const query = gql(/* GraphQL */ `
   query Bio {

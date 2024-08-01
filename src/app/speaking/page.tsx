@@ -1,7 +1,8 @@
+import type { Metadata } from 'next'
+
+import { createMetadata } from '@/lib/seo'
 import { header } from '@/app/speaking/header'
 import withPageHeader from '@/components/with-page-header'
-import { createMetadata } from '@/lib/seo'
-import type { Metadata } from 'next'
 
 export const metadata: Metadata = createMetadata({
   title: 'Speaking - Jovert Palonpon',

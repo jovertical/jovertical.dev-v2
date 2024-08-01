@@ -1,11 +1,12 @@
-import type { TadaDocumentNode } from 'gql.tada'
 import type { Metadata, ResolvingMetadata } from 'next'
-import { draftMode } from 'next/headers'
 import {
   type SeoOrFaviconTag,
   type TitleMetaLinkTag,
   toNextMetadata,
 } from 'react-datocms/seo'
+import type { TadaDocumentNode } from 'gql.tada'
+import { draftMode } from 'next/headers'
+
 import { executeQuery } from '@/lib/datocms/executeQuery'
 
 /**
