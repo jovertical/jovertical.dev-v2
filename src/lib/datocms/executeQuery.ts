@@ -1,4 +1,4 @@
-import { sleep } from '@/utils'
+import { sleep } from '@/lib/utils'
 import {
   buildRequestInit,
   executeQuery as libExecuteQuery,

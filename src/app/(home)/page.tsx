@@ -3,7 +3,7 @@ import { header } from '@/app/(home)/header'
 import withPageHeader from '@/components/with-page-header'
 import { executeQuery } from '@/lib/datocms/executeQuery'
 import { gql } from '@/lib/datocms/graphql'
-import { createMetadata } from '@/utils/metadata'
+import { createMetadata } from '@/lib/seo'
 import type { Metadata } from 'next'
 
 const query = gql(/* GraphQL */ `

@@ -1,11 +1,10 @@
 'use server'
 
+import CvCopyMail from '@/components/mails/cv-copy-mail'
+import { sendEmail } from '@/lib/nodemailer'
+import { rescue } from '@/lib/utils'
 import { render } from '@react-email/render'
 import { z } from 'zod'
-
-import CvCopyMail from '@/components/mails/cv-copy-mail'
-import { sendEmail } from '@/utils/emails'
-import { rescue } from '@/utils'
 
 const schema = z.object({
   email: z.string().email(),

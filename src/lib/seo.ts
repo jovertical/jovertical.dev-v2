@@ -3,7 +3,6 @@ import type { Metadata } from 'next'
 export const createMetadata = (data: Metadata) => {
   return {
     ...data,
-
     openGraph: {
       title: data.title,
       description: data.description,
@@ -11,7 +10,6 @@ export const createMetadata = (data: Metadata) => {
       images: ['https://www.datocms-assets.com/38847/1680882343-boxed.png'],
       ...data.openGraph,
     },
-
     alternates: {
       types: {
         'application/rss+xml': [

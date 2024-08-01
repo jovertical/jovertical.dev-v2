@@ -1,5 +1,5 @@
-import { rescue } from '@/utils'
 import { gql } from '@/lib/datocms/graphql'
+import { rescue } from '@/lib/utils'
 import Rss from 'rss'
 import { executeQuery } from '@/lib/datocms/executeQuery'
 

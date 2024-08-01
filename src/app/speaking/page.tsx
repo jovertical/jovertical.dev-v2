@@ -1,6 +1,6 @@
 import { header } from '@/app/speaking/header'
 import withPageHeader from '@/components/with-page-header'
-import { createMetadata } from '@/utils/metadata'
+import { createMetadata } from '@/lib/seo'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = createMetadata({

@@ -5,7 +5,7 @@ import Alert from '@/components/alert'
 import Button from '@/components/button'
 import SubmitButton from '@/components/submit-button'
 import TextInput from '@/components/text-input'
-import { sleep } from '@/utils'
+import { sleep } from '@/lib/utils'
 import {
   Dialog,
   DialogPanel,

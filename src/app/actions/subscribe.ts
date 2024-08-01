@@ -1,10 +1,9 @@
 'use server'
 
+import { rescue } from '@/lib/utils'
 import MailerLite from '@mailerlite/mailerlite-nodejs'
 import { revalidatePath } from 'next/cache'
 import { z } from 'zod'
-
-import { rescue } from '@/utils'
 
 const schema = z.object({
   email: z.string().email(),
