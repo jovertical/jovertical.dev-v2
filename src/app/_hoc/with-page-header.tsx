@@ -1,5 +1,5 @@
-import PageHeader from '@/components/page-header'
-import type { PageHeaderProps } from '@/components/page-header'
+import PageHeader from '@/ui/page-header'
+import type { PageHeaderProps } from '@/ui/page-header'
 
 type WithPageHeaderProps = PageHeaderProps & {
   marginless?: boolean

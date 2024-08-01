@@ -1,5 +1,5 @@
 import FeaturedImages from '@/app/(home)/_components/featured-images'
-import Section from '@/components/section'
+import Section from '@/ui/section'
 import SubscriptionForm from '@/app/(home)/_components/subscription-form'
 
 interface LayoutProps {

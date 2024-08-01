@@ -2,12 +2,12 @@ import Image from 'next/image'
 import { LinkIcon } from '@heroicons/react/24/solid'
 import type { Metadata } from 'next'
 
-import GithubIcon from '@/components/icons/github-icon'
+import GithubIcon from '@/ui/icons/github-icon'
 import { createMetadata } from '@/lib/seo'
 import { executeQuery } from '@/lib/datocms/executeQuery'
 import { gql } from '@/lib/datocms/graphql'
 import { header } from '@/app/projects/header'
-import withPageHeader from '@/components/with-page-header'
+import withPageHeader from '@/app/_hoc/with-page-header'
 
 const query = gql(/* GraphQL */ `
   query GetProjects($limit: IntType) {

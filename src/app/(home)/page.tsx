@@ -5,7 +5,7 @@ import { createMetadata } from '@/lib/seo'
 import { executeQuery } from '@/lib/datocms/executeQuery'
 import { gql } from '@/lib/datocms/graphql'
 import { header } from '@/app/(home)/header'
-import withPageHeader from '@/components/with-page-header'
+import withPageHeader from '@/app/_hoc/with-page-header'
 
 const query = gql(/* GraphQL */ `
   query Bio {

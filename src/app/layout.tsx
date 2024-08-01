@@ -4,9 +4,9 @@ import cx from 'classnames'
 
 import '@/app/code.css'
 import '@/app/globals.css'
-import GoogleAnalyticsTracker from '@/components/google-analytics-tracker'
-import LayoutFooter from '@/components/layout-footer'
-import LayoutHeader from '@/components/layout-header'
+import GoogleAnalyticsTracker from '@/app/_components/google-analytics-tracker'
+import LayoutFooter from '@/app/_components/layout-footer'
+import LayoutHeader from '@/app/_components/layout-header'
 
 export default async function RootLayout({
   children,

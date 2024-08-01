@@ -3,10 +3,10 @@ import Image from 'next/image'
 import type { LinkProps } from 'next/link'
 import cx from 'classnames'
 
-import ColorSchemeToggleForm from '@/components/color-scheme-toggle-form'
-import LayoutHeaderMobileMenu from '@/components/layout-header-mobile-menu'
-import Link from '@/components/link'
-import NavLink from '@/components/nav-link'
+import ColorSchemeToggleForm from '@/app/_components/color-scheme-toggle-form'
+import LayoutHeaderMobileMenu from '@/app/_components/layout-header-mobile-menu'
+import Link from '@/ui/link'
+import NavLink from '@/app/_components/nav-link'
 
 const LINKS: { href: LinkProps<'a'>['href']; label: string }[] = [
   { href: '/about', label: 'About' },

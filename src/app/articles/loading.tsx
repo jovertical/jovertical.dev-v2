@@ -1,5 +1,5 @@
 import { header } from '@/app/articles/header'
-import withPageHeader from '@/components/with-page-header'
+import withPageHeader from '@/app/_hoc/with-page-header'
 
 function Loading() {
   return (

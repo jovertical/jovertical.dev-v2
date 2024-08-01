@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 
 import { createMetadata } from '@/lib/seo'
 import { header } from '@/app/thank-you/header'
-import withPageHeader from '@/components/with-page-header'
+import withPageHeader from '@/app/_hoc/with-page-header'
 
 export const metadata: Metadata = createMetadata({
   title: `You're subscribed - Jovert Palonpon`,

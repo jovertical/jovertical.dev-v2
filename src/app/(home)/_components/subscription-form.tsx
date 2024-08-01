@@ -1,9 +1,9 @@
 'use client'
 
-import Alert from '@/components/alert'
-import EnvelopeOutlineIcon from '@/components/icons/envelope-outline-icon'
-import SubmitButton from '@/components/submit-button'
-import TextInput from '@/components/text-input'
+import Alert from '@/ui/alert'
+import EnvelopeOutlineIcon from '@/ui/icons/envelope-outline-icon'
+import SubmitButton from '@/ui/submit-button'
+import TextInput from '@/ui/text-input'
 import subscribe from '@/app/actions/subscribe'
 
 import type { ComponentPropsWithoutRef } from 'react'

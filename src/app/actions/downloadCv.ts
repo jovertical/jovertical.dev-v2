@@ -3,7 +3,7 @@
 import { render } from '@react-email/render'
 import { z } from 'zod'
 
-import CvCopyMail from '@/components/mails/cv-copy-mail'
+import CvCopyMail from '@/app/_components/mails/cv-copy-mail'
 import { rescue } from '@/utils'
 import { sendEmail } from '@/lib/nodemailer'
 
