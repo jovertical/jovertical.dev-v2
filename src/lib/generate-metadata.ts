@@ -49,7 +49,7 @@ export function generateMetadataFn<PageProps, Result, Variables>(
     const variables =
       options.buildQueryVariables?.(pageProps) || ({} as Variables)
 
-    const [parentMetadata, data] = await Promise.all([
+    const [parentMetadata, { data }] = await Promise.all([
       parent,
       executeQuery(options.query, variables, {
         includeDrafts: isDraftModeEnabled,
