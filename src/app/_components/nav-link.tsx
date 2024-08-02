@@ -4,8 +4,8 @@ import * as React from 'react'
 import cx from 'classnames'
 import { usePathname } from 'next/navigation'
 
-import Link from '@/ui/link'
-import type { LinkProps } from '@/ui/link'
+import Link from '@/components/link'
+import type { LinkProps } from '@/components/link'
 
 interface Props extends LinkProps {
   //

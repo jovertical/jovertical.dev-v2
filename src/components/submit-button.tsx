@@ -2,8 +2,8 @@
 
 import { useFormStatus } from 'react-dom'
 
-import Button from '@/ui/button'
-import type { ButtonProps } from '@/ui/button'
+import Button from '@/components/button'
+import type { ButtonProps } from '@/components/button'
 
 type Props = Omit<ButtonProps, 'type' | 'loading'>
 

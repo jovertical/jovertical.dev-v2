@@ -111,9 +111,9 @@ input ArticleModelFilter {
   _isValid: BooleanFilter
   body: TextFilter
   cover: FileFilter
-  draft: JsonFilter
   excerpt: TextFilter
   featured: BooleanFilter
+  seo: JsonFilter
   slug: SlugFilter
   tags: LinksFilter
   title: StringFilter
@@ -176,13 +176,13 @@ type ArticleRecord implements RecordInterface {
   ): String!
   cover: AltFileField
   createdAt: DateTime!
-  draft: JsonField
   excerpt(
     """Process content as markdown"""
     markdown: Boolean
   ): String!
-  featured: BooleanType
+  featured: BooleanType!
   id: ItemId!
+  seo: JsonField
   slug: String
   tags: [TagRecord!]!
   title: String!
@@ -394,7 +394,7 @@ type ExperienceRecord implements RecordInterface {
     markdown: Boolean
   ): String
   from: IntType
-  hidden: BooleanType
+  hidden: BooleanType!
   id: ItemId!
   title: String!
   to: IntType
@@ -2718,11 +2718,6 @@ type Query {
     """The locale to use to fetch the field's content"""
     locale: SiteLocale
     filter: ArticleModelFilter
-
-    """
-    If you want to fallback to a default translation when a translation has not been found
-    """
-    fallbackLocales: [SiteLocale!]
   ): CollectionMetadata!
 
   """Returns meta information regarding a record collection"""
@@ -2730,11 +2725,6 @@ type Query {
     """The locale to use to fetch the field's content"""
     locale: SiteLocale
     filter: ExperienceModelFilter
-
-    """
-    If you want to fallback to a default translation when a translation has not been found
-    """
-    fallbackLocales: [SiteLocale!]
   ): CollectionMetadata!
 
   """Returns meta information regarding a record collection"""
@@ -2742,11 +2732,6 @@ type Query {
     """The locale to use to fetch the field's content"""
     locale: SiteLocale
     filter: ProjectModelFilter
-
-    """
-    If you want to fallback to a default translation when a translation has not been found
-    """
-    fallbackLocales: [SiteLocale!]
   ): CollectionMetadata!
 
   """Returns meta information regarding a record collection"""
@@ -2754,11 +2739,6 @@ type Query {
     """The locale to use to fetch the field's content"""
     locale: SiteLocale
     filter: TagModelFilter
-
-    """
-    If you want to fallback to a default translation when a translation has not been found
-    """
-    fallbackLocales: [SiteLocale!]
   ): CollectionMetadata!
 
   """Returns meta information regarding an assets collection"""

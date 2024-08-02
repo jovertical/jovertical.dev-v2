@@ -5,7 +5,7 @@ import cx from 'classnames'
 
 import ColorSchemeToggleForm from '@/app/_components/color-scheme-toggle-form'
 import LayoutHeaderMobileMenu from '@/app/_components/layout-header-mobile-menu'
-import Link from '@/ui/link'
+import Link from '@/components/link'
 import NavLink from '@/app/_components/nav-link'
 
 const LINKS: { href: LinkProps<'a'>['href']; label: string }[] = [

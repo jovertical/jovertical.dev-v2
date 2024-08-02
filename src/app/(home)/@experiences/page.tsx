@@ -2,7 +2,7 @@ import * as React from 'react'
 import Image from 'next/image'
 import d from 'dayjs'
 
-import BriefCaseIcon from '@/ui/icons/briefcase-icon'
+import BriefCaseIcon from '@/components/icons/briefcase-icon'
 import { executeQuery } from '@/lib/fetch-content'
 import { graphql } from '@/lib/graphql'
 

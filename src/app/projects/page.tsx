@@ -2,7 +2,7 @@ import Image from 'next/image'
 import { LinkIcon } from '@heroicons/react/24/solid'
 import type { Metadata } from 'next'
 
-import GithubIcon from '@/ui/icons/github-icon'
+import GithubIcon from '@/components/icons/github-icon'
 import { executeQuery } from '@/lib/fetch-content'
 import { generateStaticMetadataFn } from '@/lib/generate-metadata'
 import { graphql } from '@/lib/graphql'

@@ -1,8 +1,8 @@
 import type { ComponentPropsWithoutRef } from 'react'
 import d from 'dayjs'
 
-import ExternalLink from '@/ui/external-link'
-import Link from '@/ui/link'
+import ExternalLink from '@/components/external-link'
+import Link from '@/components/link'
 
 export default function Footer(props: ComponentPropsWithoutRef<'footer'>) {
   return (
