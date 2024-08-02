@@ -58,8 +58,6 @@ export default async function Page({ params: { slug }, searchParams }: Props) {
     { includeDrafts: isDraftModeEnabled }
   )
 
-  console.log('article', article)
-
   if (!article) return notFound()
 
   const body = await toMarkdownString(article.body)
