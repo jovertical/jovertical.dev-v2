@@ -18,6 +18,9 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
   const token = request.nextUrl.searchParams.get('token')
   const url = request.nextUrl.searchParams.get('url') || '/'
 
+  console.log('token', token)
+  console.log('url', url)
+
   try {
     // Ensure that the request is coming from a trusted source
     if (token !== process.env.SECRET_API_TOKEN) {
