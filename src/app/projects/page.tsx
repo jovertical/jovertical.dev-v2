@@ -3,13 +3,13 @@ import { LinkIcon } from '@heroicons/react/24/solid'
 import type { Metadata } from 'next'
 
 import GithubIcon from '@/ui/icons/github-icon'
-import { createMetadata } from '@/lib/seo'
-import { executeQuery } from '@/lib/datocms/executeQuery'
-import { gql } from '@/lib/datocms/graphql'
+import { executeQuery } from '@/lib/fetch-content'
+import { generateStaticMetadataFn } from '@/lib/generate-metadata'
+import { graphql } from '@/lib/graphql'
 import { header } from '@/app/projects/header'
 import withPageHeader from '@/app/_hoc/with-page-header'
 
-const query = gql(/* GraphQL */ `
+const GET_PROJECTS_QUERY = graphql(/* GraphQL */ `
   query GetProjects($limit: IntType) {
     allProjects(first: $limit, orderBy: position_ASC) {
       id
@@ -26,13 +26,15 @@ const query = gql(/* GraphQL */ `
   }
 `)
 
-export const metadata: Metadata = createMetadata({
+export const metadata: Metadata = generateStaticMetadataFn({
   title: 'Projects - Jovert Palonpon',
   description: `I work full time as a software engineer for companies, making me fully occupied, but when I have some free time, I work on my own projects. Some of them are freelance work, some of them are just for fun, and some of them are just for me to learn new things.`,
 })
 
 async function Page() {
-  const { allProjects: projects } = await executeQuery(query)
+  const {
+    data: { allProjects: projects },
+  } = await executeQuery(GET_PROJECTS_QUERY)
 
   return (
     <ul

@@ -3,10 +3,10 @@ import Image from 'next/image'
 import d from 'dayjs'
 
 import BriefCaseIcon from '@/ui/icons/briefcase-icon'
-import { executeQuery } from '@/lib/datocms/executeQuery'
-import { gql } from '@/lib/datocms/graphql'
+import { executeQuery } from '@/lib/fetch-content'
+import { graphql } from '@/lib/graphql'
 
-const query = gql(/* GraphQL */ `
+const GET_EXPERIENCES_QUERY = graphql(/* GraphQL */ `
   query GetExperiences {
     allExperiences(orderBy: [from_DESC, to_DESC]) {
       id
@@ -25,7 +25,9 @@ const query = gql(/* GraphQL */ `
 `)
 
 export default async function Page() {
-  const { allExperiences: experiences } = await executeQuery(query)
+  const {
+    data: { allExperiences: experiences },
+  } = await executeQuery(GET_EXPERIENCES_QUERY)
 
   const isPresent = (experience: (typeof experiences)[0]) => {
     return experience.to === null

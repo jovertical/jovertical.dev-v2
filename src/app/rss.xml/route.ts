@@ -1,10 +1,10 @@
 import Rss from 'rss'
 
-import { executeQuery } from '@/lib/datocms/executeQuery'
-import { gql } from '@/lib/datocms/graphql'
+import { executeQuery } from '@/lib/fetch-content'
+import { graphql } from '@/lib/graphql'
 import { rescue } from '@/utils'
 
-const query = gql(/* GraphQL */ `
+const GET_ARTICLES_QUERY = graphql(/* GraphQL */ `
   query GetArticles($limit: IntType) {
     allArticles(first: $limit, orderBy: _publishedAt_DESC) {
       id
@@ -18,7 +18,9 @@ const query = gql(/* GraphQL */ `
 
 export async function GET() {
   const feedXml = await rescue(async () => {
-    const { allArticles: articles } = await executeQuery(query)
+    const {
+      data: { allArticles: articles },
+    } = await executeQuery(GET_ARTICLES_QUERY)
 
     // prettier-ignore
     const feed = new Rss({

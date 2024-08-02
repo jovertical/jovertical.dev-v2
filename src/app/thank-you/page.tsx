@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 
-import { createMetadata } from '@/lib/seo'
+import { generateStaticMetadataFn } from '@/lib/generate-metadata'
 import { header } from '@/app/thank-you/header'
 import withPageHeader from '@/app/_hoc/with-page-header'
 
-export const metadata: Metadata = createMetadata({
+export const metadata: Metadata = generateStaticMetadataFn({
   title: `You're subscribed - Jovert Palonpon`,
   description: `I'll send you an email any time I publish a new blog post, release a new project, or have anything interesting to share that I think you'd want to hear about. You can unsubscribe at any time, no hard feelings.`,
 })

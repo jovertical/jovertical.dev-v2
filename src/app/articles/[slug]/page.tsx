@@ -3,10 +3,11 @@ import d from 'dayjs'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 
-import { TagFragment } from '@/lib/datocms/commonFragments'
-import { executeQuery } from '@/lib/datocms/executeQuery'
-import { generateMetadataFn } from '@/lib/datocms/generateMetadataFn'
-import { gql } from '@/lib/datocms/graphql'
+import { ResponsiveImageFragment } from '@/fragments/responsive-image'
+import { TagFragment } from '@/fragments/tag'
+import { executeQuery } from '@/lib/fetch-content'
+import { generateMetadataFn } from '@/lib/generate-metadata'
+import { graphql } from '@/lib/graphql'
 import { toMarkdownString } from '@/lib/unified'
 
 type Params = { slug: string }
@@ -16,12 +17,19 @@ interface Props {
   searchParams: { from: 'featured' }
 }
 
-const query = gql(
+const ARTICLE_BY_SLUG_QUERY = graphql(
   /* GraphQL */ `
     query GetArticleBySlug($slug: String!) {
       article(filter: { slug: { eq: $slug } }) {
         _seoMetaTags {
           ...TagFragment
+        }
+        cover {
+          responsiveImage(
+            imgixParams: { fm: jpg, fit: crop, w: 2000, h: 1000 }
+          ) {
+            ...ResponsiveImageFragment
+          }
         }
         title
         body
@@ -30,11 +38,11 @@ const query = gql(
       }
     }
   `,
-  [TagFragment]
+  [TagFragment, ResponsiveImageFragment]
 )
 
 export const generateMetadata = generateMetadataFn({
-  query,
+  query: ARTICLE_BY_SLUG_QUERY,
   buildQueryVariables: ({ params: { slug } }: { params: Params }) => ({ slug }),
   pickSeoMetaTags: ({ article }) => article?._seoMetaTags,
 })
@@ -42,10 +50,15 @@ export const generateMetadata = generateMetadataFn({
 export default async function Page({ params: { slug }, searchParams }: Props) {
   const { isEnabled: isDraftModeEnabled } = draftMode()
 
-  const { article } = await executeQuery(query, {
-    includeDrafts: isDraftModeEnabled,
-    variables: { slug },
-  })
+  const {
+    data: { article },
+  } = await executeQuery(
+    ARTICLE_BY_SLUG_QUERY,
+    { slug },
+    { includeDrafts: isDraftModeEnabled }
+  )
+
+  console.log('article', article)
 
   if (!article) return notFound()
 

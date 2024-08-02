@@ -8,12 +8,12 @@ import InstagramIcon from '@/ui/icons/instagram-icon'
 import LinkedinIcon from '@/ui/icons/linkedin-icon'
 import PageHeader from '@/ui/page-header'
 import TwitterIcon from '@/ui/icons/twitter-icon'
-import { createMetadata } from '@/lib/seo'
-import { executeQuery } from '@/lib/datocms/executeQuery'
-import { gql } from '@/lib/datocms/graphql'
+import { executeQuery } from '@/lib/fetch-content'
+import { generateStaticMetadataFn } from '@/lib/generate-metadata'
+import { graphql } from '@/lib/graphql'
 import { toMarkdownString } from '@/lib/unified'
 
-const query = gql(/* GraphQL */ `
+const GET_BIO_QUERY = graphql(/* GraphQL */ `
   query Bio {
     bio {
       about
@@ -26,13 +26,15 @@ const query = gql(/* GraphQL */ `
   }
 `)
 
-export const metadata: Metadata = createMetadata({
+export const metadata: Metadata = generateStaticMetadataFn({
   title: 'About - Jovert Palonpon',
   description: `I'm Jovert Palonpon. I live in Manila, Philippines where I work remotely as a Software Engineer`,
 })
 
 export default async function Page() {
-  const { bio } = await executeQuery(query)
+  const {
+    data: { bio },
+  } = await executeQuery(GET_BIO_QUERY)
 
   if (!bio) return notFound()
 

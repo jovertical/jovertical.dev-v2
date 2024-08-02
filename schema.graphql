@@ -110,12 +110,12 @@ input ArticleModelFilter {
   updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
   body: TextFilter
+  cover: FileFilter
   draft: JsonFilter
   excerpt: TextFilter
   featured: BooleanFilter
   slug: SlugFilter
   tags: LinksFilter
-  thumbnail: FileFilter
   title: StringFilter
   OR: [ArticleModelFilter]
   AND: [ArticleModelFilter]
@@ -174,6 +174,7 @@ type ArticleRecord implements RecordInterface {
     """Process content as markdown"""
     markdown: Boolean
   ): String!
+  cover: AltFileField
   createdAt: DateTime!
   draft: JsonField
   excerpt(
@@ -184,7 +185,6 @@ type ArticleRecord implements RecordInterface {
   id: ItemId!
   slug: String
   tags: [TagRecord!]!
-  thumbnail: AltFileField
   title: String!
   updatedAt: DateTime!
 }

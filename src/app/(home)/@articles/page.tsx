@@ -2,10 +2,10 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import d from 'dayjs'
 
-import { executeQuery } from '@/lib/datocms/executeQuery'
-import { gql } from '@/lib/datocms/graphql'
+import { executeQuery } from '@/lib/fetch-content'
+import { graphql } from '@/lib/graphql'
 
-const query = gql(/* GraphQL */ `
+const GET_ARTICLES_QUERY = graphql(/* GraphQL */ `
   query GetArticles($limit: IntType) {
     allArticles(first: $limit, orderBy: _publishedAt_DESC) {
       id
@@ -18,7 +18,9 @@ const query = gql(/* GraphQL */ `
 `)
 
 export default async function Page() {
-  const { allArticles: articles } = await executeQuery(query)
+  const {
+    data: { allArticles: articles },
+  } = await executeQuery(GET_ARTICLES_QUERY)
 
   return (
     <div id="featured-article-list" className="flex flex-col gap-16">

@@ -11,13 +11,15 @@
     "test:format": "prettier --check .",
     "test:types": "tsc -p ./tsconfig.spec.json --noEmit",
     "test:lint": "next lint",
-    "test": "npm run test:format && npm run test:types && npm run test:lint"
+    "test": "npm run test:format && npm run test:types && npm run test:lint",
+    "prepare": "npm run graphql:compile"
   },
   "dependencies": {
     "@datocms/cda-client": "^0.2.2",
     "@datocms/cma-client": "^3.3.5",
     "@headlessui/react": "^2.1.2",
     "@heroicons/react": "^2.1.5",
+    "@libsql/client": "^0.8.0",
     "@mailerlite/mailerlite-nodejs": "^1.2.2",
     "@react-email/components": "^0.0.22",
     "@react-email/render": "^0.0.17",

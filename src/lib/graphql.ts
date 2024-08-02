@@ -5,19 +5,14 @@
  *
  * For more information:
  * - https://gql-tada.0no.co/
+ * - https://www.datocms.com/docs/content-delivery-api/custom-scalar-types
  */
 
 import { initGraphQLTada } from 'gql.tada'
-import type { introspection } from './graphql-env.js'
 
-/**
- * The Content Delivery API exposes a number of custom GraphQL scalar types. For
- * each one, we must manually define an appropriate TypeScript type mapping.
- *
- * https://www.datocms.com/docs/content-delivery-api/custom-scalar-types
- */
+import type { introspection } from '@/lib/graphql-env.d.ts'
 
-export const gql = initGraphQLTada<{
+export const graphql = initGraphQLTada<{
   introspection: introspection
   scalars: {
     BooleanType: boolean

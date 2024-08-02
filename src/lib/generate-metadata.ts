@@ -7,7 +7,30 @@ import {
 import type { TadaDocumentNode } from 'gql.tada'
 import { draftMode } from 'next/headers'
 
-import { executeQuery } from '@/lib/datocms/executeQuery'
+import { executeQuery } from '@/lib/fetch-content'
+
+export function generateStaticMetadataFn(data: Metadata) {
+  return {
+    ...data,
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      siteName: 'jovertical.dev',
+      images: ['https://www.datocms-assets.com/38847/1680882343-boxed.png'],
+      ...data.openGraph,
+    },
+    alternates: {
+      types: {
+        'application/rss+xml': [
+          {
+            url: 'https://www.jovertical.dev/rss.xml',
+            title: 'All Articles',
+          },
+        ],
+      },
+    },
+  } as Metadata
+}
 
 /**
  * Generates a function that fits the Next.js `generateMetadata()` format. This
@@ -28,8 +51,7 @@ export function generateMetadataFn<PageProps, Result, Variables>(
 
     const [parentMetadata, data] = await Promise.all([
       parent,
-      executeQuery(options.query, {
-        variables,
+      executeQuery(options.query, variables, {
         includeDrafts: isDraftModeEnabled,
       }),
     ])

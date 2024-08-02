@@ -1,10 +1,10 @@
 import type { Metadata } from 'next'
 
-import { createMetadata } from '@/lib/seo'
+import { generateStaticMetadataFn } from '@/lib/generate-metadata'
 import { header } from '@/app/speaking/header'
 import withPageHeader from '@/app/_hoc/with-page-header'
 
-export const metadata: Metadata = createMetadata({
+export const metadata: Metadata = generateStaticMetadataFn({
   title: 'Speaking - Jovert Palonpon',
   description: `I like teaching and sharing my knowledge with others, specially if it's for up and coming developers.`,
 })

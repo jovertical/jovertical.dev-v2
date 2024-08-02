@@ -1,13 +1,13 @@
 import type { Metadata } from 'next'
 
 import SocialLinks from '@/app/(home)/_components/social-links'
-import { createMetadata } from '@/lib/seo'
-import { executeQuery } from '@/lib/datocms/executeQuery'
-import { gql } from '@/lib/datocms/graphql'
+import { executeQuery } from '@/lib/fetch-content'
+import { generateStaticMetadataFn } from '@/lib/generate-metadata'
+import { graphql } from '@/lib/graphql'
 import { header } from '@/app/(home)/header'
 import withPageHeader from '@/app/_hoc/with-page-header'
 
-const query = gql(/* GraphQL */ `
+const GET_BIO_QUERY = graphql(/* GraphQL */ `
   query Bio {
     bio {
       twitterUrl
@@ -18,13 +18,15 @@ const query = gql(/* GraphQL */ `
   }
 `)
 
-export const metadata: Metadata = createMetadata({
+export const metadata: Metadata = generateStaticMetadataFn({
   title: 'Jovert Palonpon - Software engineer, web developer',
   description: `Hi, I'm Jovert, a software engineer based in Manila, Philippines. I'm passionate about building web applications and learning new technologies. I love to travel as well, exploring the beauty of nature and experiencing different cultures.`,
 })
 
 async function Page() {
-  const { bio } = await executeQuery(query)
+  const {
+    data: { bio },
+  } = await executeQuery(GET_BIO_QUERY)
 
   if (!bio) return null
 

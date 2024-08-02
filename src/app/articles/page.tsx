@@ -3,13 +3,13 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import d from 'dayjs'
 
-import { createMetadata } from '@/lib/seo'
-import { executeQuery } from '@/lib/datocms/executeQuery'
-import { gql } from '@/lib/datocms/graphql'
+import { executeQuery } from '@/lib/fetch-content'
+import { generateStaticMetadataFn } from '@/lib/generate-metadata'
+import { graphql } from '@/lib/graphql'
 import { header } from '@/app/articles/header'
 import withPageHeader from '@/app/_hoc/with-page-header'
 
-const query = gql(/* GraphQL */ `
+const GET_ARTICLES_QUERY = graphql(/* GraphQL */ `
   query GetArticles($limit: IntType) {
     allArticles(first: $limit, orderBy: _publishedAt_DESC) {
       id
@@ -21,7 +21,7 @@ const query = gql(/* GraphQL */ `
   }
 `)
 
-export const metadata: Metadata = createMetadata({
+export const metadata: Metadata = generateStaticMetadataFn({
   title: 'Articles - Jovert Palonpon',
   description: `All of my thoughts on programming, web & mobile app development, dev ops, and more, displayed in chronological order.`,
   keywords: [
@@ -36,7 +36,9 @@ export const metadata: Metadata = createMetadata({
 })
 
 async function Page() {
-  const { allArticles: articles } = await executeQuery(query)
+  const {
+    data: { allArticles: articles },
+  } = await executeQuery(GET_ARTICLES_QUERY)
 
   return (
     <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">
