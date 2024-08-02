@@ -28,6 +28,7 @@
     "eslint": "^8.57.0",
     "eslint-config-next": "^14.2.5",
     "gql.tada": "^1.8.2",
+    "jsdom": "^24.1.1",
     "next": "^14.2.5",
     "nodemailer": "^6.9.14",
     "query-string": "^9.1.0",
@@ -41,6 +42,7 @@
     "remark-parse": "^11.0.0",
     "remark-rehype": "^11.1.0",
     "rss": "^1.2.2",
+    "serialize-error": "^11.0.3",
     "typescript": "5.3.2",
     "unified": "^11.0.5",
     "zod": "^3.22.8"
@@ -48,6 +50,7 @@
   "devDependencies": {
     "@0no-co/graphqlsp": "^1.12.12",
     "@tailwindcss/typography": "^0.5.13",
+    "@types/jsdom": "^21.1.7",
     "@types/mapbox__rehype-prism": "^0.8.3",
     "@types/node": "20.14.12",
     "@types/nodemailer": "^6.4.15",

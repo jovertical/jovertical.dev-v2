@@ -37,7 +37,7 @@ type CdaCacheTagsInvalidateWebhook = {
 }
 
 export async function POST(request: Request) {
-  if (request.headers.get('Webhook-Token') !== process.env.WEBHOOK_TOKEN) {
+  if (request.headers.get('Webhook-Token') !== process.env.SECRET_API_TOKEN) {
     return NextResponse.json(
       {
         error:
