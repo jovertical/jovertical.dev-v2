@@ -11,7 +11,7 @@ import LayoutHeader from '@/app/_components/layout-header'
 export default async function RootLayout({
   children,
 }: ComponentPropsWithoutRef<'html'>) {
-  const scheme = cookies().get('scheme')?.value ?? 'light'
+  const scheme = (await cookies()).get('scheme')?.value ?? 'light'
 
   return (
     <html

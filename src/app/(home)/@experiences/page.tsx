@@ -1,6 +1,6 @@
-import * as React from 'react'
 import Image from 'next/image'
 import d from 'dayjs'
+import { use } from 'react'
 
 import BriefCaseIcon from '@/components/icons/briefcase-icon'
 import { executeQuery } from '@/lib/fetch-content'
@@ -24,10 +24,10 @@ const GET_EXPERIENCES_QUERY = graphql(/* GraphQL */ `
   }
 `)
 
-export default async function Page() {
+export default function Page() {
   const {
     data: { allExperiences: experiences },
-  } = await executeQuery(GET_EXPERIENCES_QUERY)
+  } = use(executeQuery(GET_EXPERIENCES_QUERY))
 
   const isPresent = (experience: (typeof experiences)[0]) => {
     return experience.to === null
@@ -83,8 +83,6 @@ export default async function Page() {
           </li>
         ))}
       </ol>
-
-      {/* <div>{children}</div> */}
     </div>
   )
 }

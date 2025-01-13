@@ -29,9 +29,11 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       return invalidRequestResponse('URL must be relative!', 422)
     }
 
-    draftMode().enable()
+    const { enable: enableDraftMode } = await draftMode()
 
-    makeDraftModeWorkWithinIframes()
+    enableDraftMode()
+
+    await makeDraftModeWorkWithinIframes()
   } catch (error) {
     return handleUnexpectedError(error)
   }

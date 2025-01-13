@@ -1,6 +1,5 @@
 import FeaturedImages from '@/app/(home)/_components/featured-images'
 import Section from '@/components/section'
-import SubscriptionForm from '@/app/(home)/_components/subscription-form'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -23,11 +22,7 @@ export default function Layout({
         <div className="grid max-w-xl grid-cols-1 mx-auto gap-y-20 lg:max-w-none lg:grid-cols-2">
           {articles}
 
-          <div className="space-y-10 lg:pl-16 xl:pl-24">
-            <SubscriptionForm></SubscriptionForm>
-
-            {experiences}
-          </div>
+          <div className="space-y-10 lg:pl-16 xl:pl-24">{experiences}</div>
         </div>
       </Section>
     </div>

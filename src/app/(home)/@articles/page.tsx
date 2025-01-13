@@ -4,6 +4,7 @@ import d from 'dayjs'
 
 import { executeQuery } from '@/lib/fetch-content'
 import { graphql } from '@/lib/graphql'
+import { use } from 'react'
 
 const GET_ARTICLES_QUERY = graphql(/* GraphQL */ `
   query GetArticles($limit: IntType) {
@@ -17,10 +18,10 @@ const GET_ARTICLES_QUERY = graphql(/* GraphQL */ `
   }
 `)
 
-export default async function Page() {
+export default function Page() {
   const {
     data: { allArticles: articles },
-  } = await executeQuery(GET_ARTICLES_QUERY)
+  } = use(executeQuery(GET_ARTICLES_QUERY))
 
   return (
     <div id="featured-article-list" className="flex flex-col gap-16">

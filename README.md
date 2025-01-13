@@ -1,11 +1,11 @@
 ## 🚀 Quick Start
 
 ```bash
-# First, install the dependencies
-npm install
-
-# Then, copy & configure the environment file
+# First, copy & configure the environment file
 cp .env.local.example .env.local
+
+# Then, install the dependencies
+npm install
 
 # Finally, run the development server
 npm run dev

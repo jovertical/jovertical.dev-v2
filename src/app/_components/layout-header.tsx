@@ -9,10 +9,10 @@ import Link from '@/components/link'
 import NavLink from '@/app/_components/nav-link'
 
 const LINKS: { href: LinkProps<'a'>['href']; label: string }[] = [
-  { href: '/about', label: 'About' },
   { href: '/articles', label: 'Articles' },
   { href: '/projects', label: 'Projects' },
   { href: '/speaking', label: 'Speaking' },
+  { href: '/about', label: 'About' },
 ]
 
 export default function Header({

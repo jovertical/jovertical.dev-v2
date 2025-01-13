@@ -2,6 +2,7 @@ import { ChevronRightIcon } from '@heroicons/react/20/solid'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import d from 'dayjs'
+import { use } from 'react'
 
 import { executeQuery } from '@/lib/fetch-content'
 import { generateStaticMetadataFn } from '@/lib/generate-metadata'
@@ -35,10 +36,10 @@ export const metadata: Metadata = generateStaticMetadataFn({
   ],
 })
 
-async function Page() {
+function Page() {
   const {
     data: { allArticles: articles },
-  } = await executeQuery(GET_ARTICLES_QUERY)
+  } = use(executeQuery(GET_ARTICLES_QUERY))
 
   return (
     <div className="md:border-l md:border-zinc-100 md:pl-6 md:dark:border-zinc-700/40">

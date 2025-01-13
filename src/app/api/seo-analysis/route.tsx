@@ -88,7 +88,9 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
      * do this, we set the cookies that are obtained by temporarily enabling
      * Draft Mode.
      */
-    draftMode().enable()
+    const draft = await draftMode()
+
+    draft.enable()
 
     const pageRequest = await fetch(
       new URL(websitePath, request.nextUrl).toString(),
@@ -99,7 +101,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
       }
     )
 
-    draftMode().disable()
+    draft.disable()
 
     if (!pageRequest.ok) {
       return invalidRequestResponse(

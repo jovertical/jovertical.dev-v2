@@ -1,7 +1,7 @@
-import * as React from 'react'
 import d from 'dayjs'
 import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
+import { use } from 'react'
 
 import { ResponsiveImageFragment } from '@/fragments/responsive-image'
 import { TagFragment } from '@/fragments/tag'
@@ -47,20 +47,22 @@ export const generateMetadata = generateMetadataFn({
   pickSeoMetaTags: ({ article }) => article?._seoMetaTags,
 })
 
-export default async function Page({ params: { slug }, searchParams }: Props) {
-  const { isEnabled: isDraftModeEnabled } = draftMode()
+export default function Page({ params: { slug }, searchParams }: Props) {
+  const { isEnabled: isDraftModeEnabled } = use(draftMode())
 
   const {
     data: { article },
-  } = await executeQuery(
-    ARTICLE_BY_SLUG_QUERY,
-    { slug },
-    { includeDrafts: isDraftModeEnabled }
+  } = use(
+    executeQuery(
+      ARTICLE_BY_SLUG_QUERY,
+      { slug },
+      { includeDrafts: isDraftModeEnabled }
+    )
   )
 
   if (!article) return notFound()
 
-  const body = await toMarkdownString(article.body)
+  const body = use(toMarkdownString(article.body))
 
   return (
     <article>
