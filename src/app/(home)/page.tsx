@@ -5,7 +5,7 @@ import { executeQuery } from '@/lib/fetch-content'
 import { generateStaticMetadataFn } from '@/lib/generate-metadata'
 import { graphql } from '@/lib/graphql'
 import { header } from '@/app/(home)/header'
-import withPageHeader from '@/app/_hoc/with-page-header'
+import withPageHeader from '@/lib/with-page-header'
 
 const GET_BIO_QUERY = graphql(/* GraphQL */ `
   query Bio {

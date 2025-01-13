@@ -8,7 +8,7 @@ import { executeQuery } from '@/lib/fetch-content'
 import { generateStaticMetadataFn } from '@/lib/generate-metadata'
 import { graphql } from '@/lib/graphql'
 import { header } from '@/app/articles/header'
-import withPageHeader from '@/app/_hoc/with-page-header'
+import withPageHeader from '@/lib/with-page-header'
 
 const GET_ARTICLES_QUERY = graphql(/* GraphQL */ `
   query GetArticles($limit: IntType) {

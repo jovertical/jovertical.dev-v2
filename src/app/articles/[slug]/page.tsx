@@ -3,6 +3,7 @@ import { draftMode } from 'next/headers'
 import { notFound } from 'next/navigation'
 import { use } from 'react'
 
+import { GenerateMetadataProps, PageComponentProps } from '@/types'
 import { ResponsiveImageFragment } from '@/fragments/responsive-image'
 import { TagFragment } from '@/fragments/tag'
 import { executeQuery } from '@/lib/fetch-content'
@@ -10,12 +11,8 @@ import { generateMetadataFn } from '@/lib/generate-metadata'
 import { graphql } from '@/lib/graphql'
 import { toMarkdownString } from '@/lib/unified'
 
-type Params = { slug: string }
-
-interface Props {
-  params: Params
-  searchParams: { from: 'featured' }
-}
+type ArticleBySlugParams = { slug: string }
+type ArticleBySlugSearchParams = Partial<{ from: 'featured' }>
 
 const ARTICLE_BY_SLUG_QUERY = graphql(
   /* GraphQL */ `
@@ -43,11 +40,20 @@ const ARTICLE_BY_SLUG_QUERY = graphql(
 
 export const generateMetadata = generateMetadataFn({
   query: ARTICLE_BY_SLUG_QUERY,
-  buildQueryVariables: ({ params: { slug } }: { params: Params }) => ({ slug }),
   pickSeoMetaTags: ({ article }) => article?._seoMetaTags,
+  buildQueryVariables: async ({
+    params,
+  }: GenerateMetadataProps<ArticleBySlugParams>) => {
+    const { slug } = await params
+    return { slug }
+  },
 })
 
-export default function Page({ params: { slug }, searchParams }: Props) {
+export default function Page({
+  params,
+}: PageComponentProps<ArticleBySlugParams, ArticleBySlugSearchParams>) {
+  const { slug } = use(params)
+
   const { isEnabled: isDraftModeEnabled } = use(draftMode())
 
   const {
